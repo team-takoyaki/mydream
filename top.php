@@ -2,7 +2,7 @@
 require_once('profile.php');
 session_start();
 $up = new UserProfile();
-var_dump($up);
+var_dump($_SESSION['up']);
 if (isset($_SESSION['user_name'])) {
     include_once('tmpl/top.html.php');
 } else {
