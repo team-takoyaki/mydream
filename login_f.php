@@ -15,6 +15,7 @@
  * under the License.
  */
 require_once('const.php');
+require_once('profile.php');
 require 'facebook/facebook.php';
 
 // Create our Application instance (replace this with your appId and secret).
