@@ -1,10 +1,7 @@
 <?php
 require_once('const.php');
 session_start();
-if (!isset($_SESSION['user_name'])) {
-    header('Location:' . BASE_URL);
-    exit();
-}
+var_dump($_SESSION);
 ?><!DOCTYPE html>
 <header>
     <meta charset="utf-8">
