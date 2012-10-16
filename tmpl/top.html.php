@@ -1,6 +1,7 @@
 <?php
 require_once('const.php');
 session_start();
+var_dump(unserialize($_SESSION['up']));
 ?><!DOCTYPE html>
 <header>
     <meta charset="utf-8">
