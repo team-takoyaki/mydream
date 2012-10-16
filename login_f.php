@@ -37,7 +37,7 @@ if ($user) {
         $_SESSION['user_icon'] = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
         $user_name = $user_profile['name'];
         $user_icon = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
-        include_once('tmpl/top.html.php');
+        header('Location:' . BASE_URL . '/top.php');
         exit();
     } catch (FacebookApiException $e) {
         error_log($e);

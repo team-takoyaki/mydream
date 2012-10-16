@@ -13,10 +13,10 @@ if (!isset($_SESSION['user_name'])) {
 </header>
 <body>
     <p>
-        Hello <?= $user_name;?>
+        Hello <?= $_SESSION['user_name'];?>
     </p>
     <p>
-        <img src="<?= $user_icon;?>">
+        <img src="<?= $_SESSION['user_icon'];?>">
     </p>
     <p>
         <button id="location_movie" class="location_button">映画を見てる</button>

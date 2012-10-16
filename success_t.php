@@ -32,7 +32,4 @@ $_SESSION['access_token_secret'] = $token['oauth_token_secret'];
 $tw_user_name = $token['screen_name'];
 $_SESSION['user_name'] = $tw_user_name;
 $_SESSION['user_icon'] = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $tw_user_name . '&size=normal';
-//header('Location:' . BASE_URL . '/top.php');
-$user_name = $tw_user_name;
-$user_icon = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $tw_user_name . '&size=normal';
-include_once('tmpl/top.html.php');
+header('Location:' . BASE_URL . '/top.php');
