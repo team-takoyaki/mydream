@@ -1,5 +1,5 @@
 <?php
-Class UserProfile{
+Class UserProfile {
     public $sns = '';
     public $users = array(
         'user_id' => '',
