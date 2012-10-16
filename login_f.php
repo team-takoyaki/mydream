@@ -36,6 +36,9 @@ if ($user) {
         $_SESSION['user_name'] = $user_profile['name'];
         $_SESSION['user_icon'] = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
         $_SESSION['user_page'] = 'https://facebook.com/' . $user_profile['id'];
+        $up = new UserProfile();
+        $up->sns = 'facebook';
+        var_dump($up);
         header('Location:' . BASE_URL . '/top.php');
         exit();
     } catch (FacebookApiException $e) {
