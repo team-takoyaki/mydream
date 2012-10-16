@@ -1,5 +1,6 @@
 <?php
 require_once('const.php');
+require_once('profile.php');
 require('twitteroauth/twitteroauth.php');
 // Consumer keyの値
 $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
