@@ -2,7 +2,6 @@
 require_once('const.php');
 require_once(BASE. '/lib/model.php');
 session_start();
-var_dump(BASE);
 
 $dbh = connect_db();
 $sql = 'insert into dr_user_info(user_name, user_image, access_token) values(:user_name, :user_image, :access_token)';
@@ -13,7 +12,7 @@ try {
   echo $e->getMessage();
 }
 
-echo 'Finished!!!';
+//echo 'Finished!!!';
 
 if (isset($_SESSION['user_name'])) {
     header(BASE . '/top.php');
