@@ -34,9 +34,6 @@ if ($user) {
     try {
     //Proceed knowing you have a logged in user who's authenticated.
         $user_profile = $facebook->api('/me');
-//        $_SESSION['user_name'] = $user_profile['name'];
-//        $_SESSION['user_icon'] = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
-//        $_SESSION['user_page'] = 'https://facebook.com/' . $user_profile['id'];
         $up = new UserProfile();
         $up->sns = 'facebook';
         $up->users['user_id'] = $user_profile['id'];
