@@ -1,7 +1,6 @@
 <?php
 require_once('const.php');
 session_start();
-var_dump($_SESSION);
 ?><!DOCTYPE html>
 <header>
     <meta charset="utf-8">
@@ -10,11 +9,11 @@ var_dump($_SESSION);
 </header>
 <body>
     <p>
-        Hello <?= $_SESSION['user_name'];?>
+        Hello <?= $_SESSION['up']->users['user_name'];?>
     </p>
     <p>
-        <a href="<?= $_SESSION['user_page'];?>" target="_blank">
-            <img src="<?= $_SESSION['user_icon'];?>">
+        <a href="<?= $_SESSION['up']->users['user_page'];?>" target="_blank">
+            <img src="<?= $_SESSION['up']->users['user_icon'];?>">
         </a>
     </p>
     <p>写真がリンク</p>

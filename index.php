@@ -14,7 +14,7 @@ try {
 
 //echo 'Finished!!!';
 
-if (isset($_SESSION['user_name'])) {
+if (isset($_SESSION['up'])) {
     header('Location:' . BASE_URL . '/top.php');
 } else {
     include_once('tmpl/index.html.php');
