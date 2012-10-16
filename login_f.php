@@ -47,6 +47,7 @@ if ($user) {
         $up->add_user_icon('https://graph.facebook.com/' . $user_profile['id'] . '/picture');
         $up->add_user_page('https://facebook.com/' . $user_profile['id']);
         $_SESSION['up'] = $up->get_users();
+        var_dump($_SESSION['up']);
         header('Location:' . BASE_URL . '/top.php');
         exit();
     } catch (FacebookApiException $e) {
