@@ -21,7 +21,7 @@ if (empty($token['oauth_token'])) {
      * アクセス・トークンがなければ、何らかの理由で取得失敗した。
      * もう一度リクエスト・トークンを生成して認証を試みる。
      */
-     header('Location:' . BASE . '/dream');
+     header('Location:' . BASE);
 }
 
 //userのaccess_token等を保存しておく
