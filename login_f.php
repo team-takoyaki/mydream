@@ -35,12 +35,11 @@ if ($user) {
     //Proceed knowing you have a logged in user who's authenticated.
         $user_profile = $facebook->api('/me');
         $up = new UserProfile();
-        $up->sns = 'facebook';
-        $up->users['user_id'] = $user_profile['id'];
-        $up->users['user_name'] = $user_profile['name'];
-        $up->users['user_icon'] = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
-        $up->users['user_page'] = 'https://facebook.com/' . $user_profile['id'];
-        $_SESSION['up'] = $up;
+        $up->set_user_id($user_profile['id']);
+        $up->set_user_name($user_profile['name']);
+        $up->set_user_icon('https://graph.facebook.com/' . $user_profile['id'] . '/picture');
+        $up->set_user_page('https://facebook.com/' . $user_profile['id']);
+        $_SESSION['up'] = serialize($up);
         header('Location:' . BASE_URL . '/top.php');
         exit();
     } catch (FacebookApiException $e) {

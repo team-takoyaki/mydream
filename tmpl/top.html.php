@@ -1,6 +1,7 @@
 <?php
 require_once('const.php');
 session_start();
+$users = unserialize($_SESSION['up']);
 ?><!DOCTYPE html>
 <header>
     <meta charset="utf-8">
@@ -9,11 +10,11 @@ session_start();
 </header>
 <body>
     <p>
-        Hello <?= $_SESSION['up']->users['user_name'];?>
+        Hello <?= $users->users['user_name'];?>
     </p>
     <p>
-        <a href="<?= $_SESSION['up']->users['user_page'];?>" target="_blank">
-            <img src="<?= $_SESSION['up']->users['user_icon'];?>">
+        <a href="<?= $users->users['user_page'];?>" target="_blank">
+            <img src="<?= $users->users['user_icon'];?>">
         </a>
     </p>
     <p>写真がリンク</p>
