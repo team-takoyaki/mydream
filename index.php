@@ -1,5 +1,6 @@
 <?php
 require_once(dirname(__FILE__) . '/lib/model.php');
+session_start();
 
 $dbh = connect_db();
 $sql = 'insert into dr_user_info(user_name, user_image, access_token) values(:user_name, :user_image, :access_token)';
@@ -12,8 +13,6 @@ try {
 
 echo 'Finished!!!';
 
-
-session_start();
 if (isset($_SESSION['user_name'])) {
     header('Location:http://team-takoyaki.com/dream/top.php');
 } else {
