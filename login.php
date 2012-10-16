@@ -28,3 +28,4 @@ if (!$user) {
 
 
 var_dump($me);
+<img src="https://graph.facebook.com/<?= $me['username'];?>/picture">
