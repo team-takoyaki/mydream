@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . '/lib/model.php');
+require_once(BASE. '/lib/model.php');
 session_start();
 
 $dbh = connect_db();
