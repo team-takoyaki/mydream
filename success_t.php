@@ -31,4 +31,5 @@ $_SESSION['access_token_secret'] = $token['oauth_token_secret'];
 //user_name
 $tw_user_name = $token['screen_name'];
 $_SESSION['user_name'] = $tw_user_name;
-header('Location:' . BASE . '/top.php');
+header('Location:http://www.google.com');
+//header('Location:' . BASE . '/top.php');
