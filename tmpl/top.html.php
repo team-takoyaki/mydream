@@ -1,7 +1,8 @@
 <?php
+require_once('const.php');
 session_start();
 if (!isset($_SESSION['user_name'])) {
-    header('Location:http://team-takoyaki.com/doing/index.php');
+    header('Location:' . BASE_URL);
     exit();
 }
 ?><!DOCTYPE html>

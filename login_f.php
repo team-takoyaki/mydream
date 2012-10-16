@@ -34,6 +34,7 @@ if ($user) {
     //Proceed knowing you have a logged in user who's authenticated.
         $user_profile = $facebook->api('/me');
         $_SESSION['user_name'] = $user_profile['name'];
+        //$_SESSION['user_icon'] = $user_profile[''];
         include_once('tmpl/top.html.php');
         exit();
     } catch (FacebookApiException $e) {

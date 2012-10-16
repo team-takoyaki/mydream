@@ -1,5 +1,5 @@
 <?php
-require('src/facebook.php');
+require('facebook/facebook.php');
 
 $facebook = new Facebook(
     array(
