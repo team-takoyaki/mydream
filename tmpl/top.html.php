@@ -13,14 +13,10 @@ if (!isset($_SESSION['user_name'])) {
 </header>
 <body>
     <p>
-    <?php
-        if (isset($_SESSION['user_name'])) {
-    ?>
-    Hello <?php echo $_SESSION['user_name'];?>
-    <?php }?>
+        Hello <?= $user_name;?>
     </p>
     <p>
-        <img src="<?= $_SESSION['user_icon'];?>">
+        <img src="<?= $user_icon;?>">
     </p>
     <p>
         <button id="location_movie" class="location_button">映画を見てる</button>
