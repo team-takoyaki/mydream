@@ -24,11 +24,11 @@ Class UserProfile {
         $this->$users['user_icon'] = $user_icon;
     }
 
-    function add_user_name($user_page) {
+    function add_user_page($user_page) {
         $this->$users['user_page'] = $user_page;
     }
 
-    function  get_users() {
+    function get_users() {
         return $users;
     }
 }
