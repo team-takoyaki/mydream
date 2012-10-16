@@ -15,6 +15,7 @@ try {
 //echo 'Finished!!!';
 
 if (isset($_SESSION['user_name'])) {
+    var_dump($_SESSION);
     header(BASE . '/top.php');
 } else {
     include_once('tmpl/index.html.php');
