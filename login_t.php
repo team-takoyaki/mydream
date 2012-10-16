@@ -7,7 +7,7 @@ $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
 $consumer_secret = '1SR7AxpR05s875UCK632gr8r35e8uw0cNGh4xIF8SA';
 
 //app
-$app_addr = BASE . '/success_t.php';
+$app_addr = BASE_URL . '/success_t.php';
 
 session_start();
 if (isset($_SESSION['user_name'])) {
