@@ -29,6 +29,6 @@ Class UserProfile {
     }
 
     function get_users() {
-        return $users;
+        return $this->users;
     }
 }

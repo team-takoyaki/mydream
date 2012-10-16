@@ -43,7 +43,10 @@ if ($user) {
         $up->users['user_page'] = 'https://facebook.com/' . $user_profile['id'];
         */
         $up->add_user_id($user_profile['id']);
-        $_SESSION['up'] = $up;
+        $up->add_user_name($user_profile['name']);
+        $up->add_user_icon('https://graph.facebook.com/' . $user_profile['id'] . '/picture');
+        $up->add_user_page('https://facebook.com/' . $user_profile['id']);
+        $_SESSION['up'] = $up->get_users();
         header('Location:' . BASE_URL . '/top.php');
         exit();
     } catch (FacebookApiException $e) {
