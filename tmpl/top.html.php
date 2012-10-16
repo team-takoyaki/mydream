@@ -20,6 +20,9 @@ if (!isset($_SESSION['user_name'])) {
     <?php }?>
     </p>
     <p>
+        <img src="<?= $_SESSION['user_icon'];?>">
+    </p>
+    <p>
         <button id="location_movie" class="location_button">映画を見てる</button>
     </p>
     <p>
