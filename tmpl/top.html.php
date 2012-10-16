@@ -16,7 +16,7 @@ if (!isset($_SESSION['user_name'])) {
         Hello <?= $_SESSION['user_name'];?>
     </p>
     <p>
-        <a href="<?= $_SESSION['user_page'];?>">
+        <a href="<?= $_SESSION['user_page'];?>" target="_blank">
             <img src="<?= $_SESSION['user_icon'];?>">
         </a>
     </p>
