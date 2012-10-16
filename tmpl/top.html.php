@@ -11,7 +11,7 @@ $users = unserialize($_SESSION['up']);
 </header>
 <body>
     <p>
-        Hello <?= $users['user_name'];?>
+        Hello <?= $users->users['user_name'];?>
     </p>
     <p>
         <a href="<?= $users['user_page'];?>" target="_blank">
