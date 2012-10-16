@@ -16,7 +16,9 @@ if (!isset($_SESSION['user_name'])) {
         Hello <?= $_SESSION['user_name'];?>
     </p>
     <p>
-        <img src="<?= $_SESSION['user_icon'];?>">
+        <a href="<?= $_SESSOIN['user_page'];?>">
+            <img src="<?= $_SESSION['user_icon'];?>">
+        </a>
     </p>
     <p>
         <button id="location_movie" class="location_button">映画を見てる</button>

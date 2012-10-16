@@ -29,8 +29,7 @@ $_SESSION['access_token'] = $token['oauth_token'];
 $_SESSION['access_token_secret'] = $token['oauth_token_secret'];
 
 //user_name
-var_dump($token);
-$tw_user_name = $token['screen_name'];
-$_SESSION['user_name'] = $tw_user_name;
-$_SESSION['user_icon'] = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $tw_user_name . '&size=normal';
+$_SESSION['user_name'] = $token['screen_name'];
+$_SESSION['user_icon'] = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $token['screen_name'] . '&size=normal';
+$_SESSION['user_page'] = 'https://twitter.com/' . $token['screen_name'];
 header('Location:' . BASE_URL . '/top.php');
