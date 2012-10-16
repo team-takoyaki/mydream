@@ -1,21 +1,18 @@
 <?php
+require_once('const.php');
 require('twitteroauth/twitteroauth.php');
 // Consumer keyの値
 $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
 // Consumer secretの値
 $consumer_secret = '1SR7AxpR05s875UCK632gr8r35e8uw0cNGh4xIF8SA';
-// Access Tokenの値
-//$access_token = "171915310-8tPvs9cT1LvaG91PbLVHHZAoY4ADnQgje6l7fwU1";
-// Access Token Secretの値
-//$access_token_secret = "4ssMP0qZ7RuesDJfiP2LDBHJD86BPXDwjDrIxtw1IY";
 
 //app
-$app_addr = 'http://team-takoyaki.com/dream/success_t.php';
+$app_addr = BASE . '/success_t.php';
 
 session_start();
 if (isset($_SESSION['user_name'])) {
     //ログイン済みならトップページにリダイレクト
-    header('Location:http://team-takoyaki.com/dream/top.php');
+    header('Location:' . BASE . '/top.php');
 }
 
 // Twitterクライアント起動

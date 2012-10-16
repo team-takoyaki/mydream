@@ -14,7 +14,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
+require_once('const.php');
 require 'facebook/facebook.php';
 
 // Create our Application instance (replace this with your appId and secret).
