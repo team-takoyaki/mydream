@@ -1,7 +1,7 @@
 <?php
 Class UserProfile {
-    private $sns = '';
-    private $users = array(
+    $sns = '';
+    $users = array(
         'user_id' => '',
         'user_name' => '',
         'user_icon' => '',
