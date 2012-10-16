@@ -1,4 +1,5 @@
 <?php
+require_once('const.php');
 require_once(BASE. '/lib/model.php');
 session_start();
 
