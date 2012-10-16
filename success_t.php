@@ -31,10 +31,16 @@ $_SESSION['access_token_secret'] = $token['oauth_token_secret'];
 
 //user_name
 $up = new UserProfile();
+/*
 $up->sns = 'twitter';
 $up->users['user_id'] = $token['user_id'];
 $up->users['user_name'] = $token['screen_name'];
 $up->users['user_icon'] = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $token['screen_name'] . '&size=normal';
 $up->users['user_page'] = 'https://twitter.com/' . $token['screen_name'];
-$_SESSION['up'] = $up;
+*/
+$up->set_user_id($token['user_id']);
+$up->set_user_name($token['screen_name']);
+$up->set_user_icon('http://api.twitter.com/1/users/profile_image?screen_name=' . $token['screen_name'] . '&size=normal');
+$up->set_user_page('https://twitter.com/' . $token['screen_name']);
+$_SESSION['up'] = serialize($up);
 header('Location:' . BASE_URL . '/top.php');
