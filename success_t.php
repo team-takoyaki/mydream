@@ -7,7 +7,7 @@ $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
 $consumer_secret = '1SR7AxpR05s875UCK632gr8r35e8uw0cNGh4xIF8SA';
 
 //app
-$app_addr = BASE . '/top.php';
+$app_addr = BASE_URL . '/top.php';
 
 session_start();
 
@@ -21,7 +21,7 @@ if (empty($token['oauth_token'])) {
      * アクセス・トークンがなければ、何らかの理由で取得失敗した。
      * もう一度リクエスト・トークンを生成して認証を試みる。
      */
-     header('Location:' . BASE . '/');
+     header('Location:' . BASE_URL . '/');
 }
 
 //userのaccess_token等を保存しておく
@@ -31,5 +31,4 @@ $_SESSION['access_token_secret'] = $token['oauth_token_secret'];
 //user_name
 $tw_user_name = $token['screen_name'];
 $_SESSION['user_name'] = $tw_user_name;
-header('Location:http://www.google.com');
-//header('Location:' . BASE . '/top.php');
+header('Location:' . BASE_URL . '/top.php');
