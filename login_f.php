@@ -39,7 +39,6 @@ if ($user) {
         $_SESSION['user_page'] = 'https://facebook.com/' . $user_profile['id'];
         $up = new UserProfile();
         $up->sns = 'facebook';
-        var_dump($up);
         header('Location:' . BASE_URL . '/top.php');
         exit();
     } catch (FacebookApiException $e) {
