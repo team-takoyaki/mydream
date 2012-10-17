@@ -34,3 +34,15 @@ function select_dreams($dbh) {
   }
   return $result;
 }
+
+function select_dream_from_dream_id($dbh, $dream_id) {
+  $sql = 'select id, title, body, category from dr_dream where id = :id';
+  try {
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute(array(':id' => $dream_id));
+    $result = $stmt->fetch();
+  } catch (PDOException $e) {
+      return null;
+  }
+  return $result;
+}
