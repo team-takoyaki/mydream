@@ -9,7 +9,7 @@ Class UserProfile {
         'user_page' => ''
     );
 
-    function set_sns($sns) {
+    function set_user_sns($sns) {
         $this->users['user_sns'] = $sns;
     }
 
