@@ -11,3 +11,4 @@ define('USER_PHP', BASE_URL . '/user.php');
 
 define('TMPL_DIR', 'tmpl');
 
+define('DEFAULT_CATEGORY', 'social');

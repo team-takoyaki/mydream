@@ -28,17 +28,17 @@ $users = unserialize($_SESSION['up']);
         <div class="item">
             choice category...
             <select name="category">
-                <option value="social">Social</option>
-                <option value="politics">Politics</option>
-                <option value="life">Life</option>
-                <option value="sports">Sports</option>
-                <option value="music">Music</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="science">Science</option>
-                <option value="it">Computer</option>
-                <option value="game">Game</option>
-                <option value="anime">Anime</option>
-                <option value="other">Other</option>
+                <option value="social" <?php set_selected_category('social', $category);?>>Social</option>
+                <option value="politics" <?php set_selected_category('politics', $category);?>>Politics</option>
+                <option value="life" <?php set_selected_category('life', $category);?>>Life</option>
+                <option value="sports" <?php set_selected_category('sports', $category);?>>Sports</option>
+                <option value="music" <?php set_selected_category('music', $category);?>>Music</option>
+                <option value="entertainment" <?php set_selected_category('entertainment', $category);?>>Entertainment</option>
+                <option value="science" <?php set_selected_category('science', $category);?>>Science</option>
+                <option value="it" <?php set_selected_category('it', $category);?>>Computer</option>
+                <option value="game" <?php set_selected_category('game', $category);?>>Game</option>
+                <option value="anime" <?php set_selected_category('anime', $category);?>>Anime</option>
+                <option value="other" <?php set_selected_category('other', $category);?>>Other</option>
             </select>
         </div>
         <button>Submit</button>

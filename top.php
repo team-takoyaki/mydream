@@ -2,6 +2,7 @@
 require_once('const.php');
 require_once('profile.php');
 require_once('lib/model.php');
+require_once('lib/helper.php');
 session_start();
 if (isset($_SESSION['up']) === true) {
     $category = 'social';
