@@ -22,6 +22,9 @@ $users = unserialize($_SESSION['up']);
         <button id="location_movie" class="location_button">映画を見てる</button>
     </p>
     <p>
+        <a href="<?= BASE . '/write_dream.php';?>">write dream</a>
+    </p>
+    <p>
         <a href="logout.php">Logout</a>
     </p>
     <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
