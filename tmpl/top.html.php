@@ -1,8 +1,4 @@
-<?php
-require_once('const.php');
-session_start();
-$users = unserialize($_SESSION['up']);
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <header>
     <meta charset="utf-8">
     <title>Doing</title>

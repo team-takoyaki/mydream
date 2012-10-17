@@ -16,6 +16,7 @@ if (isset($_SESSION['up']) === true) {
         echo 'error';
         exit();
     }
+    $users = unserialize($_SESSION['up']);
     $dreams = select_dream_from_category($dbh, $category);
 
     $user_list = select_users($dbh);
