@@ -29,8 +29,8 @@ $users = unserialize($_SESSION['up']);
     </p>
     <form method="GET">
         <div class="item">
+            choice category...
             <select name="category">
-                <option value="">Category</option>
                 <option value="social">Social</option>
                 <option value="politics">Politics</option>
                 <option value="life">Life</option>
@@ -46,6 +46,20 @@ $users = unserialize($_SESSION['up']);
         </div>
         <button>Submit</button>
     </form>
+    <?php if ($is_choice === true) {?>
+        <p>search category...<?= $category;?></p>
+        <?php foreach($dreams as $dream) {?>
+            <dl>
+                <dt><?= $dream['title'];?></dt>
+                <dd><?= $dream['body'];?></dd>
+            </dl>
+        <?php }?>
+        <?php if (count($dreams) === 0) {?>
+            <p>Nothing dream ...</p>
+        <?php }?>
+    <?php } else {?>
+        <p>search dream category</p>
+    <?php }?>
     <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="scripts/geolocation.js"></script>
     <script type="text/javascript" src="scripts/top.js"></script>
