@@ -2,6 +2,7 @@
 Class UserProfile {
     var $sns = '';
     var $users = array(
+        'user_sns' => '',
         'user_id' => '',
         'user_name' => '',
         'user_icon' => '',
@@ -9,7 +10,7 @@ Class UserProfile {
     );
 
     function set_sns($sns) {
-        $this->sns = $sns;
+        $this->users['user_sns'] = $sns;
     }
 
     function set_user_id($user_id) {
