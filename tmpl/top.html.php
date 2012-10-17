@@ -46,11 +46,11 @@ $users = unserialize($_SESSION['up']);
         </div>
         <button>Submit</button>
     </form>
-    <?php if ($is_choice === true) {?>
+    <?php if ($is_choice === true) { ?>
         <p>search category...<?= $category;?></p>
         <?php foreach($dreams as $dream) {?>
             <dl>
-                <dt><?= $dream['title'];?></dt>
+                <dt><a href="<?= BASE_URL . '/dream.php?id=' . $dream['id'];?>"><?= $dream['title'];?></a></dt>
                 <dd><?= $dream['body'];?></dd>
             </dl>
         <?php }?>

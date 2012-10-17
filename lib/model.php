@@ -49,7 +49,7 @@ function select_dream_from_dream_id($dbh, $dream_id) {
 
 //search dream in category
 function select_dream_from_category($dbh, $category) {
-    $sql = 'select title, body, category, user_id from dr_dream where category = :category';
+    $sql = 'select id, title, body, category, user_id from dr_dream where category = :category';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
