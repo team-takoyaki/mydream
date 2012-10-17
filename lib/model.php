@@ -57,7 +57,7 @@ function select_dream_from_category($dbh, $category) {
                 ':category' => $category
             )
         );
-        $result = $stmt->fetch();
+        $result = $stmt->fetchAll();
     } catch (PDOException $e) {
         return null;
     }
