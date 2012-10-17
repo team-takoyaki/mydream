@@ -19,9 +19,6 @@ $users = unserialize($_SESSION['up']);
     </p>
     <p>写真がリンク</p>
     <p>
-        <button id="location_movie" class="location_button">映画を見てる</button>
-    </p>
-    <p>
         <a href="<?= 'write_dream.php';?>">write dream</a>
     </p>
     <p>
