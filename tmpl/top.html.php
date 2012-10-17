@@ -60,6 +60,16 @@ $users = unserialize($_SESSION['up']);
     <?php } else {?>
         <p>search dream category</p>
     <?php }?>
+    <h2>Users</h2>
+    <?php if (count($users) > 0) { ?>
+       <ul>
+       <?php foreach ($user_list as $user) { ?>
+           <?php if ($user['id'] !== intval($users->users['dr_user_id'])) { ?>
+               <li><a href="<?= USER_PHP ?>?user_id=<?= $user['id']; ?>"><?= $user['user_name'] ?></a></li>
+           <?php } ?>
+       <?php } ?>
+       </ul>
+    <?php } ?>
     <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="scripts/geolocation.js"></script>
     <script type="text/javascript" src="scripts/top.js"></script>

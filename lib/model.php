@@ -25,11 +25,23 @@ function insert_user($dbh, $user_name, $user_image) {
 }
 
 function select_user_from_user_id($dbh, $user_id) {
-  $sql = 'select user_id, user_name, user_image from dr_user where user_id = :user_id';
+  $sql = 'select id, user_name, user_image from dr_user where id = :id';
+  try {
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute(array(':id' => $user_id));
+    $result = $stmt->fetch();
+  } catch (PDOException $e) {
+      return null;
+  }
+  return $result;
+}
+
+function select_dreams_from_user_id($dbh, $user_id) {
+  $sql = 'select id, title, body, category from dr_dream where user_id = :user_id';
   try {
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array(':user_id' => $user_id));
-    $result = $stmt->fetch();
+    $result = $stmt->fetchAll();
   } catch (PDOException $e) {
       return null;
   }
@@ -86,4 +98,16 @@ function select_dream_from_category($dbh, $category) {
         return null;
     }
     return $result;
+}
+
+function select_users($dbh) {
+  $sql = 'select id, user_name, user_image from dr_user';
+  try {
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+  } catch (PDOException $e) {
+      return null;
+  }
+  return $result;
 }

@@ -3,7 +3,7 @@ require_once('const.php');
 require_once('profile.php');
 require_once('lib/model.php');
 session_start();
-if (isset($_SESSION['up'])) {
+if (isset($_SESSION['up']) === true) {
     $category = 'social';
     $is_choice = false;
     if (isset($_GET['category']) === true && $_GET['category'] !== '') {
@@ -16,10 +16,14 @@ if (isset($_SESSION['up'])) {
         exit();
     }
     $dreams = select_dream_from_category($dbh, $category);
+
+    $user_list = select_users($dbh);
+
     $dbh = null;
     if ($dreams === null) {
         echo 'error';
     }
+
     include_once('tmpl/top.html.php');
 } else {
     header('Location:' . BASE_URL);
