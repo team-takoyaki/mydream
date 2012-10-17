@@ -12,25 +12,25 @@ function connect_db() {
     return $dbh;
 }
 
-function insert_dream_list($dbh, $user_id) {
-  $sql = 'insert into dr_dream_list(user_id) values(:user_id)';  
+function insert_dream($dbh, $title, $body, $category, $user_id) {
+  $sql = 'insert into dr_dream(title, body, category, user_id) values(:title, :body, :category, :user_id)';
   try {
-    $stmt = $dbh->prepare($sql);  
-    $stmt->execute(array(':user_id' => $user_id));
-    $dream_list_id = $dbh->lastInsertId('dr_dream_list_dream_list_id_seq');
-  } catch (PDOException $e) {
-    return null;
-  }
-  return $dream_list_id;
-}
-
-function insert_dream($dbh, $dream_list_id, $title, $body, $category) {
-  $sql = 'insert into dr_dream(dream_list_id, title, body, category) values(:dream_list_id, :title, :body, :category)';
-  try {
-    $stmt_dream = $dbh->prepare($sql);  
-    $stmt_dream->execute(array(':dream_list_id' => $dream_list_id, ':title' => $title, ':body' => $body, ':category' => $category));  
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute(array(':title' => $title, ':body' => $body, ':category' => $category, ':user_id' => $user_id));
   } catch (PDOException $e) {
       return null;
   }
   return true;
+}
+
+function select_dreams($dbh) {
+  $sql = 'select id, title, category from dr_dream';
+  try {
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+  } catch (PDOException $e) {
+      return null;
+  }
+  return $result;
 }

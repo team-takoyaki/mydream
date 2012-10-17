@@ -14,13 +14,13 @@ if (isset($_POST['category']) === true && $_POST['category'] !== '') {
     $category = trim($_POST['category']);
 }
 
+$dbh = connect_db();
+
 if (isset($title) === true && isset($body) === true && isset($category) === true) { 
-    $dbh = connect_db();
     // debug
     $user_id = rand(1, 999);
-    $dream_list_id = insert_dream_list($dbh, $user_id);
-    insert_dream($dbh, $dream_list_id, $title, $body, $category);
-    echo 'Finish';
-} else {
-    include_once('tmpl/write_dream.html.php');
+    insert_dream($dbh, $title, $body, $category, $user_id);
 }
+$dreams = select_dreams($dbh);
+include_once('tmpl/write_dream.html.php');
+

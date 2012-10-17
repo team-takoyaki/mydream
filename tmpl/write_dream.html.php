@@ -6,6 +6,13 @@
     <link rel="stylesheet" type="text/css" href="css/write_dream.css">
 </head>
 <body>
+   <?php if (count($dreams) > 0) { ?>
+       <ul>
+       <?php foreach ($dreams as $dream) { ?>
+           <li><a href="<?= DREAM_PHP ?>?id=<?= $dream['id'] ?>"><?= $dream['title'] ?></a></li>
+       <?php } ?>
+       </ul>
+   <?php } ?>
    <h1>Let's write your dream</h1>
    <form method="POST">
    <div class="item"><input type="text" name="title" placeholder="title"></div>
