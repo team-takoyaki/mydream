@@ -12,6 +12,30 @@ function connect_db() {
     return $dbh;
 }
 
+function insert_user($dbh, $user_name, $user_image) {
+  $sql = 'insert into dr_user(user_name, user_image) values(:user_name, :user_image)';
+  try {
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute(array(':user_name' => $user_name, ':user_image' => $user_image)
+                   );
+  } catch (PDOException $e) {
+      return null;
+  }
+  return $dbh->lastInsertId('dr_user_id_seq');
+}
+
+function select_user_from_user_id($dbh, $user_id) {
+  $sql = 'select user_id, user_name, user_image from dr_user where user_id = :user_id';
+  try {
+    $stmt = $dbh->prepare($sql);
+    $stmt->execute(array(':user_id' => $user_id));
+    $result = $stmt->fetch();
+  } catch (PDOException $e) {
+      return null;
+  }
+  return $result;
+}
+
 function insert_dream($dbh, $title, $body, $category, $user_id) {
   $sql = 'insert into dr_dream(title, body, category, user_id) values(:title, :body, :category, :user_id)';
   try {

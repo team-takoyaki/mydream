@@ -16,6 +16,7 @@
  */
 require_once('const.php');
 require_once('profile.php');
+require_once('lib/model.php');
 require 'facebook/facebook.php';
 
 // Create our Application instance (replace this with your appId and secret).
@@ -34,10 +35,16 @@ if ($user) {
     try {
     //Proceed knowing you have a logged in user who's authenticated.
         $user_profile = $facebook->api('/me');
+        $user_name = $user_profile['name'];
+        $profile_image = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
+        $dbh = connect_db();
+        $user_id = insert_user($dbh, $user_name, $profile_image);
+
         $up = new UserProfile();
+        $up->set_dr_user_id($user_id);
         $up->set_user_id($user_profile['id']);
-        $up->set_user_name($user_profile['name']);
-        $up->set_user_icon('https://graph.facebook.com/' . $user_profile['id'] . '/picture');
+        $up->set_user_name($user_name);
+        $up->set_user_icon($profile_image);
         $up->set_user_page('https://facebook.com/' . $user_profile['id']);
         $_SESSION['up'] = serialize($up);
         header('Location:' . BASE_URL . '/top.php');
