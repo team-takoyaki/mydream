@@ -46,3 +46,19 @@ function select_dream_from_dream_id($dbh, $dream_id) {
   }
   return $result;
 }
+
+function select_dream_from_category($dbh, $category) {
+    $sql = 'select title, body, category from dr_dream where category = :category';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+            array(
+                ':category' => $category
+            )
+        );
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
+}

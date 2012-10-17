@@ -6,34 +6,34 @@
     <link rel="stylesheet" type="text/css" href="css/write_dream.css">
 </head>
 <body>
-   <?php if (count($dreams) > 0) { ?>
+    <?php if (count($dreams) > 0) { ?>
        <ul>
        <?php foreach ($dreams as $dream) { ?>
            <li><a href="<?= DREAM_PHP ?>?id=<?= $dream['id'] ?>"><?= $dream['title'] ?></a></li>
        <?php } ?>
        </ul>
-   <?php } ?>
-   <h1>Let's write your dream</h1>
-   <form method="POST">
-   <div class="item"><input type="text" name="title" placeholder="title"></div>
-   <div class="item"><textarea name="body" placeholder="body"></textarea></div>
-   <div class="item">
-       <select name="category">
-	   <option value="">Category</option>
-	   <option value="social">Social</option>
-	   <option value="politics">Politics</option>
-	   <option value="life">Life</option>
-	   <option value="sports">Sports</option>
-	   <option value="music">Music</option>
-	   <option value="entertainment">Entertainment</option>
-	   <option value="science">Science</option>
-	   <option value="it">Computer</option>
-	   <option value="game">Game</option>
-	   <option value="anime">Anime</option>
-	   <option value="other">Other</option>
-       </select>
-   </div>
-   <button>Submit</button>
-   </form>
+    <?php } ?>
+    <h1>Let's write your dream</h1>
+    <form method="POST">
+        <div class="item"><input type="text" name="title" placeholder="title"></div>
+        <div class="item"><textarea name="body" placeholder="body"></textarea></div>
+        <div class="item">
+            <select name="category">
+                <option value="">Category</option>
+                <option value="social">Social</option>
+                <option value="politics">Politics</option>
+                <option value="life">Life</option>
+                <option value="sports">Sports</option>
+                <option value="music">Music</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="science">Science</option>
+                <option value="it">Computer</option>
+                <option value="game">Game</option>
+                <option value="anime">Anime</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <button>Submit</button>
+    </form>
 </body>
 </html>

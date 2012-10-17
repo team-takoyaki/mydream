@@ -1,6 +1,5 @@
 <?php
 Class UserProfile {
-    var $sns = '';
     var $users = array(
         'user_sns' => '',
         'user_id' => '',
@@ -31,9 +30,5 @@ Class UserProfile {
 
     function get_users() {
         return $this->users;
-    }
-
-    function get_sns() {
-        return $this->sns;
     }
 }
