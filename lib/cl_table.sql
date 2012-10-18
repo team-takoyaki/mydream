@@ -1,11 +1,13 @@
 DROP TABLE DR_DREAM;
 DROP TABLE DR_USER;
+DROP TABLE DR_CATEGORY;
+DROP TABLE DR_SNS_ID;
 
 CREATE TABLE DR_DREAM (
        ID SERIAL,
        TITLE VARCHAR(255) NOT NULL,
        BODY VARCHAR(2048) NOT NULL,
-       CATEGORY VARCHAR(255) NOT NULL,
+       CATEGORY_ID VARCHAR(255) NOT NULL,
        USER_ID INTEGER NOT NULL,
        UPDATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
        CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
@@ -16,8 +18,33 @@ CREATE TABLE DR_USER (
        ID SERIAL,
        USER_NAME VARCHAR(16) NOT NULL UNIQUE,
        USER_IMAGE VARCHAR(1024),
+       SNS_ID VARCHAR(255) NOT NULL,
        UPDATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
        CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
        PRIMARY KEY(ID)
 );
+
+CREATE TABLE DR_CATEGORY (
+       ID SERIAL,
+       CATEGORY_NAME VARCHAR(255) NOT NULL UNIQUE,
+       CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
+       PRIMARY KEY(ID)
+);
+
+CREATE TABLE DR_SNS (
+       ID SERIAL,
+       SNS_NAME VARCHAR(255) NOT NULL UNIQUE,
+       CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
+       PRIMARY KEY(ID)
+);
+
+
+GRANT ALL ON dr_dream TO takoyaki;
+GRANT ALL ON dr_dream_id_seq TO takoyaki;
+GRANT ALL ON dr_user TO takoyaki;
+GRANT ALL ON dr_user_id_seq TO takoyaki;
+GRANT ALL ON dr_category TO takoyaki;
+GRANT ALL ON dr_category_id_seq TO takoyaki;
+GRANT ALL ON dr_sns TO takoyaki;
+GRANT ALL ON dr_sns_id_seq TO takoyaki;
 
