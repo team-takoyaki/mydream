@@ -70,7 +70,6 @@ function select_user_from_user_id($dbh, $user_id) {
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array(':id' => $user_id));
     $result = $stmt->fetch();
-    var_dump($result);
   } catch (PDOException $e) {
       return null;
   }
