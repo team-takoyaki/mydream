@@ -31,6 +31,7 @@ $_SESSION['access_token'] = $token['oauth_token'];
 $_SESSION['access_token_secret'] = $token['oauth_token_secret'];
 
 $user_name = $token['screen_name'];
+$tw_user_id = $token['user_id'];
 $profile_image = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $token['screen_name'] . '&size=normal';
 $dbh = connect_db();
 $user_id = insert_user($dbh, $user_name, $profile_image);

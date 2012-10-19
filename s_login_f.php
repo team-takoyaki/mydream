@@ -19,16 +19,13 @@ if (isset($_SESSION['user_id']) === true) {
     exit();
 }
 
+
 if (isset($_SESSION['access_token']) === true) {
     $_SESSION['access_token'] = $facebook->getAccessToken();
     $me = $facebook->api('/me?access_token=' . $_SESSION['access_token']);
     //ここでDB dr_userからidを取得し, $_SESSIONに保存
-    $dbh = connect_db();
-    var_dump($me['id']);
-    var_dump(select_id_from_dr_user($dbh, 'facebook', $me['id']));
     $_SESSION['user_id'] = $me['id'];
     header('Location:' . BASE_URL . '/top.php');
-    exit();
 }
 
 
@@ -51,8 +48,9 @@ if ($user !== 0) {
         $profile_image = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
         $dbh = connect_db();
         $sns_id = select_sns_id_from_sns_name($dbh, 'facebook');
-        $user_id = insert_user($dbh, $user_name, $profile_image, $sns_id['id'], $sns_user_id);
-
+//        $sns_id = 1;
+        $user_id = insert_user($dbh, $user_name, $profile_image, $sns_id, $sns_user_id);
+        var_dump($user_id);
         $_SESSION['user_id'] = $user_id;
 
         $up = new UserProfile();
@@ -79,7 +77,7 @@ if ($user !== 0) {
     header('Location:' . $loginUrl);
 }
 
-/*
+
 function select_sns_id_from_sns_name($dbh, $sns_name) {
     $sql = 'select id from dr_sns where sns_name = :sns_name';
     try {
@@ -95,21 +93,3 @@ function select_sns_id_from_sns_name($dbh, $sns_name) {
     }
     return $result;
 }
-
-
-function select_id_from_dr_user($dbh, $sns_name, $sns_user_id) {
-    $sql = 'select id from dr_user t1 inner join dr_sns t2 on t2.id = t1.sns_id where t1.sns_user_id = :sns_user_id and t2.sns_name = :sns_name';
-    try {
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute(
-            array(
-                ':sns_user_id' => $sns_user_id,
-                ':sns_name' => 'sns_name'
-            )
-        );
-        $result = $stmt->fetchAll();
-    } catch (PDOException $e) {
-        return null;
-    }
-    return $result;
-}*/

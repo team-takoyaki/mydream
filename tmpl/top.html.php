@@ -6,11 +6,11 @@
 </header>
 <body>
     <p>
-        Hello <?= $users->users['user_name'];?>
+        Hello <?= $users['user_name'];?>
     </p>
     <p>
-        <a href="<?= $users->users['user_page'];?>" target="_blank">
-            <img src="<?= $users->users['user_icon'];?>">
+        <a href="<?= $user_page;?>" target="_blank">
+            <img src="<?= $users['user_image'];?>">
         </a>
     </p>
     <p>写真がリンク</p>

@@ -1,6 +1,9 @@
 <?php
+require_once('const.php');
 session_start();
-if (isset($_SESSION['up'])) {
-    session_destroy();
+if (isset($_SESSION['user_id']) === true) {
+//    session_destroy();
+    $_SESSION['user_id'] = null;
+    $_SESSION['up'] = null;
 }
-header('Location:http://team-takoyaki.com/dream/');
+header('Location:' . BASE_URL);

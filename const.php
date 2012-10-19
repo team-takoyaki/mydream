@@ -1,7 +1,7 @@
 <?php
 define('BASE', dirname(__FILE__));
 
-define('BASE_URL', 'http://team-takoyaki.com/dream');
+define('BASE_URL', 'http://team-takoyaki.com/dev/dream');
 
 // kashima debug url
 define('DEBUG_BASE_URL', 'http://unuuu.com/dev/dream');
@@ -12,3 +12,5 @@ define('USER_PHP', BASE_URL . '/user.php');
 define('TMPL_DIR', 'tmpl');
 
 define('DEFAULT_CATEGORY', 'social');
+
+define('FB_PERMISSION' , 'publish_stream, read_friendlists');

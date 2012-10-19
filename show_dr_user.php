@@ -8,6 +8,6 @@ $dbh = connect_db();
 $sql = 'select * from dr_user';
 $stmt = $dbh->prepare($sql);
 $stmt->execute();
-$result = $stmt->fetchAll();
+$result = $stmt->fetch();
 var_dump($result);
 $dbh = null;

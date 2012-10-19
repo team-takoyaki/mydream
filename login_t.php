@@ -10,9 +10,22 @@ $consumer_secret = '1SR7AxpR05s875UCK632gr8r35e8uw0cNGh4xIF8SA';
 $app_addr = BASE_URL . '/success_t.php';
 
 session_start();
-if (isset($_SESSION['user_name'])) {
+if (isset($_SESSION['user_name']) === true) {
     //ログイン済みならトップページにリダイレクト
     header('Location:' . BASE . '/top.php');
+}
+
+if (isset($_SESSION['access_token']) === true) {
+    //この方法でaccess_token, access_token_secretからuser情報をとれる
+    $client = new TwitterOAuth($consumer_key, $consumer_secret, $_SESSION['access_token'], $_SESSION['access_token_secret']);
+    $result = $client->get('account/verify_credentials');
+    if (isset($result->error) === true) {
+        //OAuthがerrorの時
+//        echo 'error';
+    } else {
+        var_dump($result);
+        //header();
+    }
 }
 
 // Twitterクライアント起動

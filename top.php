@@ -4,7 +4,7 @@ require_once('profile.php');
 require_once('lib/model.php');
 require_once('lib/helper.php');
 session_start();
-if (isset($_SESSION['up']) === true) {
+if (isset( $_SESSION['user_id']) === true) {
     $category = 'social';
     $is_choice = false;
     if (isset($_GET['category']) === true && $_GET['category'] !== '') {
@@ -16,7 +16,15 @@ if (isset($_SESSION['up']) === true) {
         echo 'error';
         exit();
     }
-    $users = unserialize($_SESSION['up']);
+    $users = select_user_from_user_id($dbh, $_SESSION['user_id']);
+    if ($users['sns_id'] === 1) {
+        $user_page = 'http://www.facebook.com/' . $users['sns_user_id'];
+    } else if ($users['sns_id'] === 2) {
+        //twitter
+//        $user_page = 'http://twitter.com/' . $users[''];
+    }
+    var_dump($users);
+    //$users = unserialize($_SESSION['up']);
     $dreams = select_dream_from_category($dbh, $category);
 
     $user_list = select_users($dbh);
