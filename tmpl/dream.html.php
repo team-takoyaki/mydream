@@ -9,5 +9,15 @@
    <h1><?= $dream['title']; ?></h1>
    <p><?= $dream['body']; ?></p>
    <p><?= $dream['category']; ?></p>
+   <?php foreach($comments as $comment) { ?>
+   <div>
+       <h2><?= $comment['user_name']; ?></h2>
+       <p><?= $comment['body']; ?></p>
+   </div>
+   <?php } ?>
+   <form method="POST">
+       <textarea name="user_comment"></textarea>
+       <button>投稿</button>
+   </form>
 </body>
 </html>
