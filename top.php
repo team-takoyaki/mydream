@@ -19,6 +19,15 @@ if (isset( $_SESSION['user_id']) === true) {
         exit();
     }
 
+    if ($is_choice === true) {
+        //夢情報の取得
+        $category_id = select_category_id_from_dr_dream($dbh, $category);
+        $dreams = select_dream_from_category($dbh, $category_id);
+        if ($dreams === null) {
+            echo 'error get dreams...';
+        }
+    }
+
     //user情報を取得する
     $users = select_user_from_user_id($dbh, $_SESSION['user_id']);
     if ($users['sns_id'] === 1) {
@@ -28,15 +37,10 @@ if (isset( $_SESSION['user_id']) === true) {
         //twitter
         $user_page = 'http://twitter.com/' . $users['user_name'];
     }
-    //$users = unserialize($_SESSION['up']);
-    $dreams = select_dream_from_category($dbh, $category);
 
     $user_list = select_users($dbh);
 
     $dbh = null;
-    if ($dreams === null) {
-        echo 'error';
-    }
 
     include_once('tmpl/top.html.php');
 } else {

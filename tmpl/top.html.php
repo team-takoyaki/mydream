@@ -45,6 +45,7 @@
             <dl>
                 <dt><a href="<?= BASE_URL . '/dream.php?id=' . $dream['id'];?>"><?= $dream['title'];?></a></dt>
                 <dd><?= $dream['body'];?></dd>
+                <dd>By <?= $dream['user_name'];?></dd>
             </dl>
         <?php }?>
         <?php if (count($dreams) === 0) {?>

@@ -4,9 +4,10 @@ require_once('profile.php');
 require_once(BASE . '/lib/model.php');
 session_start();
 
-if (isset($_SESSION['up']) === true) {
-    $oauth_user = unserialize($_SESSION['up']);
-    $user_id = $oauth_user->users['dr_user_id'];
+if (isset($_SESSION['user_id']) === true) {
+    //$oauth_user = unserialize($_SESSION['up']);
+    //$user_id = $oauth_user->users['dr_user_id'];
+    $user_id = $_SESSION['user_id'];
 } else {
     header('Location:' . BASE_URL);
     exit;
@@ -27,7 +28,8 @@ if (isset($_POST['category']) === true && $_POST['category'] !== '') {
 $dbh = connect_db();
 
 if (isset($title) === true && isset($body) === true && isset($category) === true) { 
-    insert_dream($dbh, $title, $body, $category, $user_id);
+    $category_id = select_category_id_from_dr_dream($dbh, $category);
+    insert_dream($dbh, $title, $body, $category_id, $user_id);
 }
 
 $dreams = select_dreams($dbh);

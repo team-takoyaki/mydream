@@ -64,6 +64,22 @@ function select_user_is_regited($dbh, $sns_id, $sns) {
     }
 }
 
+function select_category_id_from_dr_dream($dbh, $category_name) {
+    $sql = 'select id from dr_category where category_name = :category_name';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+            array(
+                ':category_name' => $category_name
+            )
+        );
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result['id'];
+}
+
 function select_user_from_user_id($dbh, $user_id) {
   $sql = 'select id, user_name, user_image, sns_id, sns_user_id from dr_user where id = :id';
   try {
@@ -88,6 +104,27 @@ function select_dreams_from_user_id($dbh, $user_id) {
   return $result;
 }
 
+function insert_comment($dbh, $body, $user_id, $dream_id) {
+    $sql = 'insert into dr_dream_comment(dream_id, body, user_id) values(:dream_id, :body, :user_id)';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+            array(
+                ':dream_id' => $dream_id,
+                ':body' => $body,
+                ':user_id' => $user_id
+            )
+        );
+        return true;
+    } catch (PDOException $e) {
+        return null;
+    }
+}
+
+function select_comments_from_dream_id($dbh, $dream_id) {
+    $sql = 'select body, user_id';
+}
+
 function select_sns_id_from_sns_name($dbh, $sns_name) {
     $sql = 'select id from dr_sns where sns_name = :sns_name';
     try {
@@ -104,11 +141,11 @@ function select_sns_id_from_sns_name($dbh, $sns_name) {
     return $result['id'];
 }
 
-function insert_dream($dbh, $title, $body, $category, $user_id) {
-  $sql = 'insert into dr_dream(title, body, category, user_id) values(:title, :body, :category, :user_id)';
+function insert_dream($dbh, $title, $body, $category_id, $user_id) {
+  $sql = 'insert into dr_dream(title, body, category_id, user_id) values(:title, :body, :category_id, :user_id)';
   try {
     $stmt = $dbh->prepare($sql);
-    $stmt->execute(array(':title' => $title, ':body' => $body, ':category' => $category, ':user_id' => $user_id));
+    $stmt->execute(array(':title' => $title, ':body' => $body, ':category_id' => $category_id, ':user_id' => $user_id));
   } catch (PDOException $e) {
       return null;
   }
@@ -128,7 +165,9 @@ function select_dreams($dbh) {
 }
 
 function select_dream_from_dream_id($dbh, $dream_id) {
-  $sql = 'select id, title, body, category from dr_dream where id = :id';
+    //dr_categoryのidとdr_dreamのcategory_idの型が違うから, $dream_idからカテゴリ名を取れない???????
+    //$sql = 'select t1.title, t1.body, t1.user_id, t2.category_name from dr_dream t1 inner join dr_category t2 on t1.category_id = t2.id where t1.id = :id';
+    $sql = 'select t1.title, t1.body, t2.user_name from dr_dream t1 inner join dr_user t2 on t1.user_id = t2.id where t1.id = :id';
   try {
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array(':id' => $dream_id));
@@ -140,14 +179,13 @@ function select_dream_from_dream_id($dbh, $dream_id) {
 }
 
 //search dream in category
-function select_dream_from_category($dbh, $category) {
-    $sql = 'select id, title, body, category, user_id from dr_dream where category = :category';
-    //$sql = 'select t1.id, t1.title, t1.body, t1.category, t1.user_id, t2.user_name from dr_dream t1 inner join dr_user t2 on t1.user_id = t2.id where category = :category';
+function select_dream_from_category($dbh, $category_id) {
+    $sql = 'select t1.id, t1.title, t1.body, t1.user_id, t2.user_name from dr_dream t1 inner join dr_user t2 on t1.user_id = t2.id where category_id = :category_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
             array(
-                ':category' => $category
+                ':category_id' => $category_id
             )
         );
         $result = $stmt->fetchAll();
