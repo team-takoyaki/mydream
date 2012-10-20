@@ -14,3 +14,6 @@ define('TMPL_DIR', 'tmpl');
 define('DEFAULT_CATEGORY', 'social');
 
 define('FB_PERMISSION' , 'publish_stream, read_friendlists');
+
+define('DR_SNS_FACEBOOK', 'facebook');
+define('DR_SNS_TWITTER', 'twitter');

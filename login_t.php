@@ -1,5 +1,6 @@
 <?php
 require_once('const.php');
+require_once(BASE . '/lib/model.php');
 require('twitteroauth/twitteroauth.php');
 // Consumer keyの値
 $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
@@ -10,25 +11,28 @@ $consumer_secret = '1SR7AxpR05s875UCK632gr8r35e8uw0cNGh4xIF8SA';
 $app_addr = BASE_URL . '/success_t.php';
 
 session_start();
-if (isset($_SESSION['user_name']) === true) {
+if (isset($_SESSION['user_id']) === true) {
     //ログイン済みならトップページにリダイレクト
-    header('Location:' . BASE . '/top.php');
+    header('Location:' . BASE_URL . '/top.php');
+    exit();
 }
 
-if (isset($_SESSION['access_token']) === true) {
+if (isset($_SESSION['t']['access_token']) === true && isset($_SESSION['t']['access_token_secret']) === true) {
     //この方法でaccess_token, access_token_secretからuser情報をとれる
-    $client = new TwitterOAuth($consumer_key, $consumer_secret, $_SESSION['access_token'], $_SESSION['access_token_secret']);
+    $client = new TwitterOAuth($consumer_key, $consumer_secret, $_SESSION['t']['access_token'], $_SESSION['t']['access_token_secret']);
     $result = $client->get('account/verify_credentials');
     if (isset($result->error) === true) {
         //OAuthがerrorの時
-//        echo 'error';
+        //echo 'error';
     } else {
-        var_dump($result);
-        //header();
+        $dbh = connect_db();
+        $_SESSION['user_id'] = select_id_from_dr_user($dbh, DR_SNS_TWITTER, $result->id_str);
+        header('Location:' . BASE_URL . '/top.php');
+        exit();
     }
 }
 
-// Twitterクライアント起動
+// 初めてアプリを認証するとき
 $client = new TwitterOAuth($consumer_key, $consumer_secret);
 
 // リクエスト・トークンを取得してセッション変数に保存

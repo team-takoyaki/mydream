@@ -26,22 +26,17 @@ if (empty($token['oauth_token'])) {
      header('Location:' . BASE_URL . '/');
 }
 
-//userのaccess_token等を保存しておく
-$_SESSION['access_token'] = $token['oauth_token'];
-$_SESSION['access_token_secret'] = $token['oauth_token_secret'];
+//userのaccess_tokenを保存しておく
+$_SESSION['t']['access_token'] = $token['oauth_token'];
+$_SESSION['t']['access_token_secret'] = $token['oauth_token_secret'];
 
+//DB保存用
+$sns_user_id = $token['user_id'];
 $user_name = $token['screen_name'];
-$tw_user_id = $token['user_id'];
 $profile_image = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $token['screen_name'] . '&size=normal';
-$dbh = connect_db();
-$user_id = insert_user($dbh, $user_name, $profile_image);
 
-//user_name
-$up = new UserProfile();
-$up->set_dr_user_id($user_id);
-$up->set_user_id($token['user_id']);
-$up->set_user_name($user_name);
-$up->set_user_icon($profile_image);
-$up->set_user_page('https://twitter.com/' . $token['screen_name']);
-$_SESSION['up'] = serialize($up);
+$dbh = connect_db();
+$sns_id = select_sns_id_from_sns_name($dbh, DR_SNS_TWITTER);
+$_SESSION['user_id'] = insert_user($dbh, $user_name, $profile_image, $sns_id, $sns_user_id);
+
 header('Location:' . BASE_URL . '/top.php');

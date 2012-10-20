@@ -101,7 +101,7 @@ function select_sns_id_from_sns_name($dbh, $sns_name) {
     } catch (PDOException $e) {
         return null;
     }
-    return $result;
+    return $result['id'];
 }
 
 function insert_dream($dbh, $title, $body, $category, $user_id) {
@@ -159,20 +159,20 @@ function select_dream_from_category($dbh, $category) {
 
 
 function select_id_from_dr_user($dbh, $sns_name, $sns_user_id) {
-    $sql = 'select id from dr_user t1 inner join dr_sns t2 on t2.id = t1.sns_id where t1.sns_user_id = :sns_user_id and t2.sns_name = :sns_name';
+    $sql = 'select t1.id from dr_user t1 inner join dr_sns t2 on t2.id = t1.sns_id where t1.sns_user_id = :sns_user_id and t2.sns_name = :sns_name';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
             array(
                 ':sns_user_id' => $sns_user_id,
-                ':sns_name' => 'sns_name'
+                ':sns_name' => $sns_name
             )
         );
         $result = $stmt->fetch();
     } catch (PDOException $e) {
         return null;
     }
-    return $result;
+    return $result['id'];
 }
 
 function select_users($dbh) {

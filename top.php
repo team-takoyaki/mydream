@@ -4,6 +4,8 @@ require_once('profile.php');
 require_once('lib/model.php');
 require_once('lib/helper.php');
 session_start();
+
+
 if (isset( $_SESSION['user_id']) === true) {
     $category = 'social';
     $is_choice = false;
@@ -16,14 +18,16 @@ if (isset( $_SESSION['user_id']) === true) {
         echo 'error';
         exit();
     }
+
+    //user情報を取得する
     $users = select_user_from_user_id($dbh, $_SESSION['user_id']);
     if ($users['sns_id'] === 1) {
+        //facebook
         $user_page = 'http://www.facebook.com/' . $users['sns_user_id'];
     } else if ($users['sns_id'] === 2) {
         //twitter
-//        $user_page = 'http://twitter.com/' . $users[''];
+        $user_page = 'http://twitter.com/' . $users['user_name'];
     }
-    var_dump($users);
     //$users = unserialize($_SESSION['up']);
     $dreams = select_dream_from_category($dbh, $category);
 
