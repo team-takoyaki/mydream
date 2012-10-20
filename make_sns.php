@@ -2,6 +2,10 @@
 require_once('const.php');
 require_once(BASE . '/lib/model.php');
 
+/**
+ *Debug
+ */
+
 $dbh = connect_db();
 //$sql = 'insert into dr_sns(sns_name) values(:sns)';
 //$stmt = $dbh->prepare($sql);

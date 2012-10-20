@@ -2,6 +2,10 @@
 require_once('const.php');
 require_once('lib/model.php');
 
+/**
+ *Debug
+ */
+
 $dbh = connect_db();
 //$sql = 'insert into dr_category(category_name) values(:name)';
 $sql = 'select * from dr_category';
