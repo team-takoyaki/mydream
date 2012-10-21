@@ -6,21 +6,21 @@
     <link rel="stylesheet" type="text/css" href="css/write_dream.css">
 </head>
 <body>
-    <h1><?= $dream['title']; ?></h1>
-    <p>body <?= $dream['body']; ?></p>
-    <p>By <?= $dream['user_name']; ?></p>
+    <h1><?= htmlspecialchars($dream['title']); ?></h1>
+    <p>body <?= set_linked_from_text($dream['body']); ?></p>
+    <p>By <?= htmlspecialchars($dream['user_name']); ?></p>
     <?php if ($is_my_dream === false) {?>
         <p><button name="cheers">Cheers</button></p>
     <?php }?>
     <?php foreach ($comments as $comment) { ?>
     <div class="comment">
-        <p><?= $comment['body']; ?></p>
-        <p><?= $comment['user_name']; ?></p>
+        <p><?= set_linked_from_text($comment['body']); ?></p>
+        <p><?= htmlspecialchars($comment['user_name']); ?></p>
         <?php if ($comment['user_id'] !== $user_id && $is_my_dream === true) {?>
          <form method="POST">
             <p><button name="comment_id" value="<?= $comment['id']; ?>">Thanks</button></p>
             <?php if ($cheer_users[$comment['id']] > 0) { ?>
-            This post cheer by <?= $cheer_users[$comment['id']] ?> users;
+            This post cheer by <?= htmlspecialchars($cheer_users[$comment['id']]) ?> users;
             <?php } ?>
          </form>
         <?php }?>
