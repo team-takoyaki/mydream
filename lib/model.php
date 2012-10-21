@@ -274,3 +274,19 @@ function select_cheer_count_from_comment_id($dbh, $comment_id) {
     }
     return $result['count'];
 }
+
+function check_cheer_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) {
+    $sql = 'select comment_id from dr_comment_cheer where comment_id = :comment_id and user_id = :user_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':comment_id' => $comment_id, ':user_id' => $user_id));
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    if ($result === false) {
+        return true;
+    } else {
+        return false;
+    }
+}

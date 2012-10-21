@@ -29,7 +29,7 @@ if (isset($user_comment) === true && isset($user_id) === true) {
     insert_comment($dbh, $user_comment, $user_id, $dream_id);
 }
 
-if (isset($comment_id) === true && isset($user_id) === true) {
+if (isset($comment_id) === true && isset($user_id) === true && check_cheer_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) === true) {
     insert_cheer($dbh, $comment_id, $user_id);
 }
 
