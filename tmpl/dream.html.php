@@ -14,7 +14,12 @@
         <p><?= $comment['body']; ?></p>
         <p><?= $comment['user_name']; ?></p>
         <?php if ($is_my_dream === false) {?>
-            <p><button name="cheers">cheers</button></p>
+         <form method="POST">
+            <p><button name="comment_id" value="<?= $comment['id']; ?>">cheers</button></p>
+            <?php if ($cheer_users[$comment['id']] > 0) { ?>
+            This post cheer by <?= $cheer_users[$comment['id']] ?> users;
+            <?php } ?>
+         </form>
         <?php }?>
    </div>
    <?php } ?>

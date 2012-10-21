@@ -51,6 +51,11 @@ CREATE TABLE DR_DREAM_COMMENT (
        PRIMARY KEY(ID)
 );
 
+CREATE TABLE DR_COMMENT_CHEER (
+       COMMENT_ID INTEGER NOT NULL,
+       USER_ID INTEGER NOT NULL,
+       CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
+);
 
 GRANT ALL ON dr_dream TO takoyaki;
 GRANT ALL ON dr_dream_id_seq TO takoyaki;
@@ -62,4 +67,5 @@ GRANT ALL ON dr_sns TO takoyaki;
 GRANT ALL ON dr_sns_id_seq TO takoyaki;
 GRANT ALL ON dr_dream_comment TO takoyaki;
 GRANT ALL ON dr_dream_comment_id_seq TO takoyaki;
+GRANT ALL ON dr_comment_cheer TO takoyaki;
 

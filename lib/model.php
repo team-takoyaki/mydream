@@ -18,11 +18,11 @@ function insert_user($dbh, $user_name, $user_image, $sns_id, $sns_user_id) {
     try {
         $stmt = $dbh->prepare($select_sql);
         $stmt->execute(
-            array(
-                ':sns_id' => $sns_id,
-                ':sns_user_id' => $sns_user_id
-            )
-        );
+                       array(
+                             ':sns_id' => $sns_id,
+                             ':sns_user_id' => $sns_user_id
+                             )
+                       );
         $res = $stmt->fetch();
         if (isset($res['id']) === true) {
             //二重登録防ぐ処理
@@ -30,30 +30,30 @@ function insert_user($dbh, $user_name, $user_image, $sns_id, $sns_user_id) {
         }
         $stmt = $dbh->prepare($insert_sql);
         $stmt->execute(
-            array(
-                ':user_name' => $user_name,
-                ':user_image' => $user_image,
-                ':sns_id' => $sns_id,
-                ':sns_user_id' => $sns_user_id
-            )
-        );
+                       array(
+                             ':user_name' => $user_name,
+                             ':user_image' => $user_image,
+                             ':sns_id' => $sns_id,
+                             ':sns_user_id' => $sns_user_id
+                             )
+                       );
     } catch (PDOException $e) {
         return null;
     }
-  return $dbh->lastInsertId('dr_user_id_seq');
+    return $dbh->lastInsertId('dr_user_id_seq');
 }
 
 function select_user_is_regited($dbh, $sns_id, $sns) {
     $sql = 'select count(user_name) from dr_user where sns_id = :sns_id and sns = :sns'
-;
+        ;
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
-            array(
-                ':sns_id' => $sns_id,
-                ':sns' => $sns
-            )
-        );
+                       array(
+                             ':sns_id' => $sns_id,
+                             ':sns' => $sns
+                             )
+                       );
         $result = $stmt->fetch();
         if (intval($result) > 0) {
             return true;
@@ -69,10 +69,10 @@ function select_category_id_from_dr_dream($dbh, $category_name) {
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
-            array(
-                ':category_name' => $category_name
-            )
-        );
+                       array(
+                             ':category_name' => $category_name
+                             )
+                       );
         $result = $stmt->fetch();
     } catch (PDOException $e) {
         return null;
@@ -81,27 +81,27 @@ function select_category_id_from_dr_dream($dbh, $category_name) {
 }
 
 function select_user_from_user_id($dbh, $user_id) {
-  $sql = 'select id, user_name, user_image, sns_id, sns_user_id from dr_user where id = :id';
-  try {
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute(array(':id' => $user_id));
-    $result = $stmt->fetch();
-  } catch (PDOException $e) {
-      return null;
-  }
-  return $result;
+    $sql = 'select id, user_name, user_image, sns_id, sns_user_id from dr_user where id = :id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':id' => $user_id));
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
 }
 
 function select_dreams_from_user_id($dbh, $user_id) {
-  $sql = 'select id, title, body, category_id from dr_dream where user_id = :user_id';
-  try {
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute(array(':user_id' => $user_id));
-    $result = $stmt->fetchAll();
-  } catch (PDOException $e) {
-      return null;
-  }
-  return $result;
+    $sql = 'select id, title, body, category_id from dr_dream where user_id = :user_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':user_id' => $user_id));
+        $result = $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
 }
 
 function select_user_id_from_dream_id($dbh, $dream_id) {
@@ -109,10 +109,10 @@ function select_user_id_from_dream_id($dbh, $dream_id) {
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
-            array(
-                ':id' => $dream_id
-            )
-        );
+                       array(
+                             ':id' => $dream_id
+                             )
+                       );
         $result = $stmt->fetch();
     } catch (PDOException $e) {
         return null;
@@ -125,12 +125,12 @@ function insert_comment($dbh, $body, $user_id, $dream_id) {
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
-            array(
-                ':dream_id' => $dream_id,
-                ':body' => $body,
-                ':user_id' => $user_id
-            )
-        );
+                       array(
+                             ':dream_id' => $dream_id,
+                             ':body' => $body,
+                             ':user_id' => $user_id
+                             )
+                       );
         return true;
     } catch (PDOException $e) {
         return null;
@@ -154,10 +154,10 @@ function select_sns_id_from_sns_name($dbh, $sns_name) {
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
-            array(
-                ':sns_name' => $sns_name
-            )
-        );
+                       array(
+                             ':sns_name' => $sns_name
+                             )
+                       );
         $result = $stmt->fetch();
     } catch (PDOException $e) {
         return null;
@@ -166,38 +166,38 @@ function select_sns_id_from_sns_name($dbh, $sns_name) {
 }
 
 function insert_dream($dbh, $title, $body, $category_id, $user_id) {
-  $sql = 'insert into dr_dream(title, body, category_id, user_id) values(:title, :body, :category_id, :user_id)';
-  try {
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute(array(':title' => $title, ':body' => $body, ':category_id' => $category_id, ':user_id' => $user_id));
-  } catch (PDOException $e) {
-      return null;
-  }
-  return true;
+    $sql = 'insert into dr_dream(title, body, category_id, user_id) values(:title, :body, :category_id, :user_id)';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':title' => $title, ':body' => $body, ':category_id' => $category_id, ':user_id' => $user_id));
+    } catch (PDOException $e) {
+        return null;
+    }
+    return true;
 }
 
 function select_dreams($dbh) {
-  $sql = 'select id, title, category from dr_dream';
-  try {
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-  } catch (PDOException $e) {
-      return null;
-  }
-  return $result;
+    $sql = 'select id, title, category from dr_dream';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
 }
 
 function select_dream_from_dream_id($dbh, $dream_id) {
-    $sql = 'select t1.title, t1.body, t2.user_name from dr_dream t1 left join dr_user t2 on t1.user_id = t2.id where t1.id = :id';
-  try {
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute(array(':id' => $dream_id));
-    $result = $stmt->fetch();
-  } catch (PDOException $e) {
-      return null;
-  }
-  return $result;
+    $sql = 'select t1.title, t1.body, t1.user_id, t2.user_name from dr_dream t1 left join dr_user t2 on t1.user_id = t2.id where t1.id = :id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':id' => $dream_id));
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
 }
 
 //search dream in category
@@ -206,10 +206,10 @@ function select_dream_from_category($dbh, $category_id) {
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
-            array(
-                ':category_id' => $category_id
-            )
-        );
+                       array(
+                             ':category_id' => $category_id
+                             )
+                       );
         $result = $stmt->fetchAll();
     } catch (PDOException $e) {
         return null;
@@ -223,11 +223,11 @@ function select_id_from_dr_user($dbh, $sns_name, $sns_user_id) {
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
-            array(
-                ':sns_user_id' => $sns_user_id,
-                ':sns_name' => $sns_name
-            )
-        );
+                       array(
+                             ':sns_user_id' => $sns_user_id,
+                             ':sns_name' => $sns_name
+                             )
+                       );
         $result = $stmt->fetch();
     } catch (PDOException $e) {
         return null;
@@ -236,13 +236,41 @@ function select_id_from_dr_user($dbh, $sns_name, $sns_user_id) {
 }
 
 function select_users($dbh) {
-  $sql = 'select id, user_name, user_image from dr_user';
-  try {
-    $stmt = $dbh->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-  } catch (PDOException $e) {
-      return null;
-  }
-  return $result;
+    $sql = 'select id, user_name, user_image from dr_user';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
+}
+
+function insert_cheer($dbh, $comment_id, $user_id) {
+    $sql = 'insert into dr_comment_cheer(comment_id, user_id) values(:comment_id, :user_id)';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':comment_id' => $comment_id,
+                             ':user_id' => $user_id
+                             )
+                       );
+    } catch (PDOException $e) {
+        return null;
+    }
+    return true;
+}
+
+function select_cheer_count_from_comment_id($dbh, $comment_id) {
+    $sql = 'select count(comment_id) from dr_comment_cheer where comment_id = :comment_id group by comment_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':comment_id' => $comment_id));
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result['count'];
 }

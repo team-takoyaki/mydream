@@ -12,3 +12,4 @@ function set_selected_category($data, $user_choice) {
         echo 'selected';
     }
 }
+
