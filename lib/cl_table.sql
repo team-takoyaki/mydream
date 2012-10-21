@@ -57,7 +57,7 @@ CREATE TABLE DR_COMMENT_THANK (
        CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL
 );
 
-CREATE TABLE DR_COMMENT_CHEER (
+CREATE TABLE DR_DREAM_CHEER (
        DREAM_ID INTEGER NOT NULL,
        USER_ID INTEGER NOT NULL,
        CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL
@@ -73,6 +73,6 @@ GRANT ALL ON dr_sns TO takoyaki;
 GRANT ALL ON dr_sns_id_seq TO takoyaki;
 GRANT ALL ON dr_dream_comment TO takoyaki;
 GRANT ALL ON dr_dream_comment_id_seq TO takoyaki;
+GRANT ALL ON dr_dream_cheer TO takoyaki;
 GRANT ALL ON dr_comment_thank TO takoyaki;
-GRANT ALL ON dr_comment_cheer TO takoyaki;
 
