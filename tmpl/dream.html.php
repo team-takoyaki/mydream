@@ -16,6 +16,12 @@
        <p><button name="cheers">cheers</button></p>
    </div>
    <?php //} ?>
+   <?php foreach ($comments as $comment) { ?>
+   <div class="comment">
+       <p><?= $comment['body']; ?></p>
+       <p><?= $comment['user_name']; ?></p>
+   </div>
+   <?php } ?>
    <form method="POST">
        <textarea name="user_comment"></textarea>
        <button name="post">投稿</button>
