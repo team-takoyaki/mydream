@@ -7,9 +7,15 @@ function check_dream_id($dream_id) {
     return null;
 }
 
+function display_button($flg) {
+    if ($flg === false) {
+        echo htmlspecialchars('disabled');
+    }
+}
+
 function set_selected_category($data, $user_choice) {
     if ($data === $user_choice) {
-        echo 'selected';
+        echo htmlspecialchars('selected');
     }
 }
 

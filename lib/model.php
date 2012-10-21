@@ -276,15 +276,16 @@ function select_thank_count_from_comment_id($dbh, $comment_id) {
 }
 
 function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) {
-    $sql = 'select comment_id from dr_comment_thank where comment_id = :comment_id and user_id = :user_id';
+    $sql = 'select count(comment_id) from dr_comment_thank where comment_id = :comment_id and user_id = :user_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id, ':user_id' => $user_id));
         $result = $stmt->fetch();
+        return intval($result['count']);
     } catch (PDOException $e) {
         return null;
     }
-    if ($result === false) {
+    if (intval($result['count']) === 0) {
         return true;
     } else {
         return false;

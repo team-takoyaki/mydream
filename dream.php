@@ -29,7 +29,7 @@ if (isset($user_comment) === true && isset($user_id) === true) {
     insert_comment($dbh, $user_comment, $user_id, $dream_id);
 }
 
-if (isset($comment_id) === true && isset($user_id) === true && check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) === true) {
+if (isset($comment_id) === true && isset($user_id) === true && check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) === 0) {
     insert_thank($dbh, $comment_id, $user_id);
 }
 
@@ -40,6 +40,13 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
     $thank_users = array();
     foreach ($comments as $comment) {
         $thank_users[$comment['id']] = select_thank_count_from_comment_id($dbh, $comment['id']);
+        //comment, user_idから紐付いたthankカウント取得
+        $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
+        $is_thank[$comment['id']] = true;
+        if ($comment['user_id'] === $user_id || $thank_count > 0) {
+            //commentのuser_idがアクセス者のuser_idと同じ, thank_countが0より大きい場合はthankは押せない
+            $is_thank[$comment['id']] = false;
+        }
     }
 }
 
