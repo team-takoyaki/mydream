@@ -38,7 +38,7 @@ if (isset($comment_id) === true && isset($user_id) === true && check_thank_user_
 }
 
 if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
-    if (isset($cheers) === true && isset($user_id) === true && check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) === true) {
+    if (isset($cheers) === true && isset($user_id) === true && check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) === 0) {
         insert_cheer($dbh, $dream_id, $user_id);
     }
     $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);

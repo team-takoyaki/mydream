@@ -285,11 +285,6 @@ function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_i
     } catch (PDOException $e) {
         return null;
     }
-    if (intval($result['count']) === 0) {
-        return true;
-    } else {
-        return false;
-    }
 }
 
 function insert_cheer($dbh, $dream_id, $user_id) {
