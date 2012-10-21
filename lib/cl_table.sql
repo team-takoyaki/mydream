@@ -48,7 +48,7 @@ CREATE TABLE DR_DREAM_COMMENT (
        USER_ID INTEGER NOT NULL,
        UPDATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
        CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
-       PRIMARY KEY(ID)       
+       PRIMARY KEY(ID)
 );
 
 

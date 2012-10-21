@@ -93,7 +93,7 @@ function select_user_from_user_id($dbh, $user_id) {
 }
 
 function select_dreams_from_user_id($dbh, $user_id) {
-  $sql = 'select id, title, body, category from dr_dream where user_id = :user_id';
+  $sql = 'select id, title, body, category_id from dr_dream where user_id = :user_id';
   try {
     $stmt = $dbh->prepare($sql);
     $stmt->execute(array(':user_id' => $user_id));
@@ -122,7 +122,15 @@ function insert_comment($dbh, $body, $user_id, $dream_id) {
 }
 
 function select_comments_from_dream_id($dbh, $dream_id) {
-    $sql = 'select body, user_id';
+    $sql = 'select t1.id, t1.body, t2.user_name, t1.create_date from dr_dream_comment t1 left join dr_user t2 on t1.user_id = t2.id where t1.dream_id = :dream_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':dream_id' => $dream_id));
+        $result = $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
 }
 
 function select_sns_id_from_sns_name($dbh, $sns_name) {
