@@ -247,8 +247,8 @@ function select_users($dbh) {
     return $result;
 }
 
-function insert_cheer($dbh, $comment_id, $user_id) {
-    $sql = 'insert into dr_comment_cheer(comment_id, user_id) values(:comment_id, :user_id)';
+function insert_thank($dbh, $comment_id, $user_id) {
+    $sql = 'insert into dr_comment_thank(comment_id, user_id) values(:comment_id, :user_id)';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
@@ -263,8 +263,8 @@ function insert_cheer($dbh, $comment_id, $user_id) {
     return true;
 }
 
-function select_cheer_count_from_comment_id($dbh, $comment_id) {
-    $sql = 'select count(comment_id) from dr_comment_cheer where comment_id = :comment_id group by comment_id';
+function select_thank_count_from_comment_id($dbh, $comment_id) {
+    $sql = 'select count(comment_id) from dr_comment_thank where comment_id = :comment_id group by comment_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id));
@@ -275,8 +275,8 @@ function select_cheer_count_from_comment_id($dbh, $comment_id) {
     return $result['count'];
 }
 
-function check_cheer_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) {
-    $sql = 'select comment_id from dr_comment_cheer where comment_id = :comment_id and user_id = :user_id';
+function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) {
+    $sql = 'select comment_id from dr_comment_thank where comment_id = :comment_id and user_id = :user_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id, ':user_id' => $user_id));

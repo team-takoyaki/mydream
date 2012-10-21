@@ -29,17 +29,17 @@ if (isset($user_comment) === true && isset($user_id) === true) {
     insert_comment($dbh, $user_comment, $user_id, $dream_id);
 }
 
-if (isset($comment_id) === true && isset($user_id) === true && check_cheer_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) === true) {
-    insert_cheer($dbh, $comment_id, $user_id);
+if (isset($comment_id) === true && isset($user_id) === true && check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) === true) {
+    insert_thank($dbh, $comment_id, $user_id);
 }
 
 if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
     $dream = select_dream_from_dream_id($dbh, $dream_id);
     $dream_user = $dream['user_id'];
     $comments = select_comments_from_dream_id($dbh, $dream_id);
-    $cheer_users = array();
+    $thank_users = array();
     foreach ($comments as $comment) {
-        $cheer_users[$comment['id']] = select_cheer_count_from_comment_id($dbh, $comment['id']);
+        $thank_users[$comment['id']] = select_thank_count_from_comment_id($dbh, $comment['id']);
     }
 }
 
