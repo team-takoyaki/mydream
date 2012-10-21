@@ -292,7 +292,7 @@ function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_i
 }
 
 function insert_cheer($dbh, $dream_id, $user_id) {
-    $sql = 'insert into dr_comment_cheer(dream_id, user_id) values(:dream_id, :user_id)';
+    $sql = 'insert into dr_dream_cheer(dream_id, user_id) values(:dream_id, :user_id)';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
@@ -308,7 +308,7 @@ function insert_cheer($dbh, $dream_id, $user_id) {
 }
 
 function select_cheer_count_from_dream_id($dbh, $dream_id) {
-    $sql = 'select count(dream_id) from dr_comment_cheer where dream_id = :dream_id group by dream_id';
+    $sql = 'select count(dream_id) from dr_dream_cheer where dream_id = :dream_id group by dream_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':dream_id' => $dream_id));
@@ -320,7 +320,7 @@ function select_cheer_count_from_dream_id($dbh, $dream_id) {
 }
 
 function check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) {
-    $sql = 'select dream_id from dr_comment_cheer where dream_id = :dream_id and user_id = :user_id';
+    $sql = 'select dream_id from dr_dream_cheer where dream_id = :dream_id and user_id = :user_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':dream_id' => $dream_id, ':user_id' => $user_id));
