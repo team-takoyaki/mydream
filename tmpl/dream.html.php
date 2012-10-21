@@ -13,6 +13,7 @@
    <div>
        <h2><?= $comment['user_name']; ?></h2>
        <p><?= $comment['body']; ?></p>
+       <p><button name="cheers">cheers</button></p>
    </div>
    <?php //} ?>
    <form method="POST">
