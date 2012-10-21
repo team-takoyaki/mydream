@@ -104,6 +104,22 @@ function select_dreams_from_user_id($dbh, $user_id) {
   return $result;
 }
 
+function select_user_id_from_dream_id($dbh, $dream_id) {
+    $sql = 'select user_id from dr_dream where id = :id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+            array(
+                ':id' => $dream_id
+            )
+        );
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result['user_id'];
+}
+
 function insert_comment($dbh, $body, $user_id, $dream_id) {
     $sql = 'insert into dr_dream_comment(dream_id, body, user_id) values(:dream_id, :body, :user_id)';
     try {

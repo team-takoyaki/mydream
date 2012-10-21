@@ -9,17 +9,13 @@
    <h1><?= $dream['title']; ?></h1>
    <p>body <?= $dream['body']; ?></p>
    <p>By <?= $dream['user_name']; ?></p>
-   <?php //foreach($comments as $comment) { ?>
-   <div>
-       <h2><?= $comment['user_name']; ?></h2>
-       <p><?= $comment['body']; ?></p>
-       <p><button name="cheers">cheers</button></p>
-   </div>
-   <?php //} ?>
    <?php foreach ($comments as $comment) { ?>
    <div class="comment">
-       <p><?= $comment['body']; ?></p>
-       <p><?= $comment['user_name']; ?></p>
+        <p><?= $comment['body']; ?></p>
+        <p><?= $comment['user_name']; ?></p>
+        <?php if ($is_my_dream === false) {?>
+            <p><button name="cheers">cheers</button></p>
+        <?php }?>
    </div>
    <?php } ?>
    <form method="POST">
