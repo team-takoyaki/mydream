@@ -10,7 +10,12 @@
     <p>body <?= set_linked_from_text($dream['body']); ?></p>
     <p>By <?= htmlspecialchars($dream['user_name']); ?></p>
     <?php if ($is_my_dream === false) {?>
-        <p><button name="cheers">Cheers</button></p>
+    <form method="POST">
+        <p><button name="cheers" value="cheers">Cheers</button></p>
+        <?php if ($cheer_users > 0) { ?>
+        This post cheer by <?= htmlspecialchars($cheer_users) ?> users;
+        <?php } ?>
+    </form>
     <?php }?>
     <?php foreach ($comments as $comment) { ?>
     <div class="comment">
@@ -18,7 +23,7 @@
         <p><?= htmlspecialchars($comment['user_name']); ?></p>
         <?php if ($comment['user_id'] !== $user_id && $is_my_dream === false) {?>
          <form method="POST">
-            <p><button name="comment_id" value="<?= $comment['id']; ?>">Thanks</button></p>
+            <p><button name="comment_id" value="<?= $comment['id'];?>">thanks</button></p>
             <?php if ($thank_users[$comment['id']] > 0) { ?>
             This post thanks by <?= htmlspecialchars($thank_users[$comment['id']]) ?> users;
             <?php } ?>

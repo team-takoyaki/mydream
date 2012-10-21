@@ -23,6 +23,10 @@ if (isset($_POST['comment_id']) === true && $_POST['comment_id'] !== '') {
     $comment_id = $_POST['comment_id'];
 }
 
+if (isset($_POST['cheers']) === true && $_POST['cheers'] !== '') {
+    $cheers = $_POST['cheers'];
+}
+
 $dbh = connect_db();
 
 if (isset($user_comment) === true && isset($user_id) === true) {
@@ -34,6 +38,10 @@ if (isset($comment_id) === true && isset($user_id) === true && check_thank_user_
 }
 
 if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
+    if (isset($cheers) === true && isset($user_id) === true && check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) === true) {
+        insert_cheer($dbh, $dream_id, $user_id);
+    }
+    $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);
     $dream = select_dream_from_dream_id($dbh, $dream_id);
     $dream_user = $dream['user_id'];
     $comments = select_comments_from_dream_id($dbh, $dream_id);
