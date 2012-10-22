@@ -1,6 +1,7 @@
 <?php
 require_once('const.php');
 require_once(BASE . '/lib/model.php');
+require_once(BASE . '/lib/helper.php');
 require('twitteroauth/twitteroauth.php');
 // Consumer keyの値
 $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
@@ -26,7 +27,12 @@ if (isset($_SESSION['t']['access_token']) === true && isset($_SESSION['t']['acce
         //echo 'error';
     } else {
         $dbh = connect_db();
+        show_error_db($dbh);
         $_SESSION['user_id'] = select_id_from_dr_user($dbh, DR_SNS_TWITTER, $result->id_str);
+        if ($_SESSION['user_id'] === null) {
+            echo 'error insert on twitter';
+            exit();
+        }
         header('Location:' . BASE_URL . '/top.php');
         exit();
     }

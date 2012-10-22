@@ -26,7 +26,12 @@ if (isset($_SESSION['f']['access_token']) === true) {
     //ここでDB dr_userからidを取得し, $_SESSIONに保存
     $dbh = connect_db();
     show_error_db($dbh);
-    $_SESSION['user_id'] = select_id_from_dr_user($dbh, DR_SNS_FACEBOOK, $me['id']);
+    $user_id = select_id_from_dr_user($dbh, DR_SNS_FACEBOOK, $me['id']);
+    if ($user_id === null) {
+        echo 'error user_id on facebook';
+        exit();
+    }
+    $_SESSION['user_id'] = $user_id;
     $dbh = null;
     header('Location:' . BASE_URL . '/top.php');
     exit();
@@ -52,8 +57,17 @@ if ($user !== 0) {
         $sns_user_id = $user_profile['id'];
         $profile_image = 'https://graph.facebook.com/' . $user_profile['id'] . '/picture';
         $dbh = connect_db();
+        show_error_db($dbh);
         $sns_id = select_sns_id_from_sns_name($dbh, DR_SNS_FACEBOOK);
+        if ($sns_id === null) {
+            echo 'error sns_id on facebook';
+            exit();
+        }
         $_SESSION['user_id'] = insert_user($dbh, $user_name, $profile_image, $sns_id, $sns_user_id);
+        if ($_SESSION['user_id'] === null) {
+            echo 'error insert on facebook';
+            exit();
+        }
 
         $dbh = null;
 

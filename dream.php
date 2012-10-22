@@ -32,26 +32,66 @@ $dbh = connect_db();
 show_error_db($dbh);
 
 if (isset($user_comment) === true && isset($user_id) === true) {
-    insert_comment($dbh, $user_comment, $user_id, $dream_id);
+    $flg = insert_comment($dbh, $user_comment, $user_id, $dream_id);
+    if ($flg === null) {
+        echo 'insert error';
+        exit();
+    }
 }
 
-if (isset($comment_id) === true && isset($user_id) === true && check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) === 0) {
-    insert_thank($dbh, $comment_id, $user_id);
+
+$cnt = check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id);
+if ($cnt === null) {
+    echo 'sql error';
+    exit();
+}
+if (isset($comment_id) === true && isset($user_id) === true && $cnt === 0) {
+    $flg = insert_thank($dbh, $comment_id, $user_id);
+    if ($flg === null) {
+        echo 'insert error';
+        exit();
+    }
 }
 
 if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
-    if (isset($cheers) === true && isset($user_id) === true && check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) === 0) {
-        insert_cheer($dbh, $dream_id, $user_id);
+    $cnt = check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id);
+    if ($cnt === null) {
+        echo 'sql error';
+        exit();
+    }
+    if (isset($cheers) === true && isset($user_id) === true && $cnt === 0) {
+        $flg = insert_cheer($dbh, $dream_id, $user_id);
+        if ($flg === null) {
+            echo 'insert error';
+            exit();
+        }
     }
     $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);
+    if ($cheer_users === null) {
+        echo 'error cheer_users';
+        exit();
+    }
     $dream = select_dream_from_dream_id($dbh, $dream_id);
+    if ($dream === null) {
+        echo 'error dream';
+        exit();
+    }
     $dream_user = $dream['user_id'];
     $comments = select_comments_from_dream_id($dbh, $dream_id);
+    if ($comments === null) {
+        echo 'error comments';
+        exit();
+    }
     $thank_users = array();
     foreach ($comments as $comment) {
-        $thank_users[$comment['id']] = select_thank_count_from_comment_id($dbh, $comment['id']);
-        //comment, user_idから紐付いたthankカウント取得
+        $thank_usr = select_thank_count_from_comment_id($dbh, $comment['id']);
         $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
+        if ($thank_usr === null || $thank_count === null) {
+            echo 'error thank user or thank count';
+            exit();
+        }
+        $thank_users[$comment['id']] = $thank_usr;
+        //comment, user_idから紐付いたthankカウント取得
         $is_thank[$comment['id']] = true;
         if ($comment['user_id'] === $user_id || $thank_count > 0) {
             //commentのuser_idがアクセス者のuser_idと同じ, thank_countが0より大きい場合はthankは押せない

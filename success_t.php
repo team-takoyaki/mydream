@@ -39,8 +39,15 @@ $profile_image = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $
 $dbh = connect_db();
 show_error_db($dbh);
 $sns_id = select_sns_id_from_sns_name($dbh, DR_SNS_TWITTER);
+if ($sns_id === null) {
+    echo 'error sns_id on twitter';
+    exit();
+}
 $_SESSION['user_id'] = insert_user($dbh, $user_name, $profile_image, $sns_id, $sns_user_id);
-
+if ($_SESSION['user_id'] === null) {
+    echo 'error insert on success_t';
+    exit();
+}
 $dbh = null;
 
 header('Location:' . BASE_URL . '/top.php');

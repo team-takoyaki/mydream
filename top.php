@@ -20,13 +20,18 @@ if (isset( $_SESSION['user_id']) === true) {
         //夢情報の取得
         $category_id = select_category_id_from_dr_dream($dbh, $category);
         $dreams = select_dream_from_category($dbh, $category_id);
-        if ($dreams === null) {
-            echo 'error get dreams...';
+        if ($dreams === null || $category_id === null) {
+            echo 'error dreams or category_id on top';
+            exit();
         }
     }
 
     //user情報を取得する
     $users = select_user_from_user_id($dbh, $_SESSION['user_id']);
+    if ($users === null) {
+        echo 'error get user info on top';
+        exit();
+    }
     if ($users['sns_id'] === 1) {
         //facebook
         $user_page = 'http://www.facebook.com/' . $users['sns_user_id'];
@@ -36,6 +41,10 @@ if (isset( $_SESSION['user_id']) === true) {
     }
 
     $user_list = select_users($dbh);
+    if ($user_list === null) {
+        echo 'error user_list on top';
+        exit();
+    }
 
     $dbh = null;
 
