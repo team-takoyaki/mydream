@@ -54,8 +54,5 @@
 	    </li>
 	</ul>
     </div>
-    <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="scripts/geolocation.js"></script>
-    <script type="text/javascript" src="scripts/top.js"></script>
 </body>
 </html>
