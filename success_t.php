@@ -39,4 +39,6 @@ $dbh = connect_db();
 $sns_id = select_sns_id_from_sns_name($dbh, DR_SNS_TWITTER);
 $_SESSION['user_id'] = insert_user($dbh, $user_name, $profile_image, $sns_id, $sns_user_id);
 
+$dbh = null;
+
 header('Location:' . BASE_URL . '/top.php');

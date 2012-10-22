@@ -34,5 +34,7 @@ if (isset($title) === true && isset($body) === true && isset($category) === true
 
 $dreams = select_dreams($dbh);
 
+$dbh = null;
+
 include_once(TMPL_DIR . '/write_dream.html.php');
 

@@ -62,6 +62,8 @@ if ($dream_user === $user_id) {
     $is_my_dream = true;
 }
 
+$dbh = null;
+
 if (isset($dream) === true) {
   include_once(TMPL_DIR . '/dream.html.php');
 } else {

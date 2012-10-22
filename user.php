@@ -24,4 +24,6 @@ if (isset($user_id) === true) {
     $dreams = select_dreams_from_user_id($dbh, $user_id);
 }
 
+$dbh = null;
+
 include_once(TMPL_DIR . '/user.html.php');
