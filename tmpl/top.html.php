@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Doing</title>
     <link rel="stylesheet" type="text/css" href="css/top.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 </head>
 <body>
     <div id="body">
