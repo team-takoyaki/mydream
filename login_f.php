@@ -1,7 +1,8 @@
 <?php
 require_once('const.php');
 require_once('profile.php');
-require_once('lib/model.php');
+require_once(BASE . '/lib/model.php');
+require_once(BASE . '/lib/helper.php');
 require_once('facebook/facebook.php');
 session_start();
 
@@ -24,8 +25,9 @@ if (isset($_SESSION['f']['access_token']) === true) {
     $me = $facebook->api('/me?access_token=' . $_SESSION['f']['access_token']);
     //ここでDB dr_userからidを取得し, $_SESSIONに保存
     $dbh = connect_db();
-//    var_dump(select_id_from_dr_user($dbh, 'facebook', $me['id']));
+    show_error_db($dbh);
     $_SESSION['user_id'] = select_id_from_dr_user($dbh, DR_SNS_FACEBOOK, $me['id']);
+    $dbh = null;
     header('Location:' . BASE_URL . '/top.php');
     exit();
 }

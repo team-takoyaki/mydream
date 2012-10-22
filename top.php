@@ -1,8 +1,8 @@
 <?php
 require_once('const.php');
 require_once('profile.php');
-require_once('lib/model.php');
-require_once('lib/helper.php');
+require_once(BASE . '/lib/model.php');
+require_once(BASE . '/lib/helper.php');
 session_start();
 
 
@@ -14,10 +14,7 @@ if (isset( $_SESSION['user_id']) === true) {
         $is_choice = true;
     }
     $dbh = connect_db();
-    if ($dbh === null) {
-        echo 'error';
-        exit();
-    }
+    show_error_db($dbh);
 
     if ($is_choice === true) {
         //夢情報の取得

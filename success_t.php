@@ -1,7 +1,8 @@
 <?php
 require_once('const.php');
 require_once('profile.php');
-require_once('lib/model.php');
+require_once(BASE . '/lib/model.php');
+require_once(BASE . '/lib/helper.php');
 require('twitteroauth/twitteroauth.php');
 // Consumer keyの値
 $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
@@ -36,6 +37,7 @@ $user_name = $token['screen_name'];
 $profile_image = 'http://api.twitter.com/1/users/profile_image?screen_name=' . $token['screen_name'] . '&size=normal';
 
 $dbh = connect_db();
+show_error_db($dbh);
 $sns_id = select_sns_id_from_sns_name($dbh, DR_SNS_TWITTER);
 $_SESSION['user_id'] = insert_user($dbh, $user_name, $profile_image, $sns_id, $sns_user_id);
 

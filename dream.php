@@ -29,6 +29,8 @@ if (isset($_POST['cheers']) === true && $_POST['cheers'] !== '') {
 
 $dbh = connect_db();
 
+show_error_db($dbh);
+
 if (isset($user_comment) === true && isset($user_id) === true) {
     insert_comment($dbh, $user_comment, $user_id, $dream_id);
 }

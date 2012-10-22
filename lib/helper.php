@@ -13,6 +13,13 @@ function display_button($flg) {
     }
 }
 
+function show_error_db($dbh) {
+    if ($dbh === null) {
+        include_once(TMPL_DIR . '/error_db.html.php');
+        exit();
+    }
+}
+
 function set_selected_category($data, $user_choice) {
     if ($data === $user_choice) {
         echo htmlspecialchars('selected');

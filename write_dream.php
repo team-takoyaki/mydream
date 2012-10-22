@@ -27,6 +27,8 @@ if (isset($_POST['category']) === true && $_POST['category'] !== '') {
 
 $dbh = connect_db();
 
+show_error_db($dbh);
+
 if (isset($title) === true && isset($body) === true && isset($category) === true) { 
     $category_id = select_category_id_from_dr_dream($dbh, $category);
     insert_dream($dbh, $title, $body, $category_id, $user_id);

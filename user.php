@@ -17,6 +17,7 @@ if (isset($_GET['user_id']) === true && $_GET['user_id'] !== '') {
 }
 
 $dbh = connect_db();
+show_error_db($dbh);
 if (isset($user_id) === true) {
     $user = select_user_from_user_id($dbh, $user_id);
     $user_name = $user['user_name'];
