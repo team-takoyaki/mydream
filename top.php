@@ -5,14 +5,19 @@ require_once(BASE . '/lib/model.php');
 require_once(BASE . '/lib/helper.php');
 session_start();
 
+if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
+    $user_id = $_SESSION['user_id'];
+}
 
-if (isset( $_SESSION['user_id']) === true) {
-    $category = 'social';
+if (isset($user_id) === true) {
+    $category = CATEGORY_DEFAULT;
     $is_choice = false;
+
     if (isset($_GET['category']) === true && $_GET['category'] !== '') {
         $category = $_GET['category'];
         $is_choice = true;
     }
+
     $dbh = connect_db();
     show_error_db($dbh);
 
@@ -27,7 +32,7 @@ if (isset( $_SESSION['user_id']) === true) {
     }
 
     //user情報を取得する
-    $users = select_user_from_user_id($dbh, $_SESSION['user_id']);
+    $users = select_user_from_user_id($dbh, $user_id);
     if ($users === null) {
         echo 'error get user info on top';
         exit();
@@ -45,6 +50,8 @@ if (isset( $_SESSION['user_id']) === true) {
         echo 'error user_list on top';
         exit();
     }
+
+    $user_dreams = select_dreams_from_user_id($dbh, $user_id);
 
     $dbh = null;
 
