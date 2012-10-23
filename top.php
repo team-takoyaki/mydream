@@ -11,6 +11,7 @@ if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
 
 if (isset($user_id) === true) {
     //user情報を取得する
+    $dbh = connect_db();
     $user_info = select_user_from_user_id($dbh, $user_id);
     if ($user_info === null) {
         echo 'error get user info on top';
