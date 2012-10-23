@@ -7,14 +7,14 @@
 </head>
 <body>
     <div id="body">
-	<header>
-	    <h1><?= $user_info['user_name'];?>の夢リスト</h1>
-	    <div class="user_image">
-		<a href="<?= $user_page_url;?>" target="_blank">
+	<a href="<?= BASE_URL ?>">
+	    <header>
+		<h1><?= $user_info['user_name'];?>の夢リスト</h1>
+		<div class="user_image">
 		    <img src="<?= $user_info['user_image'];?>">
-		</a>
-	    </div>
-	</header>
+		</div>
+	    </header>
+	</a>
 	<form method="POST" class="add_form">
             <div class="item"><input type="text" name="title" placeholder="タイトル" class="title"></div>
             <div class="item"><textarea name="body" placeholder="本文" class="body"></textarea></div>

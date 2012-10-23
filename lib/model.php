@@ -177,7 +177,7 @@ function insert_dream($dbh, $title, $body, $category_id, $user_id) {
 }
 
 function select_dreams($dbh) {
-    $sql = 'select id, title, category from dr_dream';
+    $sql = 'select id, title, category_id from dr_dream';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute();

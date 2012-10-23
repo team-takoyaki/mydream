@@ -32,18 +32,12 @@ if (isset($user_id) === true) {
     }
 
     //user情報を取得する
-    $users = select_user_from_user_id($dbh, $user_id);
-    if ($users === null) {
+    $user_info = select_user_from_user_id($dbh, $user_id);
+    if ($user_info === null) {
         echo 'error get user info on top';
         exit();
     }
-    if ($users['sns_id'] === 1) {
-        //facebook
-        $user_page = 'http://www.facebook.com/' . $users['sns_user_id'];
-    } else if ($users['sns_id'] === 2) {
-        //twitter
-        $user_page = 'http://twitter.com/' . $users['user_name'];
-    }
+    $user_page_url = get_user_page_url($user_info);
 
     $user_list = select_users($dbh);
     if ($user_list === null) {

@@ -8,14 +8,14 @@
 </head>
 <body>
     <div id="body">
-	<header>
-	    <h1><?= $user_info['user_name'];?>の夢リスト</h1>
-	    <div class="user_image">
-		<a href="<?= $user_page_url;?>" target="_blank">
+	<a href="<?= BASE_URL ?>">
+	    <header>
+		<h1><?= $user_info['user_name'];?>の夢リスト</h1>
+		<div class="user_image">
 		    <img src="<?= $user_info['user_image'];?>">
-		</a>
-	    </div>
-	</header>
+		</div>
+	    </header>
+	</a>
         <?php if (count($user_dreams) > 0) { ?>
             <?php foreach($user_dreams as $dream) {?>
             <ul class="user_dreams">
