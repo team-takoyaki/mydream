@@ -8,61 +8,61 @@
 </head>
 <body>
     <div id="body">
-	<a href="<?= BASE_URL ?>">
-	    <header>
-		<h1><?= $user_info['user_name'];?>の夢リスト</h1>
-		<div class="user_image">
-		    <img src="<?= $user_info['user_image'];?>">
-		</div>
-	    </header>
-	</a>
-	<form method="GET" class="search_form">
+    <a href="<?= BASE_URL ?>">
+        <header>
+        <h1><?= $user_info['user_name'];?>の夢リスト</h1>
+        <div class="user_image">
+            <img src="<?= $user_info['user_image'];?>">
+        </div>
+        </header>
+    </a>
+    <form method="GET" class="search_form">
             <div class="item">
-		<select name="category_id" class="category">
-		    <?php for($i = 1; $i < count($categories); $i++) { ?>
+        <select name="category_id" class="category">
+            <?php for($i = 1; $i < count($categories); $i++) { ?>
                     <option value="<?= $i ?>" <?= $selected[$i];?>><?= $categories[$i] ?></option>
-		    <?php } ?>
-		</select>
+            <?php } ?>
+        </select>
             </div>
             <button class="submit">検索</button>
-	</form>
+    </form>
         <?php if (count($dreams) > 0) { ?>
             <?php foreach($dreams as $dream) {?>
             <ul class="user_dreams">
-		<a href="<?= BASE_URL . '/dream.php?id=' . $dream['id'];?>"><li class="dream">
-		    <?= $dream['title'];?>
-		</li></a>
-	    </ul>
+        <a href="<?= BASE_URL . '/dream.php?id=' . $dream['id'];?>"><li class="dream">
+            <?= $dream['title'];?>
+        </li></a>
+        </ul>
             <?php }?>
         <?php } else { ?>
-	    <a href="add.php"><p class="dream_message">あなたの夢を書きましょう</p></a>
+        <a href="add.php"><p class="dream_message">あなたの夢を書きましょう</p></a>
         <?php } ?>
-	<ul class="user_actions">
+    <ul class="user_actions">
             <li class="action">
-		<a href="add.php">
-		    <span class="action_name">
-			<img src="<?= IMAGES_DIR ?>/write.png">
-			夢を書く
-		    </span>
-		</a>
-	    </li>
-	    <li class="action">
-		<a href="">
-		    <span class="action_name">
-			<img src="<?= IMAGES_DIR ?>/search.png">
-			夢を検索する
-		    </span>
-		</a>
-	    </li>
-	    <li class="action">
-		<a href="logout.php">
-		    <span class="action_name">
-			<img src="<?= IMAGES_DIR ?>/logout.png">
-			ログアウト
-		    </span>
-		</a>
-	    </li>
-	</ul>
+        <a href="add.php">
+            <span class="action_name">
+            <img src="<?= IMAGES_DIR ?>/write.png">
+            夢を書く
+            </span>
+        </a>
+        </li>
+        <li class="action">
+        <a href="">
+            <span class="action_name">
+            <img src="<?= IMAGES_DIR ?>/search.png">
+            夢を検索する
+            </span>
+        </a>
+        </li>
+        <li class="action">
+        <a href="logout.php">
+            <span class="action_name">
+            <img src="<?= IMAGES_DIR ?>/logout.png">
+            ログアウト
+            </span>
+        </a>
+        </li>
+    </ul>
     </div>
 </body>
 </html>
