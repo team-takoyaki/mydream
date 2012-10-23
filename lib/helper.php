@@ -29,3 +29,14 @@ function set_selected_category($data, $user_choice) {
 function set_linked_from_text($text) {
     return preg_replace('{(http:\/\/.+?(?:\s|$))}i', '<a href="$1">$1</a>', htmlspecialchars($text));
 }
+
+function get_user_page_url($user_info) {
+  if ($user_info['sns_id'] === 1) {
+    //facebook
+    $user_page = 'http://www.facebook.com/' . $users['sns_user_id'];
+  } else if ($user_info['sns_id'] === 2) {
+    //twitter
+    $user_page = 'http://twitter.com/' . $users['user_name'];
+  }
+  return $user_page;
+}

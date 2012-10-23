@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
     <meta charset="utf-8">
-    <title>Doing</title>
-    <link rel="stylesheet" type="text/css" href="css/top.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>My Dream, Your Dream</title>
+    <link rel="stylesheet" type="text/css" href="css/add.css">
 </head>
 <body>
     <div id="body">
@@ -16,17 +15,19 @@
 		</a>
 	    </div>
 	</header>
-        <?php if (count($user_dreams) > 0) { ?>
-            <?php foreach($user_dreams as $dream) {?>
-            <ul class="user_dreams">
-		<li class="dream">
-		    <a href="<?= BASE_URL . '/dream.php?id=' . $dream['id'];?>"><?= $dream['title'];?></a>
-		</li>
-	    </ul>
-            <?php }?>
-        <?php } else { ?>
-	    <a href="<?= 'write_dream.php';?>"><p class="dream_message">あなたの夢を書きましょう</p></a>
-        <?php } ?>
+	<form method="POST" class="add_form">
+            <div class="item"><input type="text" name="title" placeholder="タイトル" class="title"></div>
+            <div class="item"><textarea name="body" placeholder="本文" class="body"></textarea></div>
+            <div class="item">
+		<select name="category_id" class="category">
+                    <option value="">カテゴリ</option>
+		    <?php for($i = 1; $i < count($categories); $i++) { ?>
+                    <option value="<?= $i ?>"><?= $categories[$i] ?></option>
+		    <?php } ?>
+		</select>
+            </div>
+            <button class="submit">夢を書き込む</button>
+	</form>
 	<ul class="user_actions">
             <li class="action">
 		<a href="add.php">
