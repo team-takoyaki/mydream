@@ -264,15 +264,16 @@ function insert_thank($dbh, $comment_id, $user_id) {
 }
 
 function select_thank_count_from_comment_id($dbh, $comment_id) {
-    $sql = 'select count(comment_id) from dr_comment_thank where comment_id = :comment_id group by comment_id';
+    $sql = 'select count(comment_id) from dr_comment_thank where comment_id = :comment_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id));
         $result = $stmt->fetch();
+        $result['flg'] = true;
     } catch (PDOException $e) {
-        return null;
+        $result['flg'] = false;
     }
-    return $result['count'];
+    return $result;
 }
 
 function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) {
@@ -281,10 +282,11 @@ function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_i
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id, ':user_id' => $user_id));
         $result = $stmt->fetch();
-        return intval($result['count']);
+        $result['flg'] = true;
     } catch (PDOException $e) {
-        return null;
+        $result['flg'] = false;
     }
+    return $result;
 }
 
 function insert_cheer($dbh, $dream_id, $user_id) {
@@ -304,15 +306,16 @@ function insert_cheer($dbh, $dream_id, $user_id) {
 }
 
 function select_cheer_count_from_dream_id($dbh, $dream_id) {
-    $sql = 'select count(dream_id) from dr_dream_cheer where dream_id = :dream_id group by dream_id';
+    $sql = 'select count(dream_id) as cnt from dr_dream_cheer where dream_id = :dream_id group by dream_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':dream_id' => $dream_id));
-        $result = $stmt->fetch();
+        $result = $stmt->fetchAll();
+        $result['flg'] = true;
     } catch (PDOException $e) {
-        return null;
+        $result['flg'] = false;
     }
-    return $result['count'];
+    return $result;
 }
 
 function check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) {
