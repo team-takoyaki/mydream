@@ -123,3 +123,11 @@ ul li {
 a {
     text-decoration: none;
 }
+
+a {
+  color: #000;
+}
+
+a:visited {
+  color: #000;
+}

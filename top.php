@@ -10,27 +10,6 @@ if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
 }
 
 if (isset($user_id) === true) {
-    $category = CATEGORY_DEFAULT;
-    $is_choice = false;
-
-    if (isset($_GET['category']) === true && $_GET['category'] !== '') {
-        $category = $_GET['category'];
-        $is_choice = true;
-    }
-
-    $dbh = connect_db();
-    show_error_db($dbh);
-
-    if ($is_choice === true) {
-        //夢情報の取得
-        $category_id = select_category_id_from_dr_dream($dbh, $category);
-        $dreams = select_dream_from_category($dbh, $category_id);
-        if ($dreams === null || $category_id === null) {
-            echo 'error dreams or category_id on top';
-            exit();
-        }
-    }
-
     //user情報を取得する
     $user_info = select_user_from_user_id($dbh, $user_id);
     if ($user_info === null) {

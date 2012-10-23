@@ -39,7 +39,7 @@
 		</a>
 	    </li>
 	    <li class="action">
-		<a href="">
+		<a href="search.php">
 		    <span class="action_name">
 			<img src="<?= IMAGES_DIR ?>/search.png">
 			夢を検索する

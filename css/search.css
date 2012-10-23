@@ -164,3 +164,31 @@ a .dream_message {
 a:visited .dream_message {
     color: #0000ff;       	       
 }
+
+.search_form {
+   border-bottom: 1px #ccc solid;
+   height: 64px;
+   text-align: center;
+}
+
+.search_form .category {
+    float: left;
+    display: table;
+    vertical-align: middle;
+    width: 50%;
+    margin: 10px 0 0 7%;
+    height: 44px;
+    line-height: 44px;
+}
+
+.search_form .submit {
+    float: left;
+    width: 30%;
+    margin: 10px 0 0 5%;
+    height: 44px;
+    border: 1px #ccc solid;
+    border-radius: 3px;
+    background: #FFF;
+    font-size: 14px;
+    line-height: 40px;	     
+}
