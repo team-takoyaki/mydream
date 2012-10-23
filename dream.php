@@ -86,7 +86,6 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
     foreach ($comments as $comment) {
         $thank_usr = select_thank_count_from_comment_id($dbh, $comment['id']);
         $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
-        var_dump($thank_count);
         if ($thank_usr['flg'] === false || $thank_count['flg'] === false) {
             echo 'error thank user or thank count';
             exit();
