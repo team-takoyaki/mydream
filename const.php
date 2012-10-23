@@ -20,3 +20,5 @@ define('DR_SNS_FACEBOOK', 'facebook');
 define('DR_SNS_TWITTER', 'twitter');
 
 define('CATEGORY_DEFAULT', 'social');
+
+$categories = array('', '社会', 'スポーツ', '音楽', 'エンターテインメント', '科学', 'コンピュータ', 'ゲーム・アニメ', 'その他');

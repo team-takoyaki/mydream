@@ -1,0 +1,125 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #eee;
+}
+
+#body {
+    border-top: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-left: 1px #ccc solid;
+    margin: 0 auto;
+    width: 320px;
+    background-color: #FFF;
+}
+
+header {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    padding: 10px 0;
+    border-bottom: 1px #ccc solid;
+}
+
+header h1 {
+    font-size: 18px;
+    font-weight: normal;
+    -webkit-box-ordinal-group: 2;
+}
+
+header .user_image {
+    -webkit-box-ordinal-group: 1;
+    margin-right: 10px;
+}
+
+.add_form {	
+    width: 290px;
+    margin: 0 auto;	    
+}
+
+.item .title {
+   margin: 10px 0;
+   width: 280px;      
+   height: 44px;
+   padding: 5px;
+   border: 1px #ccc solid;
+   font-size: 14px;
+   border-radius: 3px;
+}
+
+.item textarea.body {
+   width: 280px;      
+   height: 320px;	 
+   margin: 0px;
+   font-size: 14px;
+   padding: 5px;
+   border: 1px #ccc solid;
+   border-radius: 3px;
+}
+
+.item select.category {
+  margin: 10px 0 20px;      
+  width: 290px;    
+  height: 44px;      
+}
+
+.add_form .submit {
+    width: 290px;
+    height: 44px;	    
+    border: 1px #ccc solid;
+    border-radius: 3px;
+    background: #FFF;
+    font-size: 14px;
+    line-height: 40px;
+    margin-bottom: 60px;
+}
+
+ul.user_actions {
+   border-top: 1px #ccc solid;    		
+}
+
+ul.user_actions .action a:visited {
+    color: #000;		
+}
+
+ul.user_actions .action a {
+    display: block;
+    color: #000;
+    position: relative;
+}
+
+ul.user_actions .action {
+   height: 44px;
+   border-bottom: 1px #ccc solid;
+   text-align: left;
+}
+
+ul.user_actions .action img {
+   position: absolute;		
+   width: 20px;
+   height: 20px;
+   top: 10px;
+   left: 0px;
+}
+
+ul.user_actions .action_name {
+    display: block;
+    width: 100px;
+    line-height: 44px;
+    padding-left: 30px;
+    height: 44px;
+    margin: 0 auto;		
+    position: relative;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}

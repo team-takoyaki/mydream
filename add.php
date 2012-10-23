@@ -20,34 +20,28 @@ if (isset($_POST['body']) === true && $_POST['body'] !== '') {
     $body = trim($_POST['body']);
 }
 
-if (isset($_POST['category']) === true && $_POST['category'] !== '') {
-    $category = trim($_POST['category']);
+if (isset($_POST['category_id']) === true && $_POST['category_id'] !== '') {
+    $category_id = trim($_POST['category_id']);
 }
 
 $dbh = connect_db();
-
 show_error_db($dbh);
 
-if (isset($title) === true && isset($body) === true && isset($category) === true) { 
-    $category_id = select_category_id_from_dr_dream($dbh, $category);
-    if ($category_id === null) {
-        echo 'error category id on write_dream';
-        exit();
-    }
-    $flg = insert_dream($dbh, $title, $body, $category_id, $user_id);
-    if ($flg === null) {
+if (isset($title) === true && isset($body) === true && isset($category_id) === true) { 
+    if (insert_dream($dbh, $title, $body, $category_id, $user_id) === null) {
         echo 'insert dream on write_dream';
         exit();
     }
 }
 
-$dreams = select_dreams($dbh);
-if ($dreams === null) {
-    echo 'error dreams on write_dream';
-    exit();
+$user_info = select_user_from_user_id($dbh, $user_id);
+if ($user_info === null) {
+  echo 'error get user info on top';
+  exit();
 }
+$user_page_url = get_user_page_url($user_info);
 
 $dbh = null;
 
-include_once(TMPL_DIR . '/write_dream.html.php');
+include_once(TMPL_DIR . '/add.html.php');
 
