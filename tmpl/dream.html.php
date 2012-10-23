@@ -23,8 +23,8 @@
         <p><?= htmlspecialchars($comment['user_name']); ?></p>
          <form method="POST">
             <p><button name="comment_id" value="<?= $comment['id']; ?>"<?php display_button($is_thank[$comment['id']]);?>>Thanks</button></p>
-            <?php if ($thank_users[$comment['id']] > 0) { ?>
-            This post thanks by <?= htmlspecialchars($thank_users[$comment['id']]) ?> users;
+            <?php if (intval($thank_users[$comment['id']]['count']) > 0) { ?>
+            This post thanks by <?= htmlspecialchars($thank_users[$comment['id']]['count']); ?> users;
             <?php } ?>
          </form>
     </div>

@@ -67,7 +67,7 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
         }
     }
     $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);
-    if ($cheer_users === null) {
+    if ($cheer_users['flg'] === false) {
         echo 'error cheer_users';
         exit();
     }
@@ -86,14 +86,14 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
     foreach ($comments as $comment) {
         $thank_usr = select_thank_count_from_comment_id($dbh, $comment['id']);
         $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
-        if ($thank_usr === null || $thank_count === null) {
+        if ($thank_usr['flg'] === false || $thank_count['flg'] === false) {
             echo 'error thank user or thank count';
             exit();
         }
         $thank_users[$comment['id']] = $thank_usr;
         //comment, user_idから紐付いたthankカウント取得
         $is_thank[$comment['id']] = true;
-        if ($comment['user_id'] === $user_id || $thank_count > 0) {
+        if ($comment['user_id'] === $user_id || intval($thank_count['count']) > 0) {
             //commentのuser_idがアクセス者のuser_idと同じ, thank_countが0より大きい場合はthankは押せない
             $is_thank[$comment['id']] = false;
         }
