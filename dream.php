@@ -71,7 +71,7 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
         }
     }
     $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);
-    if ($cheer_users['flg'] === false) {
+    if ($cheer_users === null) {
         echo 'error cheer_users';
         exit();
     }
@@ -90,7 +90,7 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
     foreach ($comments as $comment) {
         $thank_usr = select_thank_count_from_comment_id($dbh, $comment['id']);
         $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
-        if ($thank_usr['flg'] === false || $thank_count['flg'] === false) {
+        if ($thank_usr === null || $thank_count === null) {
             echo 'error thank user or thank count';
             exit();
         }

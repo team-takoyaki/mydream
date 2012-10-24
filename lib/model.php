@@ -264,7 +264,7 @@ function insert_thank($dbh, $comment_id, $user_id) {
 }
 
 function select_thank_count_from_comment_id($dbh, $comment_id) {
-    $sql = 'select count(comment_id) from dr_comment_thank where comment_id = :comment_id';
+    $sql = 'select count(comment_id) as cnt from dr_comment_thank where comment_id = :comment_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id));
@@ -272,12 +272,13 @@ function select_thank_count_from_comment_id($dbh, $comment_id) {
         $result['flg'] = true;
     } catch (PDOException $e) {
         $result['flg'] = false;
+        return null;
     }
-    return $result;
+    return intval($result['cnt']);
 }
 
 function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id) {
-    $sql = 'select count(comment_id) from dr_comment_thank where comment_id = :comment_id and user_id = :user_id';
+    $sql = 'select count(comment_id) as cnt from dr_comment_thank where comment_id = :comment_id and user_id = :user_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id, ':user_id' => $user_id));
@@ -285,8 +286,9 @@ function check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_i
         $result['flg'] = true;
     } catch (PDOException $e) {
         $result['flg'] = false;
+        return null;
     }
-    return $result;
+    return intval($result['cnt']);
 }
 
 function insert_cheer($dbh, $dream_id, $user_id) {
@@ -314,6 +316,7 @@ function select_cheer_count_from_dream_id($dbh, $dream_id) {
         $result['flg'] = true;
     } catch (PDOException $e) {
         $result['flg'] = false;
+        return null;
     }
     return intval($result['cnt']);
 }
