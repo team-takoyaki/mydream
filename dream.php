@@ -8,6 +8,9 @@ $is_my_dream = false;
 
 if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
     $user_id = intval($_SESSION['user_id']);
+} else {
+    header('Location:' . BASE_URL);
+    exit;
 }
 
 if (isset($_GET['id']) === true && $_GET['id'] !== '') {
@@ -45,6 +48,7 @@ if ($cnt === null) {
     echo 'sql error';
     exit();
 }
+
 if (isset($comment_id) === true && isset($user_id) === true && $cnt === 0) {
     $flg = insert_thank($dbh, $comment_id, $user_id);
     if ($flg === null) {
@@ -103,6 +107,13 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
 if ($dream_user === $user_id) {
     $is_my_dream = true;
 }
+
+$user_info = select_user_from_user_id($dbh, $user_id);
+if ($user_info === null) {
+  echo 'error get user info on top';
+  exit();
+}
+$user_page_url = get_user_page_url($user_info);
 
 $dbh = null;
 
