@@ -38,7 +38,7 @@
                         <form method="POST" class="thanks_btn_form">
                             <button name="comment_id" class="thanks_btn" value="<?= $comment['id']; ?>"<?php display_button($is_thank[$comment['id']]);?>>ありがとう</button>
                             <?php if (intval($thank_users[$comment['id']]['count']) > 0) { ?>
-                            This post thanks by <?= htmlspecialchars($thank_users[$comment['id']]['count']); ?> users;
+                            <p class="thanks_message"><?= htmlspecialchars($cheer_users) ?>がありがとうと言っています</p>
                             <?php } ?>
                         </form>
                     </div>
