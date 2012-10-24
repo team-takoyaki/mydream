@@ -12,7 +12,7 @@
     <?php if ($is_my_dream === false) {?>
     <form method="POST">
         <p><button name="cheers" value="cheers">Cheers</button></p>
-        <?php if (isset($cheer_users['cnt']) > 0) { ?>
+        <?php if (intval($cheer_users['cnt']) > 0) { ?>
         This post cheer by <?= htmlspecialchars($cheer_users['cnt']); ?> users;
         <?php } ?>
     </form>
