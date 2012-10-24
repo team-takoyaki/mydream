@@ -98,10 +98,10 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
         }
         $thank_users[$comment['id']] = $thank_usr;
         //comment, user_idから紐付いたthankカウント取得
-        $is_thank[$comment['id']] = true;
-        if ($comment['user_id'] === $user_id || intval($thank_count['count']) > 0) {
-            //commentのuser_idがアクセス者のuser_idと同じ, thank_countが0より大きい場合はthankは押せない
-            $is_thank[$comment['id']] = false;
+        $is_thank[$comment['id']] = false;
+        if ($user_id === intval($dream_user) && $thank_count === 0) {
+            //夢のuser_idとアクセス者のuser_idが等しくかつ, thank_countが0と等しい場合はthankが押せる
+            $is_thank[$comment['id']] = true;
         }
     }
 }
