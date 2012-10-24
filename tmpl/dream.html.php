@@ -24,7 +24,7 @@
                         <div class="author_wrapper"><span class="author"><?= htmlspecialchars($dream['user_name']); ?></span></div>
                         <?php if ($is_my_dream === false) {?>
                         <form method="POST" class="cheers_btn_form">
-                            <button name="cheers" value="cheers" class="cheers_btn">応援する</button>
+                            <button name="cheers" value="cheers" class="cheers_btn" <?php display_button($cheer_flg);?>>応援する</button>
                             <?php if ($cheer_users > 0) { ?>}
                                 <p class="cheers_message"><?= htmlspecialchars($cheer_users) ?>が応援しています</p>
                             <?php } ?>
@@ -38,7 +38,7 @@
                         <form method="POST" class="thanks_btn_form">
                             <button name="comment_id" class="thanks_btn" value="<?= $comment['id']; ?>"<?php display_button($is_thank[$comment['id']]);?>>ありがとう</button>
                             <?php if ($thank_users[$comment['id']] > 0) { ?>
-                            <p class="thanks_message"><?= htmlspecialchars($thank_users[$comment['id']]); ?>がありがとうと言っています</p>
+                            <p class="thanks_message">ありがとうと言っています!</p>
                             <?php } ?>
                         </form>
                     </div>

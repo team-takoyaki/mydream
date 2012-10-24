@@ -58,12 +58,12 @@ if (isset($comment_id) === true && isset($user_id) === true && $cnt === 0) {
 }
 
 if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
-    $cnt = check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id);
-    if ($cnt === null) {
+    $cheer_flg = check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id);
+    if ($cheer_flg === null) {
         echo 'sql error';
         exit();
     }
-    if (isset($cheers) === true && isset($user_id) === true && $cnt === 0) {
+    if (isset($cheers) === true && isset($user_id) === true && $cheer_flg === true) {
         $flg = insert_cheer($dbh, $dream_id, $user_id);
         if ($flg === null) {
             echo 'insert error';
