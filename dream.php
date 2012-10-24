@@ -98,6 +98,8 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
         }
         $thank_users[$comment['id']] = $thank_usr;
         //comment, user_idから紐付いたthankカウント取得
+
+        //$is_thank[$comment['id']]: 各commentについてthanksボタンが押せるかどうかのflg
         $is_thank[$comment['id']] = false;
         if ($user_id === intval($dream_user) && $thank_count === 0) {
             //夢のuser_idとアクセス者のuser_idが等しくかつ, thank_countが0と等しい場合はthankが押せる
