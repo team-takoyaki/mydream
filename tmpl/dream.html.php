@@ -12,8 +12,8 @@
     <?php if ($is_my_dream === false) {?>
     <form method="POST">
         <p><button name="cheers" value="cheers">Cheers</button></p>
-        <?php if ($cheer_users > 0) { ?>
-        This post cheer by <?= htmlspecialchars($cheer_users) ?> users;
+        <?php if (isset($cheer_users['cnt']) > 0) { ?>
+        This post cheer by <?= htmlspecialchars($cheer_users['cnt']); ?> users;
         <?php } ?>
     </form>
     <?php }?>
