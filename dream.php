@@ -70,11 +70,13 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
             exit();
         }
     }
+
     $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);
     if ($cheer_users === null) {
         echo 'error cheer_users';
         exit();
     }
+
     $dream = select_dream_from_dream_id($dbh, $dream_id);
     if ($dream === null) {
         echo 'error dream';
