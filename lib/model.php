@@ -315,7 +315,7 @@ function select_cheer_count_from_dream_id($dbh, $dream_id) {
     } catch (PDOException $e) {
         $result['flg'] = false;
     }
-    return $result['cnt'];
+    return intval($result['cnt']);
 }
 
 function check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) {
