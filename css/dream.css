@@ -1,0 +1,244 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #eee;
+}
+
+#body {
+    border-top: 1px #ccc solid;
+    border-right: 1px #ccc solid;
+    border-left: 1px #ccc solid;
+    margin: 0 auto;
+    width: 320px;
+    background-color: #FFF;
+}
+
+header {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    padding: 10px 0;
+    border-bottom: 1px #ccc solid;
+}
+
+header h1 {
+    font-size: 18px;
+    font-weight: normal;
+    -webkit-box-ordinal-group: 2;
+}
+
+header .user_image {
+    -webkit-box-ordinal-group: 1;
+    margin-right: 10px;
+}
+
+.add_form {	
+    width: 290px;
+    margin: 0 auto;	    
+}
+
+.item .title {
+   margin: 10px 0;
+   width: 280px;      
+   height: 44px;
+   padding: 5px;
+   border: 1px #ccc solid;
+   font-size: 14px;
+   border-radius: 3px;
+}
+
+.item textarea.body {
+   width: 280px;      
+   height: 320px;	 
+   margin: 0px;
+   font-size: 14px;
+   padding: 5px;
+   border: 1px #ccc solid;
+   border-radius: 3px;
+}
+
+.item select.category {
+  margin: 10px 0 20px;      
+  width: 290px;    
+  height: 44px;      
+}
+
+.add_form .submit {
+    width: 290px;
+    height: 44px;	    
+    border: 1px #ccc solid;
+    border-radius: 3px;
+    background: #FFF;
+    font-size: 14px;
+    line-height: 40px;
+    margin-bottom: 60px;
+}
+
+ul.user_actions {
+   border-top: 1px #ccc solid;    		
+}
+
+ul.user_actions .action a:visited {
+    color: #000;		
+}
+
+ul.user_actions .action a {
+    display: block;
+    color: #000;
+    position: relative;
+}
+
+ul.user_actions .action {
+   height: 44px;
+   border-bottom: 1px #ccc solid;
+   text-align: left;
+}
+
+ul.user_actions .action img {
+   position: absolute;		
+   width: 20px;
+   height: 20px;
+   top: 10px;
+   left: 0px;
+}
+
+ul.user_actions .action_name {
+    display: block;
+    width: 100px;
+    line-height: 44px;
+    padding-left: 30px;
+    height: 44px;
+    margin: 0 auto;		
+    position: relative;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+a {
+  color: #000;
+}
+
+a:visited {
+  color: #000;
+}
+
+.dream_wrapper {
+    width: 100%;
+}
+
+.dream {
+
+}
+
+.dream h1 {
+    font-size: 18px;
+    margin-top: 0px;
+    font-weight: normal;
+}
+
+.dream_body {
+    font-size: 14px;
+}
+
+.dream .author {
+    font-size: 12px;
+    color: #888;
+}
+
+.dream .author_wrapper {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.dream_inner {
+    border-bottom: 1px #ccc solid;
+    padding: 15px;
+}
+
+.comment_form {
+    padding: 15px;
+    margin-bottom: 40px;
+}
+
+.comment_form .user_comment {
+   width: 280px;
+   height: 140px;
+   margin: 0px;
+   font-size: 14px;
+   padding: 5px;
+   border: 1px #ccc solid;
+   border-radius: 3px;
+}
+
+.comment_form .submit {
+    width: 290px;
+    height: 44px;
+    border: 1px #ccc solid;
+    border-radius: 3px;
+    background: #FFF;
+    font-size: 14px;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+.comment {
+    padding: 15px;
+    border-bottom: 1px #ccc solid;
+}
+
+.comment_body {
+    margin: 0px;
+    font-size: 14px;
+}
+
+.comment_author {
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: right;
+    color: #888;
+}
+
+.thanks_btn_form {
+    text-align: right;
+}
+
+.thanks_btn {
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    line-height: 24px;
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+}
+
+.cheers_btn_form {
+    text-align: right;
+}
+
+.cheers_btn {
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    line-height: 24px;
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+}
+
+.cheers_message {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
