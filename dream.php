@@ -17,7 +17,6 @@ if (isset($_GET['id']) === true && $_GET['id'] !== '') {
     $dream_id = intval($_GET['id']);
 }
 
-
 if (isset($_POST['user_comment']) === true && $_POST['user_comment'] !== '') {
     $user_comment = $_POST['user_comment'];
 }
@@ -69,6 +68,7 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
             echo 'insert error';
             exit();
         }
+	$cheer_flg = false;
     }
 
     $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);
@@ -88,6 +88,7 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
         echo 'error comments';
         exit();
     }
+
     $thank_users = array();
     foreach ($comments as $comment) {
         $thank_usr = select_thank_count_from_comment_id($dbh, $comment['id']);
