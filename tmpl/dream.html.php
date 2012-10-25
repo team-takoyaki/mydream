@@ -13,9 +13,11 @@
                     <h1><?= htmlspecialchars($dream['title']); ?></h1>
 		</div>
 		<div class="dream_info">
+		    <?php if ($cheer_users > 0) { ?>
 		    <div class="cheers_message">
 			<?= $cheer_users ?>人が応援しています
 		    </div>
+		    <?php } ?>
                     <form method="POST" class="cheers_btn_form">
 			<?php if ($cheer_users > 0) { ?>
 			<?php } ?>
