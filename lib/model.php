@@ -12,6 +12,18 @@ function connect_db() {
     return $dbh;
 }
 
+function select_id_and_title_from_dr_dream($dbh) {
+    $sql = 'select id, title from dr_dream';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
+}
+
 function insert_user($dbh, $user_name, $user_image, $sns_id, $sns_user_id) {
     $select_sql = 'select id from dr_user where sns_id = :sns_id and sns_user_id = :sns_user_id';
     $insert_sql = 'insert into dr_user(user_name, user_image, sns_id, sns_user_id) values(:user_name, :user_image, :sns_id, :sns_user_id)';

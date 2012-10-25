@@ -20,4 +20,6 @@ define('DR_SNS_TWITTER', 'twitter');
 define('CATEGORY_DEFAULT', 'social');
 define('CATEGORY_DEFAULT_ID', 0);
 
+define('TWITTER_HASH', '#takoyaki_dream');
+
 $categories = array('', '社会', 'スポーツ', '音楽', 'エンターテインメント', '科学', 'コンピュータ', 'ゲーム・アニメ', 'その他');
