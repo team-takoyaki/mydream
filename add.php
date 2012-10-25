@@ -19,6 +19,7 @@ if (isset($_POST['title']) === true && $_POST['title'] !== '') {
 if (isset($_POST['body']) === true && $_POST['body'] !== '') {
     $body = trim($_POST['body']);
 }
+$body = '';
 
 if (isset($_POST['category_id']) === true && $_POST['category_id'] !== '') {
     $category_id = trim($_POST['category_id']);

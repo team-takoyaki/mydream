@@ -10,15 +10,11 @@
     <div id="body">
 	<a href="<?= BASE_URL ?>">
 	    <header>
-		<h1><?= $user_info['user_name'];?>の夢リスト</h1>
-		<div class="user_image">
-		    <img src="<?= $user_info['user_image'];?>">
-		</div>
+		<h1>新しい夢について</h1>
 	    </header>
 	</a>
 	<form method="POST" class="add_form">
             <div class="item"><input type="text" name="title" placeholder="タイトル" class="title"></div>
-            <div class="item"><textarea name="body" placeholder="本文" class="body"></textarea></div>
             <div class="item">
 		<select name="category_id" class="category">
                     <option value="">カテゴリ</option>

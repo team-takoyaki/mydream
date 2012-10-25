@@ -10,10 +10,7 @@
     <div id="body">
     <a href="<?= BASE_URL ?>">
         <header>
-        <h1><?= $user_info['user_name'];?>の夢リスト</h1>
-        <div class="user_image">
-            <img src="<?= $user_info['user_image'];?>">
-        </div>
+        <h1>夢を検索する</h1>
         </header>
     </a>
     <form method="GET" class="search_form">
@@ -34,8 +31,6 @@
         </li></a>
         </ul>
             <?php }?>
-        <?php } else { ?>
-        <a href="add.php"><p class="dream_message">あなたの夢を書きましょう</p></a>
         <?php } ?>
     <ul class="user_actions">
             <li class="action">
