@@ -8,39 +8,42 @@
     </head>
     <body>
         <div id="body">
-            <a href="<?= BASE_URL ?>">
-                <header>
-                    <h1><?= $user_info['user_name'];?>の夢リスト</h1>
-                    <div class="user_image">
-                        <img src="<?= $user_info['user_image'];?>">
-                    </div>
-                </header>
-            </a>
+            <header>
+		<div class="title">
+                    <h1><?= htmlspecialchars($dream['title']); ?></h1>
+		</div>
+		<div class="dream_info">
+		    <?php if ($cheer_users > 0) { ?>
+		    <div class="cheers_message">
+			<?= $cheer_users ?>人が応援しています
+		    </div>
+		    <?php } ?>
+                    <form method="POST" class="cheers_btn_form">
+			<?php if ($cheer_users > 0) { ?>
+			<?php } ?>
+			<?php if ($cheer_flg === true) { ?>
+			<button name="cheers" class="cheers_btn" value="cheers">がんばれ</button>
+			<?php } else { ?>
+			<button name="cheers" class="cheers_btn" value="cheers" disabled>応援中</button>
+			<?php } ?>
+                    </form>		    
+		</div>
+            </header>
             <div class="dream_wrapper">
                 <div class="dream">
-                    <div class="dream_inner">
-                        <h1><?= htmlspecialchars($dream['title']); ?></h1>
-                        <p class="dream_body">body <?= set_linked_from_text($dream['body']); ?></p>
-                        <div class="author_wrapper"><span class="author"><?= htmlspecialchars($dream['user_name']); ?></span></div>
-                        <?php if ($is_my_dream === false) {?>
-                        <form method="POST" class="cheers_btn_form">
-                            <button name="cheers" value="cheers" class="cheers_btn" <?php display_button($cheer_flg);?>>応援する</button>
-                            <?php if ($cheer_users > 0) { ?>}
-                                <p class="cheers_message"><?= htmlspecialchars($cheer_users) ?>が応援しています</p>
-                            <?php } ?>
-                        </form>
-                    <?php }?>
-                    </div>
                     <?php foreach ($comments as $comment) { ?>
                     <div class="comment">
                         <p class="comment_body"><?= set_linked_from_text($comment['body']); ?></p>
-                        <div class="comment_author"><?= htmlspecialchars($comment['user_name']); ?></div>
-                        <form method="POST" class="thanks_btn_form">
-                            <button name="comment_id" class="thanks_btn" value="<?= $comment['id']; ?>"<?php display_button($is_thank[$comment['id']]);?>>ありがとう</button>
-                            <?php if ($thank_users[$comment['id']] > 0) { ?>
-                            <p class="thanks_message">ありがとうと言っています!</p>
-                            <?php } ?>
-                        </form>
+			<div class="tool display_none">
+			    <div class="edit_btn">編集する</div>
+                            <form method="POST" class="thanks_btn_form">
+				<?php if ($is_thank[$comment['id']] === true) { ?>
+				<button name="comment_id" class="thanks_btn" value="<?= $comment['id']; ?>">メモる</button>
+				<?php } else { ?>
+				<button name="comment_id" class="thanks_btn" value="<?= $comment['id']; ?>" disabled>メモってます</button>
+				<?php } ?>
+                            </form>
+			</div>
                     </div>
                     <?php } ?>
                     <form method="POST" class="comment_form">

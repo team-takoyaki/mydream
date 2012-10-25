@@ -13,22 +13,24 @@ body {
     background-color: #FFF;
 }
 
-header {
-    display: -webkit-box;
-    -webkit-box-pack: center;
+header .title {
     padding: 10px 0;
     border-bottom: 1px #ccc solid;
+    background-color: #ccc;
+    text-align: center;
 }
 
-header h1 {
+header .title h1 {
     font-size: 18px;
     font-weight: normal;
-    -webkit-box-ordinal-group: 2;
+    color: #000;
 }
 
-header .user_image {
-    -webkit-box-ordinal-group: 1;
-    margin-right: 10px;
+header .dream_info {
+    padding: 5px;
+    display: -webkit-box;
+    -webkit-box-pack: end;
+    border-bottom: 1px #ccc solid;        
 }
 
 .add_form {	
@@ -192,6 +194,7 @@ a:visited {
 }
 
 .comment {
+    position: relative;	 
     padding: 15px;
     border-bottom: 1px #ccc solid;
 }
@@ -208,12 +211,7 @@ a:visited {
     color: #888;
 }
 
-.thanks_btn_form {
-    text-align: right;
-}
-
 .thanks_btn {
-    margin-top: 20px;
     border-radius: 5px;
     background-color: #FFF;
     border: 1px #ccc solid;
@@ -221,11 +219,17 @@ a:visited {
     height: 30px;
     width: 100px;
     font-size: 14px;
+    color: #333;
+}
+
+.thanks_btn:disabled {
+    color: #888;
 }
 
 .thanks_message {
+    text-align: center;
     font-size: 12px;
-    margin-bottom: 0px;
+    margin: 3px;
     color: #888;
 }
 
@@ -234,7 +238,6 @@ a:visited {
 }
 
 .cheers_btn {
-    margin-top: 20px;
     border-radius: 5px;
     background-color: #FFF;
     border: 1px #ccc solid;
@@ -248,4 +251,32 @@ a:visited {
     font-size: 12px;
     margin-bottom: 0px;
     color: #888;
+    margin-right: 10px;
+    line-height: 30px;
+}
+
+.tool {
+   position: absolute;
+   bottom: 10px;
+   right: 10px;
+   display: -webkit-box;  
+   -webkit-box-pack: end;
+   margin-top: 40px;
+}
+
+.edit_btn {
+    text-align: center;
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    line-height: 30px;
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+    margin-right: 10px;
+    color: #333;
+}
+
+.display_none {
+    display: none;
 }

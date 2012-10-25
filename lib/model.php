@@ -324,7 +324,7 @@ function select_cheer_count_from_dream_id($dbh, $dream_id) {
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':dream_id' => $dream_id));
-        $result = $stmt->fetchAll();
+        $result = $stmt->fetch();
         $result['flg'] = true;
     } catch (PDOException $e) {
         $result['flg'] = false;
@@ -342,9 +342,10 @@ function check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id) {
     } catch (PDOException $e) {
         return null;
     }
-    if ($result === false) {
+    if (isset($result['dream_id']) === false) {
         return true;
     } else {
         return false;
     }
 }
+
