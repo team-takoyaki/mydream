@@ -9,25 +9,51 @@
 <body>
     <div id="body">
         <h1>僕の夢リスト</h1>
-        <h2>あなたの夢、皆が応援しています</h2>
+        <h2>皆で作る夢のページ</h2>
         <div id="title_logo"></div>
         <ul class="user_actions">
-            <li class="action">
-                <a href="login_t.php">
-                    <span class="action_name">
-                        <img src="images/twitter_logo.png" alt="Twitterでログインする">
-                        Twitterでログイン
-                    </span>
-                </a>
-            </li>
-            <li class="action">
-                <a href="login_f.php">
-                    <span class="action_name">
-                        <img src="images/facebook_logo.png" alt="facebookでログインする">
-                        facebookでログイン
-                    </span>
-                </a>
-            </li>
+            <?php foreach($dreams as $dream) {?>
+                <li class="action">
+                    <a href="dream.php?id=<?= $dream['id'];?>">
+                        <span class="action_name">
+                            <?= $dream['title'];?>
+                        </span>
+                    </a>
+                </li>
+            <?php }?>
+            <?php if ($is_login === true) {?>
+                <li class="action">
+                    <a href="<?= $post_url;?>">
+                        <span class="action_name">
+                        SNSに書き込む
+                        </span>
+                    </a>
+                </li>
+                <li class="action">
+                    <a href="logout.php">
+                        <span class="action_name">
+                            ログアウト
+                        </span>
+                    </a>
+                </li>
+            <?php } else {?>
+                <li class="action">
+                    <a href="login_t.php">
+                        <span class="action_name">
+                            <img src="images/twitter_logo.png" alt="Twitterでログインする">
+                            Twitterでログイン
+                        </span>
+                    </a>
+                </li>
+                <li class="action">
+                    <a href="login_f.php">
+                        <span class="action_name">
+                            <img src="images/facebook_logo.png" alt="facebookでログインする">
+                            facebookでログイン
+                        </span>
+                    </a>
+                </li>
+            <?php }?>
         </ul>
     </div>
     <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
