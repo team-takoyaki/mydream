@@ -4,6 +4,10 @@ require_once(BASE . '/lib/model.php');
 require_once(BASE . '/lib/helper.php');
 require('facebook/facebook.php');
 session_start();
+if (isset($_SESSION['user_id']) !== true) {
+    header('Location:' . BASE_URL);
+    exit();
+}
 
 $facebook = new Facebook(
     array(

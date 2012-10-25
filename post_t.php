@@ -4,6 +4,11 @@ require_once(BASE . '/lib/model.php');
 require_once(BASE . '/lib/helper.php');
 require('twitteroauth/twitteroauth.php');
 session_start();
+if (isset($_SESSION['user_id']) !== true) {
+    header('Location:' . BASE_URL);
+    exit();
+}
+
 $consumer_key = 'CmlUO0TmsB5KXlVAE1LQ';
 // Consumer secretの値
 $consumer_secret = '1SR7AxpR05s875UCK632gr8r35e8uw0cNGh4xIF8SA';
