@@ -149,8 +149,24 @@ function insert_comment($dbh, $body, $user_id, $dream_id) {
     }
 }
 
+function update_comment_order($dbh, $comment_id, $num) {
+    $sql = 'update dr_dream_comment set order_num = :order_num where id = :comment_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':order_num' => $num,
+                             ':comment_id' => $comment_id
+                             )
+                       );
+        return true;
+    } catch (PDOException $e) {
+        return null;
+    }
+}
+
 function select_comments_from_dream_id($dbh, $dream_id) {
-    $sql = 'select t1.id, t1.body, t1.user_id, t2.user_name, t1.create_date from dr_dream_comment t1 left join dr_user t2 on t1.user_id = t2.id where t1.dream_id = :dream_id';
+    $sql = 'select id, body, user_id, create_date from dr_dream_comment where dream_id = :dream_id order by order_num asc, create_date desc';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':dream_id' => $dream_id));

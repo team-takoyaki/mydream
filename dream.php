@@ -29,6 +29,10 @@ if (isset($_POST['cheers']) === true && $_POST['cheers'] !== '') {
     $cheers = $_POST['cheers'];
 }
 
+if (isset($_GET['comments_id']) === true && $_GET['comments_id'] !== '') {
+   $comments_id = $_GET['comments_id'];
+}
+
 $dbh = connect_db();
 
 show_error_db($dbh);
@@ -39,6 +43,15 @@ if (isset($user_comment) === true && isset($user_id) === true) {
         echo 'insert error';
         exit();
     }
+}
+
+if (isset($comments_id) === true) {
+    $num = 1;
+    foreach ($comments_id as $comment_id) {
+        update_comment_order($dbh, $comment_id, $num);
+	$num += 1;
+    }
+    exit;
 }
 
 
@@ -83,7 +96,9 @@ if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
         exit();
     }
     $dream_user = $dream['user_id'];
+
     $comments = select_comments_from_dream_id($dbh, $dream_id);
+
     if ($comments === null) {
         echo 'error comments';
         exit();

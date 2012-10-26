@@ -31,7 +31,9 @@
             </header>
             <div class="dream_wrapper">
                 <div class="dream">
+		    <ul class="sortable">
                     <?php foreach ($comments as $comment) { ?>
+		    <li class="ui-state-default" data-comment-id="<?= $comment['id'] ?>">
                     <div class="comment">
                         <p class="comment_body"><?= set_linked_from_text($comment['body']); ?></p>
 			<div class="tool display_none">
@@ -45,7 +47,13 @@
                             </form>
 			</div>
                     </div>
+		    </li>
                     <?php } ?>
+		    </ul>
+		    <div class="order_save">
+			<button class="order_edit_btn" name="order_edit">編集する</button>
+			<button class="order_save_btn display_none" name="order_save">保存</button>
+		    </div>
                     <form method="POST" class="comment_form">
                         <textarea name="user_comment" class="user_comment"></textarea>
                         <button name="post" class="submit">投稿</button>
@@ -78,5 +86,9 @@
                     </li>
                 </ul>
             </div>
+	</div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+	<script src="js/dream.js"></script>
     </body>
 </html>
