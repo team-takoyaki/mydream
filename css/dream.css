@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    background: #eee;
+    background: url(../images/canvas03.jpg);
 }
 
 #body {
@@ -17,8 +17,12 @@ body {
     line-height: 0px;
 }
 
+header {
+    margin-bottom: 30px;
+}
+
 header .title {
-    margin: 30px 0px 30px;
+    margin: 30px 0px 0px;
     background: url(../images/cloud.png) no-repeat;
     text-align: center;
     width: 320px;
@@ -34,10 +38,10 @@ header .title h1 {
 }
 
 header .dream_info {
-    padding: 5px;
+    margin-top: 10px;
+    padding: 5px 0px;
     display: -webkit-box;
     -webkit-box-pack: end;
-    border-bottom: 1px #ccc solid;        
 }
 
 .add_form {	
@@ -83,7 +87,9 @@ header .dream_info {
 }
 
 ul.user_actions {
-   border-top: 1px #ccc solid;    		
+    display: -webkit-box;
+    margin-top: 10px;
+    -webkit-box-pack: end;
 }
 
 ul.user_actions .action a:visited {
@@ -97,27 +103,20 @@ ul.user_actions .action a {
 }
 
 ul.user_actions .action {
-   height: 44px;
-   border-bottom: 1px #ccc solid;
-   text-align: left;
+    width: 44px;
+    text-align: center;
+    border: 1px #ccc solid;
+    line-height: 44px;
+    height: 44px;
+    background: #FFF;
+    border-radius: 22px;
+    margin: 0 5px 0 0;
 }
 
 ul.user_actions .action img {
-   position: absolute;		
    width: 20px;
    height: 20px;
-   top: 10px;
-   left: 0px;
-}
-
-ul.user_actions .action_name {
-    display: block;
-    width: 100px;
-    line-height: 44px;
-    padding-left: 30px;
-    height: 44px;
-    margin: 0 auto;		
-    position: relative;
+   margin-top: 11px;
 }
 
 ul {
@@ -143,6 +142,10 @@ a:visited {
 
 .dream_wrapper {
     width: 100%;
+}
+
+.dream {
+    margin-bottom: 80px;
 }
 
 .dream h1 {
@@ -198,8 +201,15 @@ a:visited {
 
 .comment {
     position: relative;	 
+    margin: 0 auto 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+}
+
+.comment p {
     padding: 15px;
-    border-bottom: 1px #ccc solid;
 }
 
 .comment_body {
@@ -238,24 +248,26 @@ a:visited {
 
 .cheers_btn_form {
     text-align: right;
+    margin-right: 10px;
 }
 
 .cheers_btn {
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: #FFF;
     border: 1px #ccc solid;
     line-height: 24px;
-    height: 30px;
-    width: 100px;
-    font-size: 14px;
+    height: 50px;
+    width: 50px;
+    font-size: 11px;
+    color: #000;
 }
 
 .cheers_message {
     font-size: 12px;
     margin-bottom: 0px;
-    color: #888;
+    color: #fff;
     margin-right: 10px;
-    line-height: 30px;
+    line-height: 50px;
 }
 
 .tool {
@@ -290,7 +302,7 @@ a:visited {
 }
 
 .order_save {
-    margin: 5px;
+    margin: 10px 0 0 20px;
     text-align: right;
 }
 
