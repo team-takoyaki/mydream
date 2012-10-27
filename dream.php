@@ -7,7 +7,7 @@ session_start();
 $is_my_dream = false;
 
 if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
-    $user_id = intval($_SESSION['user_id']);
+    $user_id = $_SESSION['user_id'];
 } else {
     header('Location:' . BASE_URL);
     exit;
@@ -17,128 +17,129 @@ if (isset($_GET['id']) === true && $_GET['id'] !== '') {
     $dream_id = intval($_GET['id']);
 }
 
-if (isset($_POST['user_comment']) === true && $_POST['user_comment'] !== '') {
-    $user_comment = $_POST['user_comment'];
+if (isset($_POST['comment_submit']) === true && $_POST['comment_submit'] !== '') {
+    $comemnt_submit = $_POST['comment_submit'];
+}
+
+if (isset($_POST['comment']) === true && $_POST['comment'] !== '') {
+    $comment = $_POST['comment'];
+}
+
+if (isset($_POST['thanks_submit']) === true && $_POST['thanks_submit'] !== '') {
+    $thanks_submit = $_POST['thanks_submit'];
 }
 
 if (isset($_POST['comment_id']) === true && $_POST['comment_id'] !== '') {
     $comment_id = $_POST['comment_id'];
 }
 
-if (isset($_POST['cheers']) === true && $_POST['cheers'] !== '') {
-    $cheers = $_POST['cheers'];
+if (isset($_POST['cheers_submit']) === true && $_POST['cheers_submit'] !== '') {
+    $cheers_submit = $_POST['cheers_submit'];
 }
 
-if (isset($_GET['comments_id']) === true && $_GET['comments_id'] !== '') {
-   $comments_id = $_GET['comments_id'];
+if (isset($_POST['order_change']) === true && $_GET['order_change'] !== '') {
+    $order_change = $_GET['order_change'];
+}
+
+if (isset($_POST['order_comment_ids']) === true && $_GET['order_comment_ids'] !== '') {
+    $order_comment_ids = $_GET['order_comment_ids'];
+}
+
+if (check_dream_id($dream_id) === false) {
+    echo '不正なアクセスです';
+    exit;
 }
 
 $dbh = connect_db();
-
 show_error_db($dbh);
 
-if (isset($user_comment) === true && isset($user_id) === true) {
-    $flg = insert_comment($dbh, $user_comment, $user_id, $dream_id);
-    if ($flg === null) {
-        echo 'insert error';
-        exit();
+if (isset($comment_submit) === true && isset($comment) === true) {
+    if (insert_comment($dbh, $comment, $user_id, $dream_id) === null) {
+        echo 'コメントを書き込めませんでした';
+        exit;
     }
 }
 
-if (isset($comments_id) === true) {
+if (isset($order_change) === true && isset($order_comment_ids) === true) {
     $num = 1;
-    foreach ($comments_id as $comment_id) {
+    foreach ($order_comment_ids as $comment_id) {
         update_comment_order($dbh, $comment_id, $num);
-	$num += 1;
+        $num += 1;
     }
     exit;
 }
 
-
-$cnt = check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id);
-if ($cnt === null) {
-    echo 'sql error';
-    exit();
-}
-
-if (isset($comment_id) === true && isset($user_id) === true && $cnt === 0) {
-    $flg = insert_thank($dbh, $comment_id, $user_id);
-    if ($flg === null) {
-        echo 'insert error';
-        exit();
+if (isset($comment_id) === true) {
+    $is_thank_by_user_id = check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id);
+    if ($is_thank_by_user_id === null) {
+        echo 'ありがとうの数の取得に失敗しました';
+        exit;
     }
 }
 
-if (isset($dream_id) === true && check_dream_id($dream_id) !== null) {
-    $cheer_flg = check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id);
-    if ($cheer_flg === null) {
-        echo 'sql error';
-        exit();
-    }
-    if (isset($cheers) === true && isset($user_id) === true && $cheer_flg === true) {
-        $flg = insert_cheer($dbh, $dream_id, $user_id);
-        if ($flg === null) {
-            echo 'insert error';
-            exit();
-        }
-	$cheer_flg = false;
-    }
-
-    $cheer_users = select_cheer_count_from_dream_id($dbh, $dream_id);
-    if ($cheer_users === null) {
-        echo 'error cheer_users';
-        exit();
-    }
-
-    $dream = select_dream_from_dream_id($dbh, $dream_id);
-    if ($dream === null) {
-        echo 'error dream';
-        exit();
-    }
-    $dream_user = $dream['user_id'];
-
-    $comments = select_comments_from_dream_id($dbh, $dream_id);
-
-    if ($comments === null) {
-        echo 'error comments';
-        exit();
-    }
-
-    $thank_users = array();
-    foreach ($comments as $comment) {
-        $thank_usr = select_thank_count_from_comment_id($dbh, $comment['id']);
-        $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
-        if ($thank_usr === null || $thank_count === null) {
-            echo 'error thank user or thank count';
-            exit();
-        }
-        $thank_users[$comment['id']] = $thank_usr;
-        //comment, user_idから紐付いたthankカウント取得
-
-        //$is_thank[$comment['id']]: 各commentについてthanksボタンが押せるかどうかのflg
-        $is_thank[$comment['id']] = false;
-        if ($user_id === intval($dream_user) && $thank_count === 0) {
-            //夢のuser_idとアクセス者のuser_idが等しくかつ, thank_countが0と等しい場合はthankが押せる
-            $is_thank[$comment['id']] = true;
-        }
+if (isset($thanks_submit) === true && isset($is_thank_by_user_id) === true && $is_thank_by_user_id === 0) {
+    if (insert_thank($dbh, $comment_id, $user_id) === null) {
+        echo 'ありがとうを押せませんでした';
+        exit;
     }
 }
 
-if ($dream_user === $user_id) {
-    $is_my_dream = true;
+$is_cheer_by_user_id = check_cheer_user_from_dream_id_and_user_id($dbh, $dream_id, $user_id);
+if ($is_cheer_by_user_id === null) {
+    echo '応援の数の取得に失敗しました';
+    exit;
+}
+
+if (isset($cheers_submit) === true && isset($is_cheer_by_user_id) === true && $is_cheer_by_user_id === true) {
+    if (insert_cheer($dbh, $dream_id, $user_id) === null) {
+        echo 'がんばれを押せませんでした';
+        exit;
+    }
+    $is_cheer_by_user_id = false;
+}
+
+$cheer_users_count = select_cheer_count_from_dream_id($dbh, $dream_id);
+if ($cheer_users_count === null) {
+    echo '応援の数の取得に失敗しました';
+    exit;
+}
+
+$dream = select_dream_from_dream_id($dbh, $dream_id);
+if ($dream === null) {
+    echo '夢を取得できませんでした';
+    exit;
+}
+/* $dream_user = $dream['user_id']; */
+
+$comments = select_comments_from_dream_id($dbh, $dream_id);
+if ($comments === null) {
+    echo 'コメントを取得できませんでした';
+    exit;
+}
+
+$is_thank_by_comment_id = array();
+foreach ($comments as $comment) {
+    $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
+    if ($thank_count === null) {
+        echo 'ありがとうの数の取得に失敗しました';
+        exit;
+    }
+
+    if ($thank_count === 0 && $user_id !== $comment['user_id']) {
+        $is_thank_by_comment_id[$comment['id']] = true;
+    } else {
+        $is_thank_by_comment_id[$comment['id']] = false;
+    }
 }
 
 $user_info = select_user_from_user_id($dbh, $user_id);
 if ($user_info === null) {
-  echo 'error get user info on top';
-  exit();
+    echo 'ユーザー情報が取得できませんでした';
+    exit;
 }
-$user_page_url = get_user_page_url($user_info);
+$user_name = $user_info['user_name'];
+/* $user_page_url = get_user_page_url($user_info); */
 
 $dbh = null;
 
-if (isset($dream) === true) {
-  include_once(TMPL_DIR . '/dream.html.php');
-} else {
-  echo 'Error... Not found DREAM ID.';
-}
+include_once(TMPL_DIR . '/dream.html.php');

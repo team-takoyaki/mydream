@@ -9,97 +9,32 @@ body {
     width: 320px;
 }
 
-.vertical_middle {
-    width: 320px;
-    height: 131;
-    display: table-cell;
-    vertical-align: middle;
-    line-height: 0px;
-}
-
-header {
-    margin-bottom: 30px;
-}
-
-header .title {
-    margin: 30px 0px 0px;
-    background: url(../images/cloud.png) no-repeat;
-    text-align: center;
-    width: 320px;
-    height: 131px;
-    display: table;
-    line-height: 0px;
-}
-
-header .title h1 {
-    font-size: 18px;
-    font-weight: normal;
-    color: #000;
-}
-
-header .dream_info {
-    margin-top: 10px;
-    padding: 5px 0px;
+/* ヘッダーのユーザーアクション */
+nav {
     display: -webkit-box;
+    margin-top: 10px;
     -webkit-box-pack: end;
+    line-height: 44px;
 }
 
-.add_form {	
-    width: 290px;
-    margin: 0 auto;	    
+.top_actions_message {
+    color: #FFF;
+    font-size: 12px;
+    margin-right: 10px;
 }
 
-.item .title {
-   margin: 10px 0;
-   width: 280px;      
-   height: 44px;
-   padding: 5px;
-   border: 1px #ccc solid;
-   font-size: 14px;
-   border-radius: 3px;
-}
-
-.item textarea.body {
-   width: 280px;      
-   height: 320px;	 
-   margin: 0px;
-   font-size: 14px;
-   padding: 5px;
-   border: 1px #ccc solid;
-   border-radius: 3px;
-}
-
-.item select.category {
-  margin: 10px 0 20px;      
-  width: 290px;    
-  height: 44px;      
-}
-
-.add_form .submit {
-    width: 290px;
-    height: 44px;	    
-    border: 1px #ccc solid;
-    border-radius: 3px;
-    background: #FFF;
-    font-size: 14px;
-    line-height: 40px;
-    margin-bottom: 60px;
+.top_actions_message a {
+    text-decoration: none;
+    color: #0000ff;
 }
 
 ul.user_actions {
     display: -webkit-box;
-    margin-top: 10px;
     -webkit-box-pack: end;
-}
-
-ul.user_actions .action a:visited {
-    color: #000;		
-}
-
-ul.user_actions .action a {
-    display: block;
-    color: #000;
-    position: relative;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    height: 44px;
 }
 
 ul.user_actions .action {
@@ -110,7 +45,7 @@ ul.user_actions .action {
     height: 44px;
     background: #FFF;
     border-radius: 22px;
-    margin: 0 5px 0 0;
+    margin-left: 5px;
 }
 
 ul.user_actions .action img {
@@ -119,117 +54,91 @@ ul.user_actions .action img {
    margin-top: 11px;
 }
 
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-ul li {
-    list-style-type: none;
-}
-
-a {
+ul.user_actions .action a {
     text-decoration: none;
+    display: block;
 }
 
-a {
-  color: #000;
+ul.top_actions .action {
+    margin-left: 5px;
 }
 
-a:visited {
-  color: #000;
+/* ページのデザイン */
+.dreams_message {
+    margin: 30px 0 0;
+    text-align: center;
 }
 
-.dream_wrapper {
-    width: 100%;
+.dreams_message h3 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #FFF;
 }
 
 .dream {
-    margin-bottom: 80px;
+    margin: 30px 0 10px;
+    width: 320px;
+    height: 131px;
+    background: url(../images/cloud.png) no-repeat;
+    position: relative;
 }
 
-.dream h1 {
-    font-size: 18px;
-    margin-top: 0px;
-    font-weight: normal;
+.dream .dream_info {
+    margin: 0 auto;
+    width: 280px;
+    height: 131px;
+    display: table;
 }
 
-.dream_body {
-    font-size: 14px;
+.dream .dream_info .dream_title {
+    height: 131px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.dream .author {
-    font-size: 12px;
-    color: #888;
+.careful {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
-.dream .author_wrapper {
-    margin-top: 20px;
-    text-align: right;
-}
-
-.dream_inner {
-    border-bottom: 1px #ccc solid;
-    padding: 15px;
-}
-
-.comment_form {
-    margin: 0 auto 40px;
-    padding: 10px;
-}
-
-.comment_form .user_comment {
-   width: 290px;
-   height: 140px;
-   margin: 0px;
-   font-size: 14px;
-   padding: 5px;
-   border: 1px #ccc solid;
-   border-radius: 3px;
-}
-
-.comment_form .submit {
-    width: 300px;
-    height: 44px;
-    border: 1px #ccc solid;
-    border-radius: 3px;
-    background: #FFF;
-    font-size: 14px;
-    line-height: 40px;
+.dream_tool {
     margin-top: 10px;
+    padding: 5px 0px;
+    display: -webkit-box;
+    -webkit-box-pack: end;
 }
 
-.comment {
-    position: relative;	 
-    margin: 0 auto 20px;
-    width: 300px;
-    background-color: #fff;
-    border: 1px #ccc solid;
-    border-radius: 5px;
-}
-
-.comment p img {
-    line-height: 0px;
-    width: 270px;
-}
-
-.comment p {
-    padding: 15px;
-}
-
-.comment_body {
-    margin: 0px;
-    font-size: 14px;
-}
-
-.comment_author {
-    font-size: 12px;
-    margin-top: 20px;
+.dream_tool .cheers_btn_form {
     text-align: right;
-    color: #888;
+    margin-right: 10px;
 }
 
-.thanks_btn {
+.dream_tool .cheers_btn {
+    border-radius: 30px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    line-height: 24px;
+    height: 60px;
+    width: 60px;
+    font-size: 11px;
+    color: #000;
+}
+
+.dream_tool .cheers_message {
+    font-size: 12px;
+    margin-bottom: 0px;
+    color: #fff;
+    margin-right: 10px;
+    line-height: 60px;
+}
+
+.dream_tool .order_save {
+    margin: 15px 0 0 20px;
+    text-align: right;
+}
+
+.dream_tool .order_edit_btn {
     border-radius: 5px;
     background-color: #FFF;
     border: 1px #ccc solid;
@@ -240,51 +149,64 @@ a:visited {
     color: #333;
 }
 
-.thanks_btn:disabled {
-    color: #888;
-}
-
-.thanks_message {
-    text-align: center;
-    font-size: 12px;
-    margin: 3px;
-    color: #888;
-}
-
-.cheers_btn_form {
-    text-align: right;
-    margin-right: 10px;
-}
-
-.cheers_btn {
-    border-radius: 25px;
+.dream_tool .order_save_btn {
+    border-radius: 5px;
     background-color: #FFF;
     border: 1px #ccc solid;
     line-height: 24px;
-    height: 50px;
-    width: 50px;
-    font-size: 11px;
-    color: #000;
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+    color: #333;
 }
 
-.cheers_message {
-    font-size: 12px;
-    margin-bottom: 0px;
-    color: #fff;
-    margin-right: 10px;
-    line-height: 50px;
+.display_none {
+    display: none;
 }
 
-.tool {
+.comments_wrapper {
+    width: 100%;
+}
+
+ul.comments {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+    margin: 20px 0 40px;
+}
+
+li.comment {
+    position: relative;
+    margin: 0 auto 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+}
+
+li.comment p img {
+    line-height: 0px;
+    width: 270px;
+}
+
+li.comment p {
+    padding: 15px;
+}
+
+.comment .display_none {
+    display: none;
+}
+
+.comment_tool {
    position: absolute;
    bottom: 10px;
    right: 10px;
-   display: -webkit-box;  
+   display: -webkit-box;
    -webkit-box-pack: end;
    margin-top: 40px;
 }
 
-.edit_btn {
+.comment_tool .edit_btn {
     text-align: center;
     border-radius: 5px;
     background-color: #FFF;
@@ -297,21 +219,7 @@ a:visited {
     color: #333;
 }
 
-.display_none {
-    display: none;
-}
-
-.ui-state-highlight {
-    height: 2.2em;
-    border: dotted 2px #0000ff;
-}
-
-.order_save {
-    margin: 10px 0 0 20px;
-    text-align: right;
-}
-
-.order_edit_btn {
+.comment_tool .thanks_btn {
     border-radius: 5px;
     background-color: #FFF;
     border: 1px #ccc solid;
@@ -322,13 +230,32 @@ a:visited {
     color: #333;
 }
 
-.order_save_btn {
+.comment_tool .thanks_btn:disabled {
+    color: #888;
+}
+
+.comment_form {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.comment_form .user_comment {
     border-radius: 5px;
     background-color: #FFF;
     border: 1px #ccc solid;
-    line-height: 24px;
-    height: 30px;
-    width: 100px;
+    width: 290px;
+    height: 200px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.comment_form .comment_submit {
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    line-height: 44px;
+    height: 44px;
+    width: 300px;
     font-size: 14px;
     color: #333;
 }

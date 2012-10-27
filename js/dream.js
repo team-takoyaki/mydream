@@ -1,17 +1,18 @@
 $(function() {
     $('.order_save_btn').click(function() {
-          var comments = $('.ui-state-default');
-	  var comments_id = new Array();
-	  for (var i = 0; i < comments.length; i++) {
-	      comments_id.push($(comments[i]).data('comment-id'));	       
-          }
+                                   var comments = $('.ui-state-default');
+	                               var comment_ids = new Array();
+	                               for (var i = 0; i < comments.length; i++) {
+	                                   comment_ids.push($(comments[i]).data('comment-id'));	       
+                                   }
 
           $.ajax({
-              type: 'GET',
-	      url: 'dream.php',
-	      data: {
-	          comments_id: comments_id
-	      },
+              type: 'POST',
+	          url: 'dream.php',
+	          data: {
+                  order_change: 1,
+	              order_comment_ids: comment_ids
+	          },
 	      success: function(data) {
 	          alert('順番を保存しました');
 		  $('.order_edit_btn').removeClass('display_none');

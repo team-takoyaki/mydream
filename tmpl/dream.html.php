@@ -2,94 +2,94 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title><?= $dream['title']; ?></title>
+        <title>ぼくの夢リスト</title>
         <link rel="stylesheet" type="text/css" href="css/dream.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     </head>
     <body>
         <div id="body">
-            <nav>
-                <ul class="user_actions">
-                    <li class="action">
-                        <a href="add.php">
-                            <span class="action_name">
-                                <img src="<?= IMAGES_DIR ?>/write.png">
-                            </span>
-                        </a>
-                    </li>
-                    <li class="action">
-                        <a href="search.php">
-                            <span class="action_name">
-                                <img src="<?= IMAGES_DIR ?>/search.png">
-                            </span>
-                        </a>
-                    </li>
-                    <li class="action">
-                        <a href="logout.php">
-                            <span class="action_name">
-                                <img src="<?= IMAGES_DIR ?>/logout.png">
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <header>
-                <div class="title">
-                    <div class="vertical_middle">
-                        <h1><?= htmlspecialchars($dream['title']); ?></h1>
-                    </div>
-		        </div>
-		        <div class="dream_info">
-                    <form method="POST" class="cheers_btn_form">
-			            <?php if ($cheer_users > 0) { ?>
-			            <?php } ?>
-			            <?php if ($cheer_flg === true) { ?>
-			            <button name="cheers" class="cheers_btn" value="cheers">がんばれ</button>
-			            <?php } else { ?>
-			            <button name="cheers" class="cheers_btn" value="cheers" disabled>応援中</button>
-			            <?php } ?>
-                    </form>		  
-		            <?php if ($cheer_users > 0) { ?>
-		            <div class="cheers_message">
-			            <?= $cheer_users ?>人が応援しています
-		            </div>
-		            <?php } ?>
-		            <div class="order_save">
-			            <button class="order_edit_btn" name="order_edit">編集する</button>
-			            <button class="order_save_btn display_none" name="order_save">保存</button>
-		            </div>  
-		        </div>
-            </header>
-            <div class="dream_wrapper">
-                <div class="dream">
-		            <ul class="sortable">
-                        <?php foreach ($comments as $comment) { ?>
-		                <li class="ui-state-default" data-comment-id="<?= $comment['id'] ?>">
-                            <div class="comment">
-                                <p class="comment_body"><?= set_html_from_text($comment['body']); ?></p>
-			                    <div class="tool display_none">
-			                        <div class="edit_btn">編集する</div>
-                                    <form method="POST" class="thanks_btn_form">
-				                        <?php if ($is_thank[$comment['id']] === true) { ?>
-				                        <button name="comment_id" class="thanks_btn" value="<?= $comment['id']; ?>">メモる</button>
-				                        <?php } else { ?>
-				                        <button name="comment_id" class="thanks_btn" value="<?= $comment['id']; ?>" disabled>メモってます</button>
-				                        <?php } ?>
-                                    </form>
-			                    </div>
-                            </div>
-		                </li>
-                        <?php } ?>
-		            </ul>
-                    <form method="POST" class="comment_form">
-                        <textarea name="user_comment" class="user_comment"></textarea>
-                        <button name="post" class="submit">投稿</button>
-                    </form>
+        <nav>
+            <div class="top_actions_message">
+                こんにちは、<a href="<?= BASE_URL ?>/top.php"><?= $user_name ?>さん</a>
+            </div>
+            <ul class="user_actions">
+                <li class="action">
+                    <a href="<?= BASE_URL ?>/add.php">
+                        <span class="action_name">
+                            <img src="<?= IMAGES_DIR ?>/write.png">
+                        </span>
+                    </a>
+                </li>
+                <li class="action">
+                    <a href="<?= BASE_URL ?>/search.php">
+                        <span class="action_name">
+                            <img src="<?= IMAGES_DIR ?>/search.png">
+                        </span>
+                    </a>
+                </li>
+                <li class="action">
+                    <a href="<?= BASE_URL ?>/logout.php" class="logout_btn">
+                        <span class="action_name">
+                            <img src="<?= IMAGES_DIR ?>/logout.png">
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="dream">
+            <div class="dream_info">
+                <div class="dream_title">
+                    <?= htmlspecialchars($dream['title']); ?>
                 </div>
             </div>
-	    </div>
-	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-	    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
-	    <script src="js/dream.js"></script>
+        </div>
+
+        <div class="dream_tool">
+            <form method="POST" class="cheers_btn_form">
+                <?php if ($is_cheer_by_user_id === true) { ?>
+                <button name="cheers_submit" class="cheers_btn" value="1">がんばれ</button>
+                <?php } else { ?>
+                <button name="cheers_submit" class="cheers_btn" value="1" disabled>応援中</button>
+                <?php } ?>
+            </form>
+            <?php if ($cheer_users_count > 0) { ?>
+            <div class="cheers_message">
+                <?= $cheer_users_count ?>人が応援しています
+            </div>
+            <?php } ?>
+            <div class="order_save">
+                <button class="order_edit_btn" name="order_edit">編集する</button>
+                <button class="order_save_btn display_none" name="order_save">保存</button>
+            </div>
+        </div>
+
+        <div class="comments_wrapper">
+            <ul class="comments sortable">
+                <?php foreach ($comments as $comment) { ?>
+                <li class="comment ui-state-default" data-comment-id="<?= $comment['id'] ?>">
+                    <p><?= set_html_from_text($comment['body']); ?></p>
+                    <div class="comment_tool display_none">
+                        <div class="edit_btn">編集する</div>
+                        <form method="POST" class="thanks_btn_form">
+                            <input type="hidden" name="comment_id" value="<?= $comment['id']; ?>">
+                            <?php if ($is_thank_by_comment_id[$comment['id']] === true) { ?>
+                            <button name="thanks_submit" class="thanks_btn" value="1">メモる</button>
+                            <?php } else { ?>
+                            <button name="thanks_submit" class="thanks_btn" value="1" disabled>メモってます</button>
+                            <?php } ?>
+                        </form>
+                    </div>
+                </li>
+                <?php } ?>
+            </ul>
+            <form method="POST" class="comment_form">
+                <textarea name="comment" class="user_comment"></textarea>
+                <button name="comment_submit" class="comment_submit" value="1">投稿</button>
+            </form>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+        <script src="js/dream.js"></script>
     </body>
 </html>
