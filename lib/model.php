@@ -13,7 +13,7 @@ function connect_db() {
 }
 
 function select_id_and_title_from_dr_dream($dbh) {
-    $sql = 'select id, title from dr_dream';
+    $sql = 'select id, title from dr_dream order by create_date desc limit 3';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute();

@@ -1,75 +1,147 @@
 body {
     margin: 0px;
     padding: 0px;
-    background: #eee;
+    background: url(../images/canvas03.jpg);
 }
 
 #body {
-    border-top: 1px #ccc solid;
-    border-right: 1px #ccc solid;
-    border-left: 1px #ccc solid;
     margin: 0 auto;
     width: 320px;
-    background-color: #FFF;
 }
 
-#body h1 {
-    text-align: center;
+nav {
+    display: -webkit-box;
+    margin-top: 10px;
+    -webkit-box-pack: end;
+    line-height: 44px;
 }
 
-#body h2 {
-    text-align: center;
-    font-size: 20px;
+.top_actions_message {
+    color: #FFF;
+    font-size: 12px;
+    margin-right: 10px;
 }
 
-#title_logo {
-    width: 320px;
-    height: 230px;
-    background-image:url(../images/top_logo.jpg);
-    background-repeat: none;
-    background-size:cover;
+.top_actions_message a {
+    text-decoration: none;
+    color: #0000ff;
 }
 
-ul {
+ul.top_actions {
+    display: -webkit-box;
+    -webkit-box-pack: end;
+    list-style-type: none;
     margin: 0px;
     padding: 0px;
+    height: 44px;
 }
 
-ul li {
+ul.user_actions {
+    display: -webkit-box;
+    -webkit-box-pack: end;
     list-style-type: none;
-}
-
-ul.user_actions .action a:visited {
-    color: #000;
-}
-
-ul.user_actions .action a {
-    display: block;
-    color: #000;
-    position: relative;
-    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+    height: 44px;
 }
 
 ul.user_actions .action {
+    width: 44px;
+    text-align: center;
+    border: 1px #ccc solid;
+    line-height: 44px;
     height: 44px;
-    border-bottom: 1px #ccc solid;
-    text-align: left;
+    background: #FFF;
+    border-radius: 22px;
+    margin-left: 5px;
 }
 
 ul.user_actions .action img {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 10px;
-    left: 0px;
+   width: 20px;
+   height: 20px;
+   margin-top: 11px;
 }
 
-ul.user_actions .action_name {
-    display: block;
-    width: 160px;
-    line-height: 44px;
-    padding-left: 30px;
+ul.top_actions .action {
+    margin-left: 5px;
+}
+
+ul.top_actions .action a {
+    text-decoration: none;
+}
+
+ul.top_actions .action a img {
+    width: 44px;
     height: 44px;
-    margin: 0 auto;
+}
+
+.site_title {
+    width: 320px;
+    height: 131px;
+    background: url(../images/cloud.png) no-repeat;
     position: relative;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1 img {
+    margin: 45px 0;
+    width: 280px;
+}
+
+h2 {
+    left: 80px;
+    font-size: 13px;
+    position: absolute;
+    bottom: 4px;
+}
+
+.dreams_message {
+    margin: 30px 0 0;
+    text-align: center;
+}
+
+.dreams_message h3 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #FFF;
+}
+
+ul.dreams {
+    list-style-type: none;
+    margin: 0 0 30px;
+    padding: 0;
+}
+
+ul.dreams li.dream {
+    width: 320px;
+    height: 131px;
+    background: url(../images/cloud.png) no-repeat;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+ul.dreams li.dream .dream_info {
+    margin: 0 auto;
+    width: 280px;
+    height: 131px;
+    display: table;
+}
+
+ul.dreams li.dream .dream_info .dream_title {
+    height: 131px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+ul.dreams a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+ul.dreams a:visited {
+    color: #000;
 }
