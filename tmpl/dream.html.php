@@ -9,9 +9,11 @@
     <body>
         <div id="body">
             <header>
-		<div class="title">
-                    <h1><?= htmlspecialchars($dream['title']); ?></h1>
-		</div>
+                <div class="title">
+                    <div class="vertical_middle">
+                        <h1><?= htmlspecialchars($dream['title']); ?></h1>
+                    </div>
+		        </div>
 		<div class="dream_info">
 		    <?php if ($cheer_users > 0) { ?>
 		    <div class="cheers_message">

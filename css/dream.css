@@ -5,19 +5,26 @@ body {
 }
 
 #body {
-    border-top: 1px #ccc solid;
-    border-right: 1px #ccc solid;
-    border-left: 1px #ccc solid;
     margin: 0 auto;
     width: 320px;
-    background-color: #FFF;
+}
+
+.vertical_middle {
+    width: 320px;
+    height: 131;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 0px;
 }
 
 header .title {
-    padding: 10px 0;
-    border-bottom: 1px #ccc solid;
-    background-color: #ccc;
+    margin: 30px 0px 30px;
+    background: url(../images/cloud.png) no-repeat;
     text-align: center;
+    width: 320px;
+    height: 131px;
+    display: table;
+    line-height: 0px;
 }
 
 header .title h1 {
@@ -136,10 +143,6 @@ a:visited {
 
 .dream_wrapper {
     width: 100%;
-}
-
-.dream {
-
 }
 
 .dream h1 {
