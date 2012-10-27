@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="action">
-                    <a href="logout.php">
+                    <a href="logout.php" class="logout_btn">
                         <span class="action_name">
                             <img src="<?= IMAGES_DIR ?>/logout.png">
                         </span>
@@ -56,5 +56,7 @@
         </ul>
         <?php } ?>
     </div>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/top.js"></script>
 </body>
 </html>
