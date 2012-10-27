@@ -105,7 +105,7 @@ function select_user_from_user_id($dbh, $user_id) {
 }
 
 function select_dreams_from_user_id($dbh, $user_id) {
-    $sql = 'select id, title, body, category_id from dr_dream where user_id = :user_id';
+    $sql = 'select id, title, body, category_id from dr_dream where user_id = :user_id order by update_date desc limit 10';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':user_id' => $user_id));

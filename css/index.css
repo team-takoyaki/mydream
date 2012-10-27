@@ -9,6 +9,7 @@ body {
     width: 320px;
 }
 
+/* ヘッダーのユーザーアクション */
 nav {
     display: -webkit-box;
     margin-top: 10px;
@@ -62,12 +63,18 @@ ul.user_actions .action img {
    margin-top: 11px;
 }
 
+ul.user_actions .action a {
+    text-decoration: none;
+    display: block;
+}
+
 ul.top_actions .action {
     margin-left: 5px;
 }
 
 ul.top_actions .action a {
     text-decoration: none;
+    display: block;
 }
 
 ul.top_actions .action a img {
@@ -75,6 +82,7 @@ ul.top_actions .action a img {
     height: 44px;
 }
 
+/* トップページのレイアウト */
 .site_title {
     width: 320px;
     height: 131px;
@@ -87,7 +95,7 @@ h1 {
 }
 
 h1 img {
-    margin: 45px 0;
+    margin: 35px 0;
     width: 280px;
 }
 
@@ -95,9 +103,10 @@ h2 {
     left: 80px;
     font-size: 13px;
     position: absolute;
-    bottom: 4px;
+    bottom: 15px;
 }
 
+/* ページのデザイン */
 .dreams_message {
     margin: 30px 0 0;
     text-align: center;

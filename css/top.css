@@ -1,166 +1,115 @@
 body {
     margin: 0px;
     padding: 0px;
-    background: #eee;
+    background: url(../images/canvas03.jpg);
 }
 
 #body {
-    border-top: 1px #ccc solid;
-    border-right: 1px #ccc solid;
-    border-left: 1px #ccc solid;
     margin: 0 auto;
     width: 320px;
-    background-color: #FFF;
 }
 
-header {
+/* ヘッダーのユーザーアクション */
+nav {
     display: -webkit-box;
-    -webkit-box-pack: center;
-    padding: 10px 0;
-    border-bottom: 1px #ccc solid;
+    margin-top: 10px;
+    -webkit-box-pack: end;
+    line-height: 44px;
 }
 
-header h1 {
-    font-size: 18px;
-    font-weight: normal;
-    -webkit-box-ordinal-group: 2;
-}
-
-header .user_image {
-    -webkit-box-ordinal-group: 1;
+.top_actions_message {
+    color: #FFF;
+    font-size: 12px;
     margin-right: 10px;
 }
 
-ul.user_actions .action a:visited {
-    color: #000;		
+.top_actions_message a {
+    text-decoration: none;
+    color: #0000ff;
 }
 
-ul.user_actions .action a {
-    display: block;
-    color: #000;
-    position: relative;
+ul.user_actions {
+    display: -webkit-box;
+    -webkit-box-pack: end;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    height: 44px;
 }
 
 ul.user_actions .action {
-   height: 44px;
-   border-bottom: 1px #ccc solid;
-   text-align: left;
+    width: 44px;
+    text-align: center;
+    border: 1px #ccc solid;
+    line-height: 44px;
+    height: 44px;
+    background: #FFF;
+    border-radius: 22px;
+    margin-left: 5px;
 }
 
 ul.user_actions .action img {
-   position: absolute;		
    width: 20px;
    height: 20px;
-   top: 10px;
-   left: 0px;
+   margin-top: 11px;
 }
 
-ul.user_actions .action_name {
-    display: block;
-    width: 100px;
-    line-height: 44px;
-    padding-left: 30px;
-    height: 44px;
-    margin: 0 auto;		
-    position: relative;
-}
-
-nav {
-    text-align: center;
-    display: -webkit-box;
-    border-top: 1px #ccc solid;
-    border-bottom: 1px #ccc solid;
-    height: 44px;
-    line-height: 44px;
-}
-
-#add_btn {
-    background-color: #bedbfd;
-}
-
-#list_btn {
-    background-color: #fed980;
-}
-
-.nav_btn {
-    width: 160px;
-    height: 100%;
-}
-
-#list_page .search_form .category {
-    margin: 15px 0;
-    width: 160px;
-}
-
-ul {
-    margin: 0px;
-    padding: 0px;
-}
-
-ul li {
-    list-style-type: none;
-}
-
-.dream {
-    padding: 10px;
-    font-size: 14px;
-    height: 60px;
-    border-bottom: 1px #ccc solid;
-    position: relative;
-}
-
-a {
+ul.user_actions .action a {
     text-decoration: none;
+    display: block;
 }
 
-.dream a {
-    color: #000;       
+ul.top_actions .action {
+    margin-left: 5px;
 }
 
-.dream_text {
-    line-height: 64px;
-}
-
-.dream .count_comments {
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    height: 10px;
-    font-size: 10px;
-    color: #8a8a8a;
-}
-
-#logo {
-    height: 60px;
-    line-height: 60px;
+/* ページのデザイン */
+.dreams_message {
+    margin: 30px 0 0;
     text-align: center;
-    font-size: 32px;
-    width: 100%;
-    background: #c0c0c0;
-    color: #fff;
 }
 
-.dream_message {
-    text-align: center;
-    height: 60px;
-    line-height: 60px;
-    padding: 0px;
-    margin: 0px;	       
-    border-bottom: 1px #ccc solid;
+.dreams_message h3 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #FFF;
 }
 
-a {
-  color: #000;
+ul.dreams {
+    list-style-type: none;
+    margin: 0 0 30px;
+    padding: 0;
 }
 
-a:visited {
-  color: #000;
+ul.dreams li.dream {
+    width: 320px;
+    height: 131px;
+    background: url(../images/cloud.png) no-repeat;
+    position: relative;
+    margin-bottom: 10px;
 }
 
-a .dream_message {
-    color: #0000ff;       	       
+ul.dreams li.dream .dream_info {
+    margin: 0 auto;
+    width: 280px;
+    height: 131px;
+    display: table;
 }
 
-a:visited .dream_message {
-    color: #0000ff;       	       
+ul.dreams li.dream .dream_info .dream_title {
+    height: 131px;
+    display: table-cell;
+    vertical-align: middle;
 }
+
+ul.dreams a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+ul.dreams a:visited {
+    color: #000;
+}
+
+
