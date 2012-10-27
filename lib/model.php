@@ -201,7 +201,7 @@ function insert_dream($dbh, $title, $body, $category_id, $user_id) {
     } catch (PDOException $e) {
         return null;
     }
-    return true;
+    return $dbh->lastInsertId('dr_dream_id_seq');
 }
 
 function select_dreams($dbh) {

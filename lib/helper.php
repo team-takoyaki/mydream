@@ -1,12 +1,5 @@
 <?php
 
-function check_dream_id($dream_id) {
-    if (preg_match('/^[0-9]+$/', $dream_id) === 1) {
-        return $dream_id;
-    }
-    return null;
-}
-
 function display_button($flg) {
     if ($flg === false) {
         echo htmlspecialchars('disabled');
@@ -44,4 +37,11 @@ function get_user_page_url($user_info) {
     $user_page = 'http://twitter.com/' . $users['user_name'];
   }
   return $user_page;
+}
+
+function check_dream_id($dream_id) {
+    if (preg_match('/^([0-9]+)$/', $dream_id, $matches) === 1) {
+        return $matches[1];
+    }
+    return false;
 }
