@@ -18,7 +18,7 @@ if (isset($_GET['id']) === true && $_GET['id'] !== '') {
 }
 
 if (isset($_POST['comment_submit']) === true && $_POST['comment_submit'] !== '') {
-    $comemnt_submit = $_POST['comment_submit'];
+    $comment_submit = $_POST['comment_submit'];
 }
 
 if (isset($_POST['comment']) === true && $_POST['comment'] !== '') {
@@ -37,15 +37,15 @@ if (isset($_POST['cheers_submit']) === true && $_POST['cheers_submit'] !== '') {
     $cheers_submit = $_POST['cheers_submit'];
 }
 
-if (isset($_POST['order_change']) === true && $_GET['order_change'] !== '') {
-    $order_change = $_GET['order_change'];
+if (isset($_POST['order_change']) === true && $_POST['order_change'] !== '') {
+    $order_change = $_POST['order_change'];
 }
 
-if (isset($_POST['order_comment_ids']) === true && $_GET['order_comment_ids'] !== '') {
-    $order_comment_ids = $_GET['order_comment_ids'];
+if (isset($_POST['order_comment_ids']) === true && $_POST['order_comment_ids'] !== '') {
+    $order_comment_ids = $_POST['order_comment_ids'];
 }
 
-if (check_dream_id($dream_id) === false) {
+if (isset($order_change) === false && check_dream_id($dream_id) === false) {
     echo '不正なアクセスです';
     exit;
 }
@@ -66,6 +66,7 @@ if (isset($order_change) === true && isset($order_comment_ids) === true) {
         update_comment_order($dbh, $comment_id, $num);
         $num += 1;
     }
+    print "200";
     exit;
 }
 
