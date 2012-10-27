@@ -66,7 +66,7 @@
                         <?php foreach ($comments as $comment) { ?>
 		                <li class="ui-state-default" data-comment-id="<?= $comment['id'] ?>">
                             <div class="comment">
-                                <p class="comment_body"><?= set_linked_from_text($comment['body']); ?></p>
+                                <p class="comment_body"><?= set_html_from_text($comment['body']); ?></p>
 			                    <div class="tool display_none">
 			                        <div class="edit_btn">編集する</div>
                                     <form method="POST" class="thanks_btn_form">

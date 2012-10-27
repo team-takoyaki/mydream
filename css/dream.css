@@ -174,12 +174,12 @@ a:visited {
 }
 
 .comment_form {
-    padding: 15px;
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
+    padding: 10px;
 }
 
 .comment_form .user_comment {
-   width: 280px;
+   width: 290px;
    height: 140px;
    margin: 0px;
    font-size: 14px;
@@ -189,7 +189,7 @@ a:visited {
 }
 
 .comment_form .submit {
-    width: 290px;
+    width: 300px;
     height: 44px;
     border: 1px #ccc solid;
     border-radius: 3px;
@@ -206,6 +206,11 @@ a:visited {
     background-color: #fff;
     border: 1px #ccc solid;
     border-radius: 5px;
+}
+
+.comment p img {
+    line-height: 0px;
+    width: 270px;
 }
 
 .comment p {
