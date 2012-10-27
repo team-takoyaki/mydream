@@ -17,8 +17,7 @@ define('FB_PERMISSION' , 'publish_stream, read_friendlists');
 define('DR_SNS_FACEBOOK', 'facebook');
 define('DR_SNS_TWITTER', 'twitter');
 
-define('CATEGORY_DEFAULT', 'social');
-define('CATEGORY_DEFAULT_ID', 0);
+define('CATEGORY_DEFAULT_ID', 1);
 
 define('TWITTER_HASH', '#takoyaki_dream');
 

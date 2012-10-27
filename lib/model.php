@@ -230,7 +230,7 @@ function select_dream_from_dream_id($dbh, $dream_id) {
 
 //search dream in category
 function select_dream_from_category_id($dbh, $category_id) {
-    $sql = 'select t1.id, t1.title, t1.body, t1.user_id, t2.user_name from dr_dream t1 inner join dr_user t2 on t1.user_id = t2.id where category_id = :category_id';
+    $sql = 'select t1.id, t1.title, t1.body, t1.user_id, t2.user_name from dr_dream t1 inner join dr_user t2 on t1.user_id = t2.id where category_id = :category_id order by t1.update_date desc';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(

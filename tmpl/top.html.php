@@ -10,25 +10,25 @@
     <div id="body">
         <nav>
             <div class="top_actions_message">
-                こんにちは、<a href="top.php"><?= $user_name ?>さん</a>
+                こんにちは、<a href="<?= BASE_URL ?>/top.php"><?= $user_name ?>さん</a>
             </div>
             <ul class="user_actions">
                 <li class="action">
-                    <a href="add.php">
+                    <a href="<?= BASE_URL ?>/add.php">
                         <span class="action_name">
                             <img src="<?= IMAGES_DIR ?>/write.png">
                         </span>
                     </a>
                 </li>
                 <li class="action">
-                    <a href="search.php">
+                    <a href="<?= BASE_URL ?>/search.php">
                         <span class="action_name">
                             <img src="<?= IMAGES_DIR ?>/search.png">
                         </span>
                     </a>
                 </li>
                 <li class="action">
-                    <a href="logout.php" class="logout_btn">
+                    <a href="<?= BASE_URL ?>/logout.php" class="logout_btn">
                         <span class="action_name">
                             <img src="<?= IMAGES_DIR ?>/logout.png">
                         </span>

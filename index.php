@@ -16,6 +16,7 @@ $dbh = connect_db();
 show_error_db($dbh);
 
 if (isset($session_user_id) === true ) {
+    // ユーザー情報の取得
     $user_info = select_user_from_user_id($dbh, $session_user_id);
     if ($user_info === null) {
         echo 'ユーザー情報が取得できませんでした';
@@ -30,6 +31,7 @@ if (isset($session_user_id) === true ) {
     }
 }
 
+// 夢情報の取得
 $dreams = select_id_and_title_from_dr_dream($dbh);
 if ($dreams === null) {
     echo '夢を取得できませんでした';
