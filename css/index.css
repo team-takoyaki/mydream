@@ -37,6 +37,20 @@ ul.top_actions {
     height: 44px;
 }
 
+ul.top_actions .action {
+    margin-left: 5px;
+}
+
+ul.top_actions .action a {
+    text-decoration: none;
+    display: block;
+}
+
+ul.top_actions .action a img {
+    width: 44px;
+    height: 44px;
+}
+
 ul.user_actions {
     display: -webkit-box;
     -webkit-box-pack: end;
@@ -66,20 +80,6 @@ ul.user_actions .action img {
 ul.user_actions .action a {
     text-decoration: none;
     display: block;
-}
-
-ul.top_actions .action {
-    margin-left: 5px;
-}
-
-ul.top_actions .action a {
-    text-decoration: none;
-    display: block;
-}
-
-ul.top_actions .action a img {
-    width: 44px;
-    height: 44px;
 }
 
 /* トップページのレイアウト */
