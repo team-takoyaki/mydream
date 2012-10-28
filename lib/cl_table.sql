@@ -61,7 +61,8 @@ CREATE TABLE DR_COMMENT_THANK (
 CREATE TABLE DR_DREAM_CHEER (
        DREAM_ID INTEGER NOT NULL,
        USER_ID INTEGER NOT NULL,
-       CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL
+       CREATE_DATE TIMESTAMP DEFAULT "timestamp"('now'::text) NOT NULL,
+       CONSTRAINT cheer_id PRIMARY KEY (dream_id, user_id)
 );
 
 GRANT ALL ON dr_dream TO takoyaki;

@@ -41,7 +41,8 @@ $user_name = $user_info['user_name'];
 /*     exit(); */
 /* } */
 
-$user_dreams = select_dreams_from_user_id($dbh, $user_id, $page);
+
+$user_dreams = select_recent_dreams_from_user_id($dbh, $user_id, $page);
 if ($user_dreams === null) {
     echo '夢を取得できませんでした';
     exit;
