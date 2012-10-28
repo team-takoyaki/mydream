@@ -9,13 +9,27 @@
 <body>
     <div id="body">
         <nav>
+            <?php if (isset($user_name) === true) { ?>
             <div class="top_actions_message">
-                <?php if (isset($user_name) === true) { ?>
                 こんにちは、<a href="<?= BASE_URL ?>/top.php"><?= $user_name ?>さん</a>
-                <?php } else { ?>
-                ログインしていません
-                <?php } ?>
             </div>
+            <?php } else { ?>
+            <div class="top_actions_message">
+                ログインする
+            </div>
+            <ul class="top_actions">
+                <li class="action">
+                    <a href="login_t.php">
+                        <img src="images/twitter_logo.png" alt="Twitterでログインする">
+                    </a>
+                </li>
+                <li class="action">
+                    <a href="login_f.php">
+                        <img src="images/facebook_logo.png" alt="facebookでログインする">
+                    </a>
+                </li>
+            </ul>
+            <?php } ?>
             <ul class="user_actions">
                 <?php if (isset($user_id) === true) { ?>
                 <li class="action">

@@ -20,12 +20,35 @@ nav {
 .top_actions_message {
     color: #FFF;
     font-size: 12px;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .top_actions_message a {
     text-decoration: none;
     color: #0000ff;
+}
+
+ul.top_actions {
+    display: -webkit-box;
+    -webkit-box-pack: end;
+    list-style-type: none;
+    margin: 0 50px 0 0;
+    padding: 0;
+    height: 44px;
+}
+
+ul.top_actions .action {
+    margin-left: 5px;
+}
+
+ul.top_actions .action a {
+    text-decoration: none;
+    display: block;
+}
+
+ul.top_actions .action a img {
+    width: 44px;
+    height: 44px;
 }
 
 ul.user_actions {
@@ -59,13 +82,9 @@ ul.user_actions .action a {
     display: block;
 }
 
-ul.top_actions .action {
-    margin-left: 5px;
-}
-
 /* ページのデザイン */
 .dreams_message {
-    margin: 30px 0 0;
+    margin: 21px 0 0;
     text-align: center;
 }
 
