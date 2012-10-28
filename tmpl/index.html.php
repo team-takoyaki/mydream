@@ -64,7 +64,7 @@
         </div>
         <ul class="dreams">
             <?php foreach($dreams as $dream) {?>
-            <a href="<?= BASE_URL . '/dream.php?id=<?= $dream['id'];?>">
+            <a href="<?= BASE_URL . '/dream.php?id= ' . $dream['id'];?>">
                 <li class="dream">
                     <div class="dream_info">
                         <div class="dream_title">
