@@ -154,3 +154,41 @@ ul.dreams a:visited {
     color: #fff;
     margin-bottom: 20px;
 }
+
+.paging {
+    width: 320px;
+    margin-bottom: 30px;
+}
+
+.paging a {
+    text-decoration: none;
+    color: #000;
+}
+
+.paging a:visited {
+    color: #000;
+}
+
+.paging_btn {
+    text-align: center;
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    line-height: 32px;
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+    color: #333;
+}
+
+.prev_btn {
+    float: left;
+}
+
+.next_btn {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}

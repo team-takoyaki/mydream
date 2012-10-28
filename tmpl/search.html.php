@@ -69,9 +69,9 @@
             </select>
             <button class="search_submit">検索</button>
         </form>
-        <?php if (count($dreams) > 0) { ?>
+        <?php if (count($dreams['data']) > 0) { ?>
         <ul class="dreams">
-            <?php foreach($dreams as $dream) {?>
+            <?php foreach($dreams['data'] as $dream) {?>
             <a href="<?= BASE_URL . '/dream.php?id=' . $dream['id'];?>">
                 <li class="dream">
                     <div class="dream_info">
@@ -83,6 +83,21 @@
             </a>
             <?php }?>
         </ul>
+        <?php if ($next_flag === true || $prev_flag === true) { ?>
+        <div class="paging">
+            <?php if ($prev_flag === true) { ?>
+            <a href="<?= BASE_URL . '/search.php?category_id=' . $category_id . '&page=' . ($page - 1) ?>">
+                <div class="prev_btn paging_btn">前へ</div>
+            </a>
+            <?php } ?>
+            <?php if ($next_flag === true) { ?>
+            <a href="<?= BASE_URL . '/search.php?category_id=' . $category_id . '&page=' . ($page + 1) ?>">
+                <div class="next_btn paging_btn">次へ</div>
+            </a>
+            <?php } ?>
+            <div class="clear"></div>
+        </div>
+        <?php } ?>
         <?php } else { ?>
         <div class="careful">夢リストが見つかりませんでした</div>
         <?php } ?>

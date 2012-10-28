@@ -23,6 +23,8 @@ define('TWITTER_HASH', '#takoyaki_dream');
 
 define('DREAM_TITLE_MAX', 10);
 
+define('DREAM_DISPLAY_MAX', 5);
+
 define('ERROR_NOT_FILL', '入力されていない項目があります');
 define('ERROR_WRONG_MAX_TITLE', 'タイトルは' . DREAM_TITLE_MAX . '字以内で入力して下さい');
 

@@ -15,6 +15,17 @@ if (isset($_GET['category_id']) === true && $_GET['category_id'] !== '') {
     $category_id = CATEGORY_DEFAULT_ID;
 }
 
+if (isset($_GET['page']) === true && $_GET['page'] !== '') {
+    $page = intval($_GET['page']);
+} else {
+    $page = 1;
+}
+
+if ($page < 1) {
+    $page = 1;
+}
+
+
 $dbh = connect_db();
 show_error_db($dbh);
 
@@ -30,11 +41,26 @@ if (isset($user_id) === true) {
 }
 
 // 夢情報の取得
-$dreams = select_dream_from_category_id($dbh, $category_id);
+$dreams = select_dream_from_category_id($dbh, $category_id, $page);
 if ($dreams === null) {
     echo '夢を取得できませんでした';
     exit();
 }
+
+/* ページングの処理 */
+$all_page = (int)ceil($dreams['count'] / DREAM_DISPLAY_MAX);
+if ($page > 1) {
+    $prev_flag = true;
+} else {
+    $prev_flag = false;
+}
+
+if ($page < $all_page) {
+    $next_flag = true;
+} else {
+    $next_flag = false;
+}
+
 $category_selected = array($category_id => 'selected');
 
 $dbh = null;

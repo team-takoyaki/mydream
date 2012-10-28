@@ -229,18 +229,33 @@ function select_dream_from_dream_id($dbh, $dream_id) {
 }
 
 //search dream in category
-function select_dream_from_category_id($dbh, $category_id) {
-    $sql = 'select t1.id, t1.title, t1.body, t1.user_id, t2.user_name from dr_dream t1 inner join dr_user t2 on t1.user_id = t2.id where category_id = :category_id order by t1.update_date desc';
-    try {
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute(
-                       array(
-                             ':category_id' => $category_id
-                             )
-                       );
-        $result = $stmt->fetchAll();
-    } catch (PDOException $e) {
-        return null;
+function select_dream_from_category_id($dbh, $category_id, $page) {
+    $result = array();
+    $count_sql = 'select count(id) as count from dr_dream where category_id = :category_id';
+    $stmt = $dbh->prepare($count_sql);
+    $stmt->execute(
+                   array(
+                         ':category_id' => $category_id
+                         )
+                   );
+    $count_result = $stmt->fetch();
+    $result['count'] = $count_result['count'];
+    if ($result['count'] > 0) {
+        $offset = ($page - 1) * DREAM_DISPLAY_MAX;
+        $sql = 'select t1.id, t1.title, t1.body, t1.user_id, t2.user_name from dr_dream t1 inner join dr_user t2 on t1.user_id = t2.id where category_id = :category_id order by t1.update_date desc limit :limit offset :offset';
+        try {
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute(
+                           array(
+                                 ':category_id' => $category_id,
+                                 ':limit' => DREAM_DISPLAY_MAX,
+                                 ':offset' => $offset
+                                 )
+                           );
+            $result['data'] = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            return null;
+        }
     }
     return $result;
 }
