@@ -217,15 +217,10 @@ li.comment p img {
     width: 270px;
 }
 
-li.comment .edit_area {
-    border-radius: 5px;
-    background-color: #FFF;
-    border: 1px #ccc solid;
-    width: 250px;
-    height: 200px;
-    padding: 5px;
-    font-size: 14px;
+li.comment .tweet_btn {
+    padding: 15px;
 }
+
 
 .comment .display_none {
     display: none;

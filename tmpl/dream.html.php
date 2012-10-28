@@ -87,7 +87,9 @@
         <?php } ?>
         <div class="comments_wrapper">
             <ul class="comments sortable">
+                <?php $num = 0; ?>
                 <?php foreach ($comments as $comment) { ?>
+                <?php $num += 1; ?>
                 <li class="comment ui-state-default" data-comment-id="<?= $comment['id'] ?>">
                     <p><?= set_html_from_text($comment['body']); ?></p>
                     <!-- <?php if (isset($user_id) === true) { ?> -->
@@ -103,6 +105,12 @@
                         <!-- </form> -->
                     <!-- </div> -->
                     <!-- <?php } ?> -->
+                    <?php if (isset($tweet_text) === true && $num === count($comments)) { ?>
+                    <div class="tweet_btn">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://team-takoyaki.com/dream/" data-text="<?= $tweet_text ?>" data-lang="ja" data-size="large" data-count="none">ツイート</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                    <?php } ?>
                 </li>
                 <?php } ?>
             </ul>

@@ -53,6 +53,7 @@ if (isset($comment_submit) === true && isset($comment) === true) {
         echo 'コメントを書き込めませんでした';
         exit;
     }
+    $tweet_text = get_tweet_message($comment);
 }
 
 if (isset($order_change) === true && isset($order_comment_ids) === true) {

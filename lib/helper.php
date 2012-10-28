@@ -53,3 +53,21 @@ function check_dream_title($dream_title) {
     }
     return false;
 }
+
+function get_tweet_message($sentence) {
+    $url = 'http://jlp.yahooapis.jp/KeyphraseService/V1/extract?appid=IZvjB6Wxg67nxKDDta9tuE4Yxv9IbbEB8yiTsYWgvP_8eTKzVhgqO1gv8VNfyeUSNAI-&sentence=' . urlencode($sentence);
+
+    $xml = simplexml_load_file($url);
+    $keyes = $xml->Result;
+    $text = '';
+    $first_flag = false;
+    foreach ($keyes as $key) {
+        if ($first_flag === true) {
+            $text .= '、';
+        } else {
+            $first_flag = true;
+        }
+        $text .= $key->Keyphrase;
+    }
+    return $text . 'について書き込みました';
+}
