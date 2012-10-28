@@ -12,6 +12,16 @@ if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
     exit;
 }
 
+if (isset($_GET['page']) === true && $_GET['page'] !== '') {
+    $page = intval($_GET['page']);
+} else {
+    $page = 1;
+}
+
+if ($page < 1) {
+    $page = 1;
+}
+
 //user情報を取得する
 $dbh = connect_db();
 show_error_db($dbh);
@@ -31,10 +41,24 @@ $user_name = $user_info['user_name'];
 /*     exit(); */
 /* } */
 
-$user_dreams = select_dreams_from_user_id($dbh, $user_id);
+$user_dreams = select_dreams_from_user_id($dbh, $user_id, $page);
 if ($user_dreams === null) {
     echo '夢を取得できませんでした';
     exit;
+}
+
+/* ページングの処理 */
+$all_page = (int)ceil($user_dreams['count'] / DREAM_DISPLAY_MAX);
+if ($page > 1) {
+    $prev_flag = true;
+} else {
+    $prev_flag = false;
+}
+
+if ($page < $all_page) {
+    $next_flag = true;
+} else {
+    $next_flag = false;
 }
 
 $dbh = null;

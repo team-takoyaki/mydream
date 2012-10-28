@@ -7,7 +7,7 @@ session_start();
 //var_dump($_SESSION['t']);
 //var_dump($_SESSION['f']);
 
-$/* post_url = null; */
+/* post_url = null; */
 if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
     header('Location:' . BASE_URL . '/top.php');
     exit;

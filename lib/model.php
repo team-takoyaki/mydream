@@ -13,13 +13,13 @@ function connect_db() {
 }
 
 function select_id_and_title_from_dr_dream($dbh) {
-    $sql = 'select id, title from dr_dream order by create_date desc limit 3';
+    $sql = 'select id, title from dr_dream order by create_date desc limit :limit';
     try {
         $stmt = $dbh->prepare($sql);
-        $stmt->execute();
+        $stmt->execute(array(':limit' => DREAM_DISPLAY_MAX));
         $result = $stmt->fetchAll();
     } catch (PDOException $e) {
-        return null;
+        return null; 
     }
     return $result;
 }
@@ -104,14 +104,30 @@ function select_user_from_user_id($dbh, $user_id) {
     return $result;
 }
 
-function select_dreams_from_user_id($dbh, $user_id) {
-    $sql = 'select id, title, body, category_id from dr_dream where user_id = :user_id order by update_date desc limit 10';
-    try {
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute(array(':user_id' => $user_id));
-        $result = $stmt->fetchAll();
-    } catch (PDOException $e) {
-        return null;
+function select_dreams_from_user_id($dbh, $user_id, $page) {
+    $result = array();
+    $count_sql = 'select count(id) as count from dr_dream where user_id = :user_id';
+    $stmt = $dbh->prepare($count_sql);
+    $stmt->execute(
+                   array(
+                         ':user_id' => $user_id
+                         )
+                   );
+    $count_result = $stmt->fetch();
+    $result['count'] = $count_result['count'];
+    if ($result['count'] > 0) {
+        $offset = ($page - 1) * DREAM_DISPLAY_MAX;
+        $sql = 'select id, title, body, category_id from dr_dream where user_id = :user_id order by update_date desc limit :limit offset :offset';
+        try {
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute(array(
+                                 ':user_id' => $user_id,
+                                 ':limit'   => DREAM_DISPLAY_MAX,
+                                 ':offset'  => $offset));
+            $result['data'] = $stmt->fetchAll();
+        } catch (PDOException $e) {
+            return null;
+        }
     }
     return $result;
 }
