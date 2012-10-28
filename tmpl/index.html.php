@@ -9,34 +9,6 @@
 <body>
     <div id="body">
         <nav>
-            <?php if (isset($user_name) === true && $user_name !== '') { ?>
-            <div class="top_actions_message">
-                こんにちは、<a href="top.php"><?= $user_name ?>さん</a>
-            </div>
-            <ul class="user_actions">
-                <li class="action">
-                    <a href="add.php">
-                        <span class="action_name">
-                            <img src="<?= IMAGES_DIR ?>/write.png">
-                        </span>
-                    </a>
-                </li>
-                <li class="action">
-                    <a href="search.php">
-                        <span class="action_name">
-                            <img src="<?= IMAGES_DIR ?>/search.png">
-                        </span>
-                    </a>
-                </li>
-                <li class="action">
-                    <a href="logout.php">
-                        <span class="action_name">
-                            <img src="<?= IMAGES_DIR ?>/logout.png">
-                        </span>
-                    </a>
-                </li>
-            </ul>
-            <?php } else { ?>
             <div class="top_actions_message">
                 ログインする
             </div>
@@ -52,7 +24,15 @@
                     </a>
                 </li>
             </ul>
-            <?php } ?>
+            <ul class="user_actions">
+                <li class="action">
+                    <a href="search.php">
+                        <span class="action_name">
+                            <img src="<?= IMAGES_DIR ?>/search.png">
+                        </span>
+                    </a>
+                </li>
+            </ul>
         </nav>
         <div class="site_title">
             <h1><img src="images/logo.png" class="ぼくの夢リスト"></h1>

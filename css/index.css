@@ -20,7 +20,7 @@ nav {
 .top_actions_message {
     color: #FFF;
     font-size: 12px;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 .top_actions_message a {
@@ -32,8 +32,8 @@ ul.top_actions {
     display: -webkit-box;
     -webkit-box-pack: end;
     list-style-type: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0 50px 0 0;
+    padding: 0;
     height: 44px;
 }
 
