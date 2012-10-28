@@ -10,9 +10,14 @@
         <div id="body">
         <nav>
             <div class="top_actions_message">
+                <?php if (isset($user_name) === true) { ?>
                 こんにちは、<a href="<?= BASE_URL ?>/top.php"><?= $user_name ?>さん</a>
+                <?php } else { ?>
+                ログインしていません
+                <?php } ?>
             </div>
             <ul class="user_actions">
+                <?php if (isset($user_id) === true) { ?>
                 <li class="action">
                     <a href="<?= BASE_URL ?>/add.php">
                         <span class="action_name">
@@ -20,6 +25,7 @@
                         </span>
                     </a>
                 </li>
+                <?php } ?>
                 <li class="action">
                     <a href="<?= BASE_URL ?>/search.php">
                         <span class="action_name">
@@ -27,6 +33,7 @@
                         </span>
                     </a>
                 </li>
+                <?php if (isset($user_id) === true) { ?>
                 <li class="action">
                     <a href="<?= BASE_URL ?>/logout.php" class="logout_btn">
                         <span class="action_name">
@@ -34,6 +41,7 @@
                         </span>
                     </a>
                 </li>
+                <?php } ?>
             </ul>
         </nav>
 
@@ -44,7 +52,7 @@
                 </div>
             </div>
         </div>
-
+        <?php if (isset($user_id) === true) { ?>
         <div class="dream_tool">
             <form method="POST" class="cheers_btn_form">
                 <?php if ($is_cheer_by_user_id === true) { ?>
@@ -63,12 +71,13 @@
                 <button class="order_save_btn display_none" name="order_save">保存</button>
             </div>
         </div>
-
+        <?php } ?>
         <div class="comments_wrapper">
             <ul class="comments sortable">
                 <?php foreach ($comments as $comment) { ?>
                 <li class="comment ui-state-default" data-comment-id="<?= $comment['id'] ?>">
                     <p><?= set_html_from_text($comment['body']); ?></p>
+                    <?php if (isset($user_id) === true) { ?>
                     <div class="comment_tool display_none">
                         <div class="edit_btn">編集する</div>
                         <form method="POST" class="thanks_btn_form">
@@ -80,13 +89,16 @@
                             <?php } ?>
                         </form>
                     </div>
+                    <?php } ?>
                 </li>
                 <?php } ?>
             </ul>
+            <?php if (isset($user_id) === true) { ?>
             <form method="POST" class="comment_form">
                 <textarea name="comment" class="user_comment"></textarea>
                 <button name="comment_submit" class="comment_submit" value="1">投稿</button>
             </form>
+            <?php } ?>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>

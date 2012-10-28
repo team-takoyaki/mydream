@@ -4,13 +4,8 @@ require_once(BASE . '/lib/model.php');
 require_once(BASE . '/lib/helper.php');
 session_start();
 
-$is_my_dream = false;
-
 if (isset($_SESSION['user_id']) === true && $_SESSION['user_id'] !== '') {
     $user_id = $_SESSION['user_id'];
-} else {
-    header('Location:' . BASE_URL);
-    exit;
 }
 
 if (isset($_GET['id']) === true && $_GET['id'] !== '') {
@@ -70,7 +65,7 @@ if (isset($order_change) === true && isset($order_comment_ids) === true) {
     exit;
 }
 
-if (isset($comment_id) === true) {
+if (isset($user_id) === true && isset($comment_id) === true) {
     $is_thank_by_user_id = check_thank_user_from_comment_id_and_user_id($dbh, $comment_id, $user_id);
     if ($is_thank_by_user_id === null) {
         echo 'ありがとうの数の取得に失敗しました';
@@ -91,7 +86,8 @@ if ($is_cheer_by_user_id === null) {
     exit;
 }
 
-if (isset($cheers_submit) === true && isset($is_cheer_by_user_id) === true && $is_cheer_by_user_id === true) {
+if (isset($user_id) === true && isset($cheers_submit) === true && 
+    isset($is_cheer_by_user_id) === true && $is_cheer_by_user_id === true) {
     if (insert_cheer($dbh, $dream_id, $user_id) === null) {
         echo 'がんばれを押せませんでした';
         exit;
@@ -119,26 +115,30 @@ if ($comments === null) {
 }
 
 $is_thank_by_comment_id = array();
-foreach ($comments as $comment) {
-    $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
-    if ($thank_count === null) {
-        echo 'ありがとうの数の取得に失敗しました';
+if (isset($user_id) === true) {
+    foreach ($comments as $comment) {
+        $thank_count = check_thank_user_from_comment_id_and_user_id($dbh, $comment['id'], $user_id);
+        if ($thank_count === null) {
+            echo 'ありがとうの数の取得に失敗しました';
+            exit;
+        }
+
+        if ($thank_count === 0 && $user_id !== $comment['user_id']) {
+            $is_thank_by_comment_id[$comment['id']] = true;
+        } else {
+            $is_thank_by_comment_id[$comment['id']] = false;
+        }
+    }
+}
+
+if (isset($user_id) === true) {
+    $user_info = select_user_from_user_id($dbh, $user_id);
+    if ($user_info === null) {
+        echo 'ユーザー情報が取得できませんでした';
         exit;
     }
-
-    if ($thank_count === 0 && $user_id !== $comment['user_id']) {
-        $is_thank_by_comment_id[$comment['id']] = true;
-    } else {
-        $is_thank_by_comment_id[$comment['id']] = false;
-    }
+    $user_name = $user_info['user_name'];
 }
-
-$user_info = select_user_from_user_id($dbh, $user_id);
-if ($user_info === null) {
-    echo 'ユーザー情報が取得できませんでした';
-    exit;
-}
-$user_name = $user_info['user_name'];
 /* $user_page_url = get_user_page_url($user_info); */
 
 $dbh = null;
