@@ -13,22 +13,6 @@
             <div class="top_actions_message">
                 こんにちは、<a href="<?= BASE_URL ?>/top.php"><?= $user_name ?>さん</a>
             </div>
-            <?php } else { ?>
-            <div class="top_actions_message">
-                ログインする
-            </div>
-            <ul class="top_actions">
-                <li class="action">
-                    <a href="login_t.php">
-                        <img src="images/twitter_logo.png" alt="Twitterでログインする">
-                    </a>
-                </li>
-                <li class="action">
-                    <a href="login_f.php">
-                        <img src="images/facebook_logo.png" alt="facebookでログインする">
-                    </a>
-                </li>
-            </ul>
             <?php } ?>
             <ul class="user_actions">
                 <?php if (isset($user_id) === true) { ?>
@@ -36,6 +20,15 @@
                     <a href="<?= BASE_URL ?>/add.php">
                         <span class="action_name">
                             <img src="<?= IMAGES_DIR ?>/write.png">
+                        </span>
+                    </a>
+                </li>
+                <?php } ?>
+                <?php if (isset($user_name) === false) { ?>
+                <li class="action">
+                    <a href="<?= BASE_URL ?>/">
+                        <span class="action_name">
+                            <img src="<?= IMAGES_DIR ?>/home.png">
                         </span>
                     </a>
                 </li>
