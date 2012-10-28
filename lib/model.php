@@ -187,6 +187,17 @@ function insert_comment($dbh, $body, $user_id, $dream_id) {
                              ':user_id' => $user_id
                              )
                        );
+        $sql = 'update dr_dream set update_date = now() where id = :dream_id';
+        try {
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute(
+                           array(
+                                 ':dream_id' => $dream_id
+                                 )
+                           );
+        } catch (PDOException $e) {
+            return null;
+        }
         return true;
     } catch (PDOException $e) {
         return null;
