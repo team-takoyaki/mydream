@@ -5,6 +5,12 @@
     <title>ぼくの夢リスト</title>
     <link rel="stylesheet" type="text/css" href="css/search.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="apple-touch-icon-precomposed" href="images/touch-icon-iphone.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/touch-icon-iphone4.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
 </head>
 <body>
     <div id="body">
