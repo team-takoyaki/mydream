@@ -21,4 +21,10 @@ define('CATEGORY_DEFAULT_ID', 1);
 
 define('TWITTER_HASH', '#takoyaki_dream');
 
+define('DREAM_TITLE_MAX', 10);
+
+define('ERROR_NOT_FILL', '入力されていない項目があります');
+define('ERROR_WRONG_MAX_TITLE', 'タイトルは' . DREAM_TITLE_MAX . '字以内で入力して下さい');
+
+
 $categories = array('', '社会', 'スポーツ', '音楽', 'エンターテインメント', '科学', 'コンピュータ', 'ゲーム・アニメ', 'その他');

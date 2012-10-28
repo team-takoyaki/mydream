@@ -29,7 +29,11 @@ $dbh = connect_db();
 show_error_db($dbh);
 
 if (isset($add_submit) === true) {
-    if (isset($title) === true && isset($category_id) === true) {
+    if (isset($title) === false || isset($category_id) === false) {
+        $error_message = ERROR_NOT_FILL;
+    } else if (check_dream_title($title) === false) {
+        $error_message = ERROR_WRONG_MAX_TITLE;
+    } else {
         $dream_id = insert_dream($dbh, $title, '', $category_id, $user_id);
         if ($dream_id !== null && check_dream_id($dream_id) !== false) {
             $redirect_url = BASE_URL . '/dream.php?id=' . $dream_id;
@@ -39,8 +43,6 @@ if (isset($add_submit) === true) {
             echo '夢を書き込めませんでした';
             exit;
         }
-    } else {
-        $error_message = true;
     }
 }
 

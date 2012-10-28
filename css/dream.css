@@ -184,13 +184,14 @@ li.comment {
     border-radius: 5px;
 }
 
+li.comment p {
+    word-break: break-all;
+    padding: 15px;
+}
+
 li.comment p img {
     line-height: 0px;
     width: 270px;
-}
-
-li.comment p {
-    padding: 15px;
 }
 
 .comment .display_none {
