@@ -138,8 +138,8 @@ if (isset($user_id) === true) {
         exit;
     }
     $user_name = $user_info['user_name'];
+    /* $user_page_url = get_user_page_url($user_info); */
 }
-/* $user_page_url = get_user_page_url($user_info); */
 
 $dbh = null;
 

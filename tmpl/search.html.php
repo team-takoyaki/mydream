@@ -10,9 +10,14 @@
     <div id="body">
         <nav>
             <div class="top_actions_message">
+                <?php if (isset($user_name) === true) { ?>
                 こんにちは、<a href="<?= BASE_URL ?>/top.php"><?= $user_name ?>さん</a>
+                <?php } else { ?>
+                ログインしていません
+                <?php } ?>
             </div>
             <ul class="user_actions">
+                <?php if (isset($user_id) === true) { ?>
                 <li class="action">
                     <a href="<?= BASE_URL ?>/add.php">
                         <span class="action_name">
@@ -20,6 +25,7 @@
                         </span>
                     </a>
                 </li>
+                <?php } ?>
                 <li class="action">
                     <a href="<?= BASE_URL ?>/search.php">
                         <span class="action_name">
@@ -27,6 +33,7 @@
                         </span>
                     </a>
                 </li>
+                <?php if (isset($user_id) === true) { ?>
                 <li class="action">
                     <a href="<?= BASE_URL ?>/logout.php" class="logout_btn">
                         <span class="action_name">
@@ -34,6 +41,7 @@
                         </span>
                     </a>
                 </li>
+                <?php } ?>
             </ul>
         </nav>
         <div class="dreams_message">
@@ -65,7 +73,7 @@
         <div class="careful">夢リストが見つかりませんでした</div>
         <?php } ?>
     </div>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
 </body>
 </html>
