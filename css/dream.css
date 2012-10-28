@@ -217,6 +217,16 @@ li.comment p img {
     width: 270px;
 }
 
+li.comment .edit_area {
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    width: 250px;
+    height: 200px;
+    padding: 5px;
+    font-size: 14px;
+}
+
 .comment .display_none {
     display: none;
 }
@@ -224,7 +234,7 @@ li.comment p img {
 .comment_tool {
    position: absolute;
    bottom: 10px;
-   right: 10px;
+   right: 0px;
    display: -webkit-box;
    -webkit-box-pack: end;
    margin-top: 40px;
@@ -235,7 +245,7 @@ li.comment p img {
     border-radius: 5px;
     background-color: #FFF;
     border: 1px #ccc solid;
-    line-height: 30px;
+    line-height: 24px;
     height: 30px;
     width: 100px;
     font-size: 14px;

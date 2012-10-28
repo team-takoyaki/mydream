@@ -80,7 +80,7 @@
             </div>
             <?php } ?>
             <div class="order_save">
-                <button class="order_edit_btn" name="order_edit">編集する</button>
+                <button class="order_edit_btn" name="order_edit">順番を変える</button>
                 <button class="order_save_btn display_none" name="order_save">保存</button>
             </div>
         </div>
@@ -90,9 +90,9 @@
                 <?php foreach ($comments as $comment) { ?>
                 <li class="comment ui-state-default" data-comment-id="<?= $comment['id'] ?>">
                     <p><?= set_html_from_text($comment['body']); ?></p>
-                    <?php if (isset($user_id) === true) { ?>
-                    <div class="comment_tool display_none">
-                        <div class="edit_btn">編集する</div>
+                    <!-- <?php if (isset($user_id) === true) { ?> -->
+                    <!-- <div class="comment_tool display_none"> -->
+                        <!-- <button class="edit_btn">編集する</button> -->
                         <!-- <form method="POST" class="thanks_btn_form"> -->
                         <!--     <input type="hidden" name="comment_id" value="<?= $comment['id']; ?>"> -->
                         <!--     <?php if ($is_thank_by_comment_id[$comment['id']] === true) { ?> -->
@@ -101,8 +101,8 @@
                         <!--     <button name="thanks_submit" class="thanks_btn" value="1" disabled>メモってます</button> -->
                         <!--     <?php } ?> -->
                         <!-- </form> -->
-                    </div>
-                    <?php } ?>
+                    <!-- </div> -->
+                    <!-- <?php } ?> -->
                 </li>
                 <?php } ?>
             </ul>

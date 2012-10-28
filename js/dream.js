@@ -28,6 +28,13 @@ $(function() {
 	 });
     });
 
+    $('.edit_btn').click(function(event) {
+        var $textarea = $($($(event.currentTarget).parent('.comment_tool').get(0)).siblings('textarea').get(0));
+        if ($textarea.hasClass('display_none') === true) {
+            $textarea.removeClass('display_none');
+        }
+    });
+
     $('.order_edit_btn').click(function() {
         $('.sortable').sortable({
 	                                disabled: false,
@@ -45,4 +52,6 @@ $(function() {
               return false;
           }
      });
+
+
 });
