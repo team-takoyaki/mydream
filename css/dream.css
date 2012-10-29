@@ -157,7 +157,7 @@ ul.top_actions .action {
 }
 
 .dream_tool .order_save {
-    margin: 15px 0 0 20px;
+    margin: 15px 5px 0 20px;
     text-align: right;
 }
 
@@ -167,7 +167,7 @@ ul.top_actions .action {
     border: 1px #ccc solid;
     line-height: 24px;
     height: 30px;
-    width: 100px;
+    width: 120px;
     font-size: 14px;
     color: #333;
 }
@@ -178,7 +178,7 @@ ul.top_actions .action {
     border: 1px #ccc solid;
     line-height: 24px;
     height: 30px;
-    width: 100px;
+    width: 120px;
     font-size: 14px;
     color: #333;
 }
