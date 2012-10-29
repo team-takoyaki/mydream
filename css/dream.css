@@ -138,12 +138,12 @@ ul.top_actions .action {
 }
 
 .dream_tool .cheers_btn {
-    border-radius: 30px;
+    border-radius: 35px;
     background-color: #FFF;
     border: 1px #ccc solid;
     line-height: 24px;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
     font-size: 11px;
     color: #000;
 }
