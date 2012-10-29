@@ -152,12 +152,12 @@ ul.top_actions .action {
     font-size: 12px;
     margin-bottom: 0px;
     color: #fff;
-    margin-right: 10px;
+    margin-right: 20px;
     line-height: 60px;
 }
 
 .dream_tool .order_save {
-    margin: 15px 10px 0 20px;
+    margin: 15px 9px 0 0px;
     text-align: right;
 }
 

@@ -76,7 +76,7 @@
             </form>
             <?php if ($cheer_users_count > 0) { ?>
             <div class="cheers_message">
-                <?= $cheer_users_count ?>人が応援しています
+                <?= $cheer_users_count ?>人が応援中
             </div>
             <?php } ?>
             <?php if (count($comments) > 0) { ?>
