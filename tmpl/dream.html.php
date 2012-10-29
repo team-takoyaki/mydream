@@ -79,10 +79,12 @@
                 <?= $cheer_users_count ?>人が応援しています
             </div>
             <?php } ?>
+            <?php if (count($comments) > 0) { ?>
             <div class="order_save">
                 <button class="order_edit_btn" name="order_edit">順番を変える</button>
                 <button class="order_save_btn display_none" name="order_save">保存</button>
             </div>
+            <?php } ?>
         </div>
         <?php } ?>
         <div class="comments_wrapper">
@@ -92,7 +94,7 @@
                 <?php $num += 1; ?>
                 <li class="ui-state-default">
                     <div class="comment"  data-comment-id="<?= $comment['id'] ?>">
-                    <?php if ($comment['order_num'] !== 0) { ?>
+                    <?php if ($comment['status_flg'] !== 0) { ?>
                     <p><?= set_html_from_text($comment['body']); ?></p>
                     <?php } ?>
                     <?php if (isset($user_id) === true) { ?>

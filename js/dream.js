@@ -1,11 +1,10 @@
 $(function() {
     $('.order_save_btn').click(function() {
-          var comments = $('.ui-state-default');
+          var comments = $('.comment');
 	      var comment_ids = new Array();
 	      for (var i = 0; i < comments.length; i++) {
 	          comment_ids.push($(comments[i]).data('comment-id'));
           }
-
           $.ajax({
               type: 'POST',
 	          url: 'dream.php',

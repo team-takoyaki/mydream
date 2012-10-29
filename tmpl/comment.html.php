@@ -62,7 +62,7 @@
             <form method="POST">
                 <textarea name="comment"><?= $comment['body']; ?></textarea>
                 <div class="comment_tool">
-                    <?php if ($comment['order_num'] === 0) { ?>
+                    <?php if ($comment['status_flg'] === 0) { ?>
                     <button class="update_btn" name="public_submit" value="edit">公開する</button>
                     <?php } else { ?>
                     <button class="update_btn" name="unpublic_submit" value="edit">非公開にする</button>

@@ -177,7 +177,7 @@ function select_user_id_from_dream_id($dbh, $dream_id) {
 }
 
 function update_comment_order_num($dbh, $comment_id, $order_num) {
-    $sql = 'update dr_dream_comment set order_num = :order_num, update_date = now() where id = :comment_id';
+    $sql = 'update dr_dream_comment set status_flg = :order_num, update_date = now() where id = :comment_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
@@ -287,12 +287,11 @@ function insert_comment($dbh, $body, $user_id, $dream_id) {
 }
 
 function update_comment_order($dbh, $comment_id, $num) {
-    $sql = 'update dr_dream_comment set order_num = :order_num where id = :comment_id';
+    $sql = 'update dr_dream_comment set update_date = now() where id = :comment_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(
                        array(
-                             ':order_num' => $num,
                              ':comment_id' => $comment_id
                              )
                        );
@@ -303,7 +302,7 @@ function update_comment_order($dbh, $comment_id, $num) {
 }
 
 function select_comment_from_comment_id($dbh, $comment_id) {
-    $sql = 'select id, dream_id, body, order_num, user_id, create_date from dr_dream_comment where id = :comment_id';
+    $sql = 'select id, dream_id, body, status_flg, user_id, create_date from dr_dream_comment where id = :comment_id';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':comment_id' => $comment_id));
@@ -315,7 +314,7 @@ function select_comment_from_comment_id($dbh, $comment_id) {
 }
 
 function select_comments_from_dream_id($dbh, $dream_id) {
-    $sql = 'select id, body, user_id, order_num, create_date from dr_dream_comment where dream_id = :dream_id order by order_num asc, update_date asc';
+    $sql = 'select id, body, user_id, status_flg, create_date from dr_dream_comment where dream_id = :dream_id order by update_date asc';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':dream_id' => $dream_id));

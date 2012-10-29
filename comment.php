@@ -47,7 +47,7 @@ if (isset($unpublic_submit) === true) {
 }
 
 if (isset($public_submit) === true) {
-    update_comment_order_num($dbh, $comment_id, null);
+    update_comment_order_num($dbh, $comment_id, 1);
     $update_flg = true;
 }
 

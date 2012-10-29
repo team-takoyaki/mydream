@@ -67,7 +67,7 @@ if (isset($comment_submit) === true && isset($comment) === true) {
 
 if (isset($update_comment_id) === true) {
     $comment = select_comment_from_comment_id($dbh, $update_comment_id);
-    if ($comment['order_num'] !== 0) {
+    if ($comment['status_flg'] !== 0) {
         $tweet_text = get_tweet_message($comment['body']);
     }
 }
