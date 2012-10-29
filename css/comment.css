@@ -87,6 +87,40 @@ ul.top_actions .action {
 }
 
 /* ページのデザイン */
+.comment {
+    position: relative;
+    margin: 21px auto 20px;
+    width: 300px;
+    background-color: #fff;
+    border: 1px #ccc solid;
+    border-radius: 5px;
+}
+
+.comment textarea {
+    width: 270px;
+    height: 180px;
+    margin: 10px 10px 0;
+    font-size: 14px;
+    padding: 2px 5px;
+}
+
+.comment .comment_tool {
+    display: -webkit-box;
+    -webkit-box-pack: end;
+}
+
+.comment .update_btn {
+    border-radius: 5px;
+    background-color: #FFF;
+    border: 1px #ccc solid;
+    line-height: 24px;
+    height: 30px;
+    width: 100px;
+    font-size: 14px;
+    color: #333;
+    margin: 0px 8px 7px 0px;
+}
+
 .dreams_message {
     margin: 30px 0 0;
     text-align: center;
@@ -161,16 +195,6 @@ ul.top_actions .action {
     text-align: right;
 }
 
-.dream_tool .order_edit_btn {
-    border-radius: 5px;
-    background-color: #FFF;
-    border: 1px #ccc solid;
-    line-height: 24px;
-    height: 30px;
-    width: 100px;
-    font-size: 14px;
-    color: #333;
-}
 
 .dream_tool .order_save_btn {
     border-radius: 5px;
@@ -218,7 +242,7 @@ li div.comment p img {
 }
 
 li div.comment .tweet_btn {
-    margin-right: 10px;
+    padding: 15px;
 }
 
 li div.comment textarea {
@@ -232,40 +256,6 @@ li div.comment textarea {
 
 div.comment .display_none {
     display: none;
-}
-
-.comment_tool {
-   display: -webkit-box;
-   -webkit-box-pack: end;
-   margin: 20px 0 5px;
-}
-
-.comment_tool .edit_btn {
-    text-align: center;
-    border-radius: 5px;
-    background-color: #FFF;
-    border: 1px #ccc solid;
-    line-height: 24px;
-    height: 30px;
-    width: 100px;
-    font-size: 14px;
-    margin-right: 10px;
-    color: #333;
-}
-
-.comment_tool .thanks_btn {
-    border-radius: 5px;
-    background-color: #FFF;
-    border: 1px #ccc solid;
-    line-height: 24px;
-    height: 30px;
-    width: 100px;
-    font-size: 14px;
-    color: #333;
-}
-
-.comment_tool .thanks_btn:disabled {
-    color: #888;
 }
 
 .comment_form {

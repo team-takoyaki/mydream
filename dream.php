@@ -12,6 +12,10 @@ if (isset($_GET['id']) === true && $_GET['id'] !== '') {
     $dream_id = intval($_GET['id']);
 }
 
+if (isset($_GET['comment_id']) === true && $_GET['comment_id'] !== '') {
+    $update_comment_id = intval($_GET['comment_id']);
+}
+
 if (isset($_POST['comment_submit']) === true && $_POST['comment_submit'] !== '') {
     $comment_submit = $_POST['comment_submit'];
 }
@@ -45,15 +49,27 @@ if (isset($order_change) === false && check_dream_id($dream_id) === false) {
     exit;
 }
 
+if (isset($update_comment_id) === true && check_dream_id($update_comment_id) === false) {
+    echo '不正なアクセスです';
+    exit;
+}
+
 $dbh = connect_db();
 show_error_db($dbh);
 
 if (isset($comment_submit) === true && isset($comment) === true) {
-    if (insert_comment($dbh, $comment, $user_id, $dream_id) === null) {
+    $update_comment_id = insert_comment($dbh, $comment, $user_id, $dream_id);
+    if ($update_comment_id === null) {
         echo 'コメントを書き込めませんでした';
         exit;
     }
-    $tweet_text = get_tweet_message($comment);
+}
+
+if (isset($update_comment_id) === true) {
+    $comment = select_comment_from_comment_id($dbh, $update_comment_id);
+    if ($comment['order_num'] !== 0) {
+        $tweet_text = get_tweet_message($comment['body']);
+    }
 }
 
 if (isset($order_change) === true && isset($order_comment_ids) === true) {

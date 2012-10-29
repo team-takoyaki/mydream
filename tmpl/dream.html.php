@@ -90,11 +90,22 @@
                 <?php $num = 0; ?>
                 <?php foreach ($comments as $comment) { ?>
                 <?php $num += 1; ?>
-                <li class="comment ui-state-default" data-comment-id="<?= $comment['id'] ?>">
+                <li class="ui-state-default">
+                    <div class="comment"  data-comment-id="<?= $comment['id'] ?>">
+                    <?php if ($comment['order_num'] !== 0) { ?>
                     <p><?= set_html_from_text($comment['body']); ?></p>
-                    <!-- <?php if (isset($user_id) === true) { ?> -->
-                    <!-- <div class="comment_tool display_none"> -->
-                        <!-- <button class="edit_btn">編集する</button> -->
+                    <?php } ?>
+                    <?php if (isset($user_id) === true) { ?>
+                    <div class="comment_tool">
+                    <?php if (isset($tweet_text) === true && $update_comment_id === $comment['id']) { ?>
+                    <div class="tweet_btn">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://team-takoyaki.com/dream/" data-text="<?= $tweet_text ?>" data-lang="ja" data-size="large" data-count="none">ツイート</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                    <?php } ?>
+                        <a href="<?= BASE_URL ?>/comment.php?id=<?= $comment['id'] ?>">
+                            <button class="edit_btn" value="edit">編集する</button>
+                        </a>
                         <!-- <form method="POST" class="thanks_btn_form"> -->
                         <!--     <input type="hidden" name="comment_id" value="<?= $comment['id']; ?>"> -->
                         <!--     <?php if ($is_thank_by_comment_id[$comment['id']] === true) { ?> -->
@@ -103,14 +114,9 @@
                         <!--     <button name="thanks_submit" class="thanks_btn" value="1" disabled>メモってます</button> -->
                         <!--     <?php } ?> -->
                         <!-- </form> -->
-                    <!-- </div> -->
-                    <!-- <?php } ?> -->
-                    <?php if (isset($tweet_text) === true && $num === count($comments)) { ?>
-                    <div class="tweet_btn">
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://team-takoyaki.com/dream/" data-text="<?= $tweet_text ?>" data-lang="ja" data-size="large" data-count="none">ツイート</a>
-                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </div>
                     <?php } ?>
+                    </div>
                 </li>
                 <?php } ?>
             </ul>

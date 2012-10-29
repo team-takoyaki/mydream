@@ -176,6 +176,88 @@ function select_user_id_from_dream_id($dbh, $dream_id) {
     return $result['user_id'];
 }
 
+function update_comment_order_num($dbh, $comment_id, $order_num) {
+    $sql = 'update dr_dream_comment set order_num = :order_num, update_date = now() where id = :comment_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':order_num' => $order_num,
+                             ':comment_id' => $comment_id
+                             )
+                       );
+    } catch (PDOException $e) {
+        return null;
+    }
+
+    $sql = 'select dream_id from dr_dream_comment where id = :comment_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':comment_id' => $comment_id
+                             )
+                       );
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+
+    $sql = 'update dr_dream set update_date = now() where id = :dream_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':dream_id' => $result['dream_id']
+                             )
+                       );
+    } catch (PDOException $e) {
+        return null;
+    }
+    return true;
+}
+
+function update_comment($dbh, $comment_id, $comment) {
+    $sql = 'update dr_dream_comment set body = :comment, update_date = now() where id = :comment_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':comment' => $comment,
+                             ':comment_id' => $comment_id
+                             )
+                       );
+    } catch (PDOException $e) {
+        return null;
+    }
+
+    $sql = 'select dream_id from dr_dream_comment where id = :comment_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':comment_id' => $comment_id
+                             )
+                       );
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+
+    $sql = 'update dr_dream set update_date = now() where id = :dream_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(
+                       array(
+                             ':dream_id' => $result['dream_id']
+                             )
+                       );
+    } catch (PDOException $e) {
+        return null;
+    }
+    return true;
+}
+
 function insert_comment($dbh, $body, $user_id, $dream_id) {
     $sql = 'insert into dr_dream_comment(dream_id, body, user_id) values(:dream_id, :body, :user_id)';
     try {
@@ -198,7 +280,7 @@ function insert_comment($dbh, $body, $user_id, $dream_id) {
         } catch (PDOException $e) {
             return null;
         }
-        return true;
+        return $dbh->lastInsertId('dr_dream_comment_id_seq');
     } catch (PDOException $e) {
         return null;
     }
@@ -220,8 +302,20 @@ function update_comment_order($dbh, $comment_id, $num) {
     }
 }
 
+function select_comment_from_comment_id($dbh, $comment_id) {
+    $sql = 'select id, dream_id, body, order_num, user_id, create_date from dr_dream_comment where id = :comment_id';
+    try {
+        $stmt = $dbh->prepare($sql);
+        $stmt->execute(array(':comment_id' => $comment_id));
+        $result = $stmt->fetch();
+    } catch (PDOException $e) {
+        return null;
+    }
+    return $result;
+}
+
 function select_comments_from_dream_id($dbh, $dream_id) {
-    $sql = 'select id, body, user_id, create_date from dr_dream_comment where dream_id = :dream_id order by order_num asc, create_date desc';
+    $sql = 'select id, body, user_id, order_num, create_date from dr_dream_comment where dream_id = :dream_id order by order_num asc, update_date asc';
     try {
         $stmt = $dbh->prepare($sql);
         $stmt->execute(array(':dream_id' => $dream_id));
