@@ -124,7 +124,7 @@ if ($dream === null) {
     exit;
 }
 
-print $dream;
+/*print $dream;*/
 /* $dream_user = $dream['user_id']; */
 
 $comments = select_comments_from_dream_id($dbh, $dream_id);
