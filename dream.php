@@ -123,6 +123,8 @@ if ($dream === null) {
     echo '夢を取得できませんでした';
     exit;
 }
+
+print $dream;
 /* $dream_user = $dream['user_id']; */
 
 $comments = select_comments_from_dream_id($dbh, $dream_id);

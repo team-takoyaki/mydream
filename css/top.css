@@ -150,3 +150,13 @@ ul.dreams a:visited {
 .clear {
     clear: both;
 }
+
+.careful {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.margin-top {
+    margin-top: 21px;
+}
