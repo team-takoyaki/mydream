@@ -127,8 +127,8 @@
             </form>
             <?php } ?>
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.js"></script>
         <script src="js/dream.js"></script>
     </body>
 </html>
