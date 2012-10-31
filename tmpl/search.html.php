@@ -101,7 +101,7 @@
         <div class="careful">夢リストが見つかりませんでした</div>
         <?php } ?>
     </div>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/search.js"></script>
 </body>
 </html>

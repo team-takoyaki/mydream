@@ -53,7 +53,7 @@
                 <button name="add_submit" value="1" class="add_submit">夢リストを作る</button>
             </form>
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/add.js"></script>
     </body>
 </html>

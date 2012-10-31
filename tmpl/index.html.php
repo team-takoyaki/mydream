@@ -62,28 +62,6 @@
             <?php }?>
         </ul>
         <?php } ?>
-    <!--     <div id="title_logo"></div> -->
-    <!--         <\!-- <?php if ($is_login === true) {?> -\-> -->
-    <!--         <\!--     <li class="action"> -\-> -->
-    <!--         <\!--         <a href="<?= $post_url;?>"> -\-> -->
-    <!--         <\!--             <span class="action_name"> -\-> -->
-    <!--         <\!--             SNSに書き込む -\-> -->
-    <!--         <\!--             </span> -\-> -->
-    <!--         <\!--         </a> -\-> -->
-    <!--         <\!--     </li> -\-> -->
-    <!--         <\!--     <li class="action"> -\-> -->
-    <!--         <\!--         <a href="logout.php"> -\-> -->
-    <!--         <\!--             <span class="action_name"> -\-> -->
-    <!--         <\!--                 ログアウト -\-> -->
-    <!--         <\!--             </span> -\-> -->
-    <!--         <\!--         </a> -\-> -->
-    <!--         <\!--     </li> -\-> -->
-    <!--         <\!-- <?php } else {?> -\-> -->
-    <!--         <\!-- <?php }?> -\-> -->
-    <!--     </ul> -->
-    <!-- </div> -->
     </div>
-    <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript" src="scripts/index.js"></script>
 </body>
 </html>

@@ -43,7 +43,7 @@
             </ul>
         </nav>
 
-        <?php if (count($user_dreams) > 0) { ?>
+        <?php if (count($user_dreams['data']) > 0) { ?>
         <div class="dreams_message">
             <h3>更新された夢リスト</h3>
         </div>
@@ -58,7 +58,7 @@
                     </div>
                 </li>
             </a>
-            <?php }?>
+            <?php } ?>
         </ul>
         <?php if ($next_flag === true || $prev_flag === true) { ?>
         <div class="paging">
@@ -75,9 +75,14 @@
             <div class="clear"></div>
         </div>
         <?php } ?>
+        <?php } else { ?>
+        </div>
+        <div class="margin-top">
+            <div class="careful">夢リストが見つかりませんでした</div>
+        </div>
         <?php } ?>
     </div>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/top.js"></script>
 </body>
 </html>

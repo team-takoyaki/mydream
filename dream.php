@@ -58,7 +58,7 @@ $dbh = connect_db();
 show_error_db($dbh);
 
 if (isset($comment_submit) === true && isset($comment) === true) {
-    $update_comment_id = insert_comment($dbh, $comment, $user_id, $dream_id);
+    $update_comment_id = intval(insert_comment($dbh, $comment, $user_id, $dream_id));
     if ($update_comment_id === null) {
         echo 'コメントを書き込めませんでした';
         exit;
@@ -123,6 +123,8 @@ if ($dream === null) {
     echo '夢を取得できませんでした';
     exit;
 }
+
+/*print $dream;*/
 /* $dream_user = $dream['user_id']; */
 
 $comments = select_comments_from_dream_id($dbh, $dream_id);
