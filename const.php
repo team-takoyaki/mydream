@@ -21,7 +21,7 @@ define('CATEGORY_DEFAULT_ID', 1);
 
 define('TWITTER_HASH', '#takoyaki_dream');
 
-define('DREAM_TITLE_MAX', 10);
+define('DREAM_TITLE_MAX', 30);
 
 define('DREAM_DISPLAY_MAX', 5);
 

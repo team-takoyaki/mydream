@@ -17,7 +17,7 @@ function set_html_from_text($text) {
     $text = htmlspecialchars($text);
     $text = set_image_from_text($text);
     $text = set_linked_from_text($text);
-    $text = preg_replace('{\n}', '<br>', $text);
+    $text = preg_replace('{\n}', '<br>', $text);    
     return $text;
 }
 
