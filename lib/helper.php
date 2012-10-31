@@ -15,18 +15,18 @@ function show_error_db($dbh) {
 
 function set_html_from_text($text) {
     $text = htmlspecialchars($text);
-    $text = preg_replace('{\n}', '<br>', $text);
-    /* $text = set_image_from_text($text); */
+    $text = set_image_from_text($text);
     $text = set_linked_from_text($text);
+    $text = preg_replace('{\n}', '<br>', $text);
     return $text;
 }
 
 function set_linked_from_text($text) {
-    return preg_replace('{(http:\/\/.+?(?:\s|$))}i', '<a href="$1">$1</a>', $text);
+    return preg_replace('{(?:^|[^"])(http:\/\/.+?(?:\s|$))}i', '<a href="$1">$1</a>', $text);
 }
 
 function set_image_from_text($text) {
-    return preg_replace('{(http:\/\/[^\s]+?\.(:?jpg|png|gif))$}i', '<a href="$1"><img src="$1"></a>', $text);
+    return preg_replace('{(?:^|[^"])(http://.+?\.(?:jpg|png|gif))}i', '<a href="$1"><img src="$1"></a>', $text);
 }
 
 function get_user_page_url($user_info) {
